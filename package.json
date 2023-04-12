@@ -1,0 +1,23 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "description": "My personal portfolio website.",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^0.18.2",
+    "astro": "^2.1.5",
+    "three": "^0.151.3"
+  },
+  "homepage": "https://github.com/Manojlovic1998/personal-portfolio#readme",
+  "author": "Nemanja Manojlovic",
+  "devDependencies": {
+    "@types/three": "^0.150.1"
+  }
+}

@@ -1,0 +1,57 @@
+---
+---
+
+<!--Component Template -->
+<div id="nblocks-canvas-container"></div>
+<script>
+  import World from "../utils/threejs/World";
+
+  import loadGLTFObject from "../utils/threejs/loadGLTFObject";
+
+  import type { CameraSettings } from "../utils/threejs/createCamera";
+
+  const main = async () => {
+    // Get a reference to the container element
+    const container = document.getElementById(
+      "nblocks-canvas-container"
+    ) as HTMLElement;
+    const camneraSettings: CameraSettings = {
+      fov: 50,
+      position: { x: -2, y: 1, z: 4 },
+    };
+    // Crate a new World
+    const world = new World(container, undefined, camneraSettings, undefined, {
+      autoRotate: true,
+    });
+
+    world.init = async () => {
+      // Load models
+      const objectList = await loadGLTFObject([
+        { path: "/assets/models/obj/nblocks/nblocks.gltf" },
+      ]);
+      // Check if the models have been loaded
+      // If so add them to the scene
+      if (objectList && objectList[0]) {
+        const nblocks = objectList[0];
+        nblocks.model.scale.set(0.01, 0.01, 0.01);
+        world.scene.add(nblocks.model);
+      }
+    };
+
+    // Complete async tasks
+    await world.init();
+
+    // Start the animation loop
+    world.start();
+  };
+
+  main();
+</script>
+
+<style>
+  #nblocks-canvas-container {
+    width: 100%;
+    max-width: 100%;
+    height: 23rem;
+  }
+</style>
