@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Nblocks3DLogo from "./Nblocks3DLogo.astro";
 
 interface Props {
   project: CollectionEntry<"work">;
@@ -12,9 +11,9 @@ const { data, slug } = Astro.props.project;
 <a class="card" href={`/work/${slug}`}>
   <span class="title">{data.title}</span>
   {
-    data.img && (
+    data.img_preview && (
       <img
-        src={data.img}
+        src={data.img_preview}
         alt={data.img_alt || ""}
         loading="lazy"
         decoding="async"
