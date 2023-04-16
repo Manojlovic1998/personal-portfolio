@@ -1,0 +1,81 @@
+---
+import moment from "moment";
+interface Props {
+  coverImage: string;
+  title: string;
+  brief: string;
+  dateAdded: string;
+  slug: string;
+}
+
+const { coverImage, title, brief, dateAdded, slug } = Astro.props;
+---
+
+<div class="card">
+  <div class="card-image-wrapper">
+    <a href={`https://nemanjamanojlovic.com/${slug}`} target="_blank">
+      <img src={coverImage} alt={title} class="card-image" />
+    </a>
+  </div>
+  <div class="card-body">
+    <h3>{title}</h3>
+    <small>Date: {moment(dateAdded).format("LLLL")}</small>
+    <p>{brief}</p>
+    <div>
+      <a href={`https://nemanjamanojlovic.com/${slug}`} target="_blank"
+        >View Post</a
+      >
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--gray-800);
+    overflow: hidden;
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-body {
+    display: flex;
+    padding: 0 1rem 1rem 1rem;
+    flex-direction: column;
+  }
+
+  .card-body > small {
+    margin-top: 0.5rem;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  .card-body > h3 {
+    margin-top: 1rem;
+  }
+  .card-body > p {
+    margin-top: 0.8rem;
+  }
+
+  @media (min-width: 50em) {
+    .card {
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    .card-image {
+      height: 100%;
+    }
+
+    .card-body > div {
+      margin-top: auto;
+    }
+
+    .card-body > p {
+      padding-right: 2rem;
+    }
+  }
+</style>
