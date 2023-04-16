@@ -47,7 +47,10 @@ const { Content } = await entry.render();
         <div class="stack gap-10 content">
           {
             entry.data.img && (
-              <img src={entry.data.img} alt={entry.data.img_alt || ""} />
+              <img
+                src={`${import.meta.env.BASE_URL}${entry.data.img}`}
+                alt={entry.data.img_alt || ""}
+              />
             )
           }
           <div class="content">

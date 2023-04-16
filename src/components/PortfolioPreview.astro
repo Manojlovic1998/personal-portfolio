@@ -8,12 +8,12 @@ interface Props {
 const { data, slug } = Astro.props.project;
 ---
 
-<a class="card" href={`/work/${slug}`}>
+<a class="card" href={`${import.meta.env.BASE_URL}work/${slug}`}>
   <span class="title">{data.title}</span>
   {
     data.img_preview && (
       <img
-        src={data.img_preview}
+        src={`${import.meta.env.BASE_URL}${data.img_preview}`}
         alt={data.img_alt || ""}
         loading="lazy"
         decoding="async"
