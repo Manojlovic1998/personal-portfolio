@@ -31,7 +31,11 @@
     world.init = async () => {
       // Load models
       const objectList = await loadGLTFObject([
-        { path: "/assets/models/obj/northwhistle/NorthWhistle.gltf" },
+        {
+          path: `${
+            import.meta.env.BASE_URL
+          }assets/models/obj/northwhistle/NorthWhistle.gltf`,
+        },
       ]);
       // Check if the models have been loaded
       // If so add them to the scene
