@@ -83,13 +83,28 @@ const { Content } = await entry.render();
   }
 
   .tags {
-    display: flex;
+    display: none;
+    flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: center;
   }
 
   .description {
     font-size: var(--text-lg);
     max-width: 54ch;
+  }
+
+  @media (min-width: 640px) {
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .description {
+      display: none;
+    }
   }
 
   .content {
