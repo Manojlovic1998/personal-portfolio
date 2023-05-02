@@ -44,7 +44,8 @@ class World implements WorldReference {
     color?: ColorRepresentation,
     cameraSettings?: CameraSettings,
     rendererSettings?: THREE.WebGLRendererParameters,
-    controlSettings?: ControlSettings
+    controlSettings?: ControlSettings,
+    resizerCallback?: () => void
   ) {
     // synchronous setup here
     // create camera, renderer, scene, etc..
@@ -62,16 +63,15 @@ class World implements WorldReference {
     this.loop = new Loop(this.camera, this.scene, this.renderer);
     this.loop.updatables.push(this.controls);
 
+    this.renderer.domElement.classList.add("scene");
     container.appendChild(this.renderer.domElement);
 
-    this.resizer = new Resizer(container, this.camera, this.renderer);
+    this.resizer = new Resizer(container, this.camera, this.renderer, resizerCallback);
   }
 
   async init() {
     // asynchronous setup here
     // e.g loading models
-    // Moce the target to the center of the bird
-    // this.controls.target.copy(this.testCube.position);
   }
 
   render() {
@@ -80,6 +80,9 @@ class World implements WorldReference {
   }
 
   start() {
+    // Run custom resize callback before first frame
+    if (this.resizer.onResizeCallback) this.resizer.onResize(this.resizer.onResizeCallback);
+    // Start loop
     this.loop.start();
   }
 

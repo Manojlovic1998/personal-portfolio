@@ -10,6 +10,8 @@
 
   import type { CameraSettings } from "../utils/threejs/createCamera";
 
+  import enableMobileTouchAction from "../utils/threejs/enableMobielTouchAction";
+
   const main = async () => {
     // Get a reference to the container element
     const container = document.getElementById(
@@ -20,13 +22,19 @@
       position: { x: -2, y: -1, z: 4 },
     };
     // Crate a new World
-    const world = new World(container, undefined, camneraSettings, undefined, {
-      autoRotate: true,
-    });
+    const world = new World(
+      container,
+      undefined,
+      camneraSettings,
+      undefined,
+      {
+        autoRotate: true,
+      },
+      enableMobileTouchAction
+    );
 
     // Modify world light
     world.lights.ambientLight.intensity = 0.4;
-    console.log(world.lights.ambientLight.intensity);
 
     world.init = async () => {
       // Load models

@@ -13,19 +13,23 @@ const setSize = (container: HTMLElement, camera: THREE.PerspectiveCamera, render
   };
 
 class Resizer {
-    constructor(container: HTMLElement, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer) {
+    onResizeCallback?: () => void;
+
+    constructor(container: HTMLElement, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, onResizeCallback?: () => void) {
       setSize(container, camera, renderer);
+      this.onResizeCallback = onResizeCallback;
   
       window.addEventListener("resize", () => {
         // set the size again if a resize occurs
         setSize(container, camera, renderer);
-  
         // perform any custom actions
-        this.onResize();
+        if (onResizeCallback) (this.onResize(onResizeCallback));
       });
     }
   
-    onResize() {}
+    onResize(onResizeCallback: () => void) {
+      onResizeCallback();
+    }
   }
 
 
