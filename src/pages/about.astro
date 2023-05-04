@@ -14,28 +14,30 @@ import Hero from "../components/Hero.astro";
 			<Hero
 				title="About"
 				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
-				<img
-					width="640"
-					height="850"
-					src={`${import.meta.env.BASE_URL}assets/at-work.jpg`}
-					alt="Nemanja Manojlovic portrait."
-				/>
-			</Hero>
-
+			/>
+			<section class="preamble">
+				<div class="qr-code-wrapper">
+					<p class="qr-title">Scan to Download CV</p>
+					<img
+						height="250px"
+						width="250px"
+						src=`${import.meta.env.BASE_URL}assets/qr-code-resume.webp`
+						alt="QR Code for downloading word version of Nemanja's CV."
+						class="qr-img"
+					/>
+				</div>
+			</section>
 			<section>
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						I am a 24-year-old software engineer from Sweden with 4
-						years of experience in the industry. I am highly
-						versatile and enthusiastic, with a quick learning
-						ability. I have a strong background in full stack
-						development, UI/UX design, and cloud infrastructure. My
-						current focus is on technologies such as React, NodeJS,
-						ExpressJS, NestJS, Typescript, Yarn, NPM, Github, Github
-						Actions, Monorepo automation, Docker, React Native,
-						GraphQL, Apollo GraphQL, and more.
+						I am a 24-year-old software engineer from Sweden with 4 years of
+						experience in the industry. I am highly versatile and enthusiastic,
+						with a quick learning ability. I have a strong background in full
+						stack development, UI/UX design, and cloud infrastructure. My
+						current focus is on technologies such as React, NodeJS, ExpressJS,
+						NestJS, Typescript, Yarn, NPM, Github, Github Actions, Monorepo
+						automation, Docker, React Native, GraphQL, Apollo GraphQL, and more.
 					</p>
 				</div>
 			</section>
@@ -44,21 +46,18 @@ import Hero from "../components/Hero.astro";
 				<div class="content">
 					<ul>
 						<li>
+							<p>Goldsmiths, University of London (2023 - ongoing)</p>
+						</li>
+						<li>
 							<p>
-								Goldsmiths, University of London (2023 -
-								ongoing)
+								Full Stack Developer (2019 - 2021) Code Institute, Dublin,
+								Ireland
 							</p>
 						</li>
 						<li>
 							<p>
-								Full Stack Developer (2019 - 2021) Code
-								Institute, Dublin, Ireland
-							</p>
-						</li>
-						<li>
-							<p>
-								Natural Science (2014 - 2017) International
-								Baccalaureate, Stockholm, Sweden
+								Natural Science (2014 - 2017) International Baccalaureate,
+								Stockholm, Sweden
 							</p>
 						</li>
 					</ul>
@@ -73,40 +72,34 @@ import Hero from "../components/Hero.astro";
 							<ul>
 								<li>
 									<p>
-										Working on the creation and maintenance
-										of underlying infrastructure for new
-										products.
+										Working on the creation and maintenance of underlying
+										infrastructure for new products.
 									</p>
 								</li>
 								<li>
 									<p>
-										Design and implementation of proprietary
-										cloud microservice solutions,
-										client-side plugins (React, CLI, SDKs),
-										and automation of tasks (DevOps, GitHub
-										Actions, Docker, K8s).
+										Design and implementation of proprietary cloud microservice
+										solutions, client-side plugins (React, CLI, SDKs), and
+										automation of tasks (DevOps, GitHub Actions, Docker, K8s).
 									</p>
 								</li>
 								<li>
 									<p>
-										Administration and creation of monorepos
-										with project’s associated stack
-										toolchains (Webpack, yarn, npm, Babel,
+										Administration and creation of monorepos with project’s
+										associated stack toolchains (Webpack, yarn, npm, Babel,
 										Typescript, Tailwind, PostCSS, ESLint).
 									</p>
 								</li>
 								<li>
 									<p>
-										Built microservice that is using Auth
-										2.0 and OpenID Connect protocol to grant
-										access to user resources.
+										Built microservice that is using Auth 2.0 and OpenID Connect
+										protocol to grant access to user resources.
 									</p>
 								</li>
 								<li>
 									<p>
-										Built PoC integration of Ace, an
-										open-source in-browser IDE for allowing
-										code interoperability.
+										Built PoC integration of Ace, an open-source in-browser IDE
+										for allowing code interoperability.
 									</p>
 								</li>
 							</ul>
@@ -116,15 +109,12 @@ import Hero from "../components/Hero.astro";
 							<ul>
 								<li>
 									<p>
-										On-demand creation and optimization of
-										websites for other firms.
+										On-demand creation and optimization of websites for other
+										firms.
 									</p>
 								</li>
 								<li>
-									<p>
-										On-demand, design UI and UX development
-										for firms.
-									</p>
+									<p>On-demand, design UI and UX development for firms.</p>
 								</li>
 							</ul>
 						</li>
@@ -158,10 +148,7 @@ import Hero from "../components/Hero.astro";
 									<p>MacOS or Debian-based Linux Distros</p>
 								</li>
 								<li>
-									<p>
-										lsof (terminal tool for file system
-										traversing)
-									</p>
+									<p>lsof (terminal tool for file system traversing)</p>
 								</li>
 								<li><p>VSCode or Jetbrains IDEs</p></li>
 							</ul>
@@ -274,10 +261,7 @@ import Hero from "../components/Hero.astro";
 							</ul>
 						</li>
 						<li>
-							<p>
-								Version Control & Cloud Repository Hosting
-								Services:
-							</p>
+							<p>Version Control & Cloud Repository Hosting Services:</p>
 							<ul>
 								<li>
 									<p>Git Tool</p>
@@ -303,10 +287,9 @@ import Hero from "../components/Hero.astro";
 				<h2 class="section-title">Cultural Volunteer Work</h2>
 				<div class="content">
 					<p>
-						For the International Red Cross in Serbia, I volunteered
-						at a school for children with special needs providing
-						help and guidance in physical exercises, swimming, and
-						other associated activities.
+						For the International Red Cross in Serbia, I volunteered at a school
+						for children with special needs providing help and guidance in
+						physical exercises, swimming, and other associated activities.
 					</p>
 				</div>
 			</section>
@@ -394,11 +377,20 @@ import Hero from "../components/Hero.astro";
 		flex-direction: column;
 		gap: 3.5rem;
 	}
-
-	img {
-		margin-top: 1.5rem;
+	.qr-code-wrapper {
+		padding: 1rem;
+		background-color: #ffffff;
 		border-radius: 1.5rem;
 		box-shadow: var(--shadow-md);
+		grid-column: 2 / 3;
+		margin: 0 auto;
+		text-align: center;
+		max-height: 200;
+	}
+
+	.qr-title {
+		font-weight: 600;
+		margin-bottom: 1rem;
 	}
 
 	section {
@@ -406,6 +398,9 @@ import Hero from "../components/Hero.astro";
 		flex-direction: column;
 		gap: 0.5rem;
 		color: var(--gray-200);
+	}
+
+	.preamble {
 	}
 
 	.section-title {
