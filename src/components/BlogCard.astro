@@ -13,7 +13,11 @@ const { coverImage, title, brief, dateAdded, slug } = Astro.props;
 
 <div class="card">
   <div class="card-image-wrapper">
-    <a href={`https://nemanjamanojlovic.com/${slug}`} target="_blank">
+    <a
+      href={`https://nemanjamanojlovic.com/${slug}`}
+      target="_blank"
+      class="image-anchor"
+    >
       <img src={coverImage} alt={title} class="card-image" />
     </a>
   </div>
@@ -66,8 +70,16 @@ const { coverImage, title, brief, dateAdded, slug } = Astro.props;
       gap: 1rem;
     }
 
-    .card-image {
+    .image-anchor {
+      display: flex;
       height: 100%;
+    }
+
+    .card-image {
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: left;
     }
 
     .card-body > div {
