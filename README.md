@@ -15,3 +15,16 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
 ## Developer Notes
+
+
+
+## Technologies Used
+
+- [Imgbot](https://imgbot.net)
+  - Imgbot is used to automatically optimize my websites images.
+- [Astro](https://astro.build/)
+  - Astro is all-in-one web framewrok which was used to create this project.
+- [Threejs](https://threejs.org/docs/)
+  - Library built on top of WebGL. In this project it is used to handle rendering of 3D Objects.
+- [Moment](https://momentjs.com/)
+  - JavaScript library for parsing, validating, manipulating and formatting dates.
