@@ -14,7 +14,7 @@
     "@astrojs/mdx": "^0.18.2",
     "astro": "^2.1.5",
     "moment": "^2.29.4",
-    "three": "^0.151.3"
+    "three": "^0.153.0"
   },
   "homepage": "https://github.com/Manojlovic1998/personal-portfolio#readme",
   "author": "Nemanja Manojlovic",
