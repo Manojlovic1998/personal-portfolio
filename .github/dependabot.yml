@@ -29,7 +29,7 @@ updates:
       - "npm dependencies"
 
   # Enable version updates for Docker
-  - package-echosystem: "docker"
+  - package-ecosystem: "docker"
     # Look for a `Dockerfile` in the `.devcontainer` directory found in `root` of the project.
     directory: "/.devcontainer"
     # Check for updates once  a month
