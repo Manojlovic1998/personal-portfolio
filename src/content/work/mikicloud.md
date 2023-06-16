@@ -1,8 +1,8 @@
 ---
 title: Miki Cloud
 publishDate: 2019-10-02 00:00:00
-img: assets/mikicloud.jpg
-img_preview: assets/mikicloud.jpg
+img: assets/mikicloud.webp
+img_preview: assets/mikicloud.webp
 img_alt: Image showcasing Miki Cloud logo, and website preview on laptop device.
 description: |
   I developed and designed companie's website.

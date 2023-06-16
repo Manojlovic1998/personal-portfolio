@@ -17,7 +17,6 @@ All commands are run from the root of the project, from a terminal:
 ## Developer Notes
 
 
-
 ## Technologies Used
 
 - [Imgbot](https://imgbot.net)
@@ -28,3 +27,5 @@ All commands are run from the root of the project, from a terminal:
   - Library built on top of WebGL. In this project it is used to handle rendering of 3D Objects.
 - [Moment](https://momentjs.com/)
   - JavaScript library for parsing, validating, manipulating and formatting dates.
+- [imagemagick](https://imagemagick.org/index.php)
+  - Used to convert between image formats and do quick image edits.
