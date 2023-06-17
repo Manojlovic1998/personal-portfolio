@@ -1,6 +1,5 @@
 # Nemanja's Portfolio Website
 
-
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -16,15 +15,14 @@ All commands are run from the root of the project, from a terminal:
 
 ## Developer Notes
 
-
 ## Technologies Used
 
-- [Imgbot](https://imgbot.net)
-  - Imgbot is used to automatically optimize my websites images.
 - [Astro](https://astro.build/)
   - Astro is all-in-one web framewrok which was used to create this project.
 - [Threejs](https://threejs.org/docs/)
   - Library built on top of WebGL. In this project it is used to handle rendering of 3D Objects.
+- [DRACO](https://github.com/google/draco)
+  - Decoder for compressed 3D objects intended to improve the storage and transmission of 3D graphics.
 - [Moment](https://momentjs.com/)
   - JavaScript library for parsing, validating, manipulating and formatting dates.
 - [imagemagick](https://imagemagick.org/index.php)
