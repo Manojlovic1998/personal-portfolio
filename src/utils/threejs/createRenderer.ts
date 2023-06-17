@@ -12,7 +12,7 @@ const createRenderer = (rendererSettings?: THREE.WebGLRendererParameters) => {
   };
 
   const renderer = new THREE.WebGLRenderer({ antialias, alpha });
-  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
   return renderer;
 };
 
