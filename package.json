@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Manojlovic1998/personal-portfolio#readme",
   "author": "Nemanja Manojlovic",
   "devDependencies": {
-    "@types/three": "^0.152.1"
+    "@types/three": "^0.152.1",
+    "prettier": "^2.8.8"
   }
 }

@@ -1,5 +1,7 @@
 {
   "files.associations": {
     "*.mdx": "markdown"
-  }
+  },
+  // Quick fix because of VSCode breaking changes to the plugin
+  "prettier.prettierPath": "./node_modules/prettier"
 }
