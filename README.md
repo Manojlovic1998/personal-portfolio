@@ -19,6 +19,8 @@ All commands are run from the root of the project, from a terminal:
 
 - [Astro](https://astro.build/)
   - Astro is all-in-one web framewrok which was used to create this project.
+- [Tailwind](https://tailwindcss.com/)
+  - CSS framework, that is fully flexible and allows developers to build truly responsive and reusable components.
 - [Threejs](https://threejs.org/docs/)
   - Library built on top of WebGL. In this project it is used to handle rendering of 3D Objects.
 - [DRACO](https://github.com/google/draco)
