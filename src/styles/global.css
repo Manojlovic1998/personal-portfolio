@@ -1,78 +1,37 @@
-/* Global variables */
-:root {
-	/* Colors */
-	--gray-0: #090b11;
-	--gray-50: #141925;
-	--gray-100: #283044;
-	--gray-200: #3d4663;
-	--gray-300: #505d84;
-	--gray-400: #6474a2;
-	--gray-500: #8490b5;
-	--gray-600: #a3acc8;
-	--gray-700: #c3cadb;
-	--gray-800: #e3e6ee;
-	--gray-900: #f3f4f7;
-	--gray-999-basis: 0, 0%, 100%;
-	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
-	--gray-999: #ffffff;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-	--accent-light: #c561f6;
-	--accent-regular: #7611a6;
-	--accent-dark: #1c0056;
-	--accent-overlay: hsla(280, 89%, 67%, 0.33);
-	--accent-subtle-overlay: var(--accent-overlay);
-	--accent-text-over: var(--gray-999);
-
-	--link-color: var(--accent-regular);
-
-	/* Gradients */
-	--gradient-stop-1: var(--accent-light);
-	--gradient-stop-2: var(--accent-regular);
-	--gradient-stop-3: var(--accent-dark);
-	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 150%);
-	--gradient-accent: linear-gradient(
-		150deg,
-		var(--gradient-stop-1),
-		var(--gradient-stop-2),
-		var(--gradient-stop-3)
-	);
-	--gradient-accent-orange: linear-gradient(
-		150deg,
-		#ca7879,
-		var(--accent-regular),
-		var(--accent-dark)
-	);
-	--gradient-stroke: linear-gradient(180deg, var(--gray-900), var(--gray-700));
-
-	/* Shadows */
-	--shadow-sm: 0px 6px 3px rgba(9, 11, 17, 0.01), 0px 4px 2px rgba(9, 11, 17, 0.01),
-		0px 2px 2px rgba(9, 11, 17, 0.02), 0px 0px 1px rgba(9, 11, 17, 0.03);
-	--shadow-md: 0px 28px 11px rgba(9, 11, 17, 0.01), 0px 16px 10px rgba(9, 11, 17, 0.03),
-		0px 7px 7px rgba(9, 11, 17, 0.05), 0px 2px 4px rgba(9, 11, 17, 0.06);
-	--shadow-lg: 0px 62px 25px rgba(9, 11, 17, 0.01), 0px 35px 21px rgba(9, 11, 17, 0.05),
-		0px 16px 16px rgba(9, 11, 17, 0.1), 0px 4px 9px rgba(9, 11, 17, 0.12);
-
-	/* Text Sizes */
-	--text-sm: 0.875rem;
-	--text-base: 1rem;
-	--text-md: 1.125rem;
-	--text-lg: 1.25rem;
-	--text-xl: 1.625rem;
-	--text-2xl: 2.125rem;
-	--text-3xl: 2.625rem;
-	--text-4xl: 3.5rem;
-	--text-5xl: 4.5rem;
-
-	/* Fonts */
-	--font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-body: 'Public Sans', var(--font-system);
-	--font-brand: Rubik, var(--font-system);
-
-	/* Transitions */
-	--theme-transition: 0.2s ease-in-out;
+@layer base {
+	/* Global variables  */
+	:root {
+		--color-text-base: #262626;
+		--color-text-muted: #4B4B4B;
+		--color-text-inverted: 255 255 255;
+		--color-text-base-dark: 250 250 250;
+		--color-text-muted-dark: 207 207 207; 
+		--color-fill-chip-primary: 80 0 255;
+		--color-fill-navigation-primary: 250 250 250;
+		--color-fill-navigation-primary-dark: 202 176 255;
+		--color-fill-navigation-burger-light: 57 57 57;
+		--color-fill-navigation-burgerk-dark: 250 250 250;
+		--color-fill-page-light: 202 176 255;
+		--color-fill-page-dark: 0 0 0;
+		--color-border-fill-navigation-primary: 250 250 250;
+		--color-border-fill-navigation-primary-dark: 202 176 255;
+		--color-border-fill-navigation-muted: 189 189 189;
+		--color-border-fill-input: 189 189 189;
+		--color-fill-input: 248 248 248;
+		--color-fill-nav-link-active: 85 0 255;
+		--shadow-navigation-primary: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
+		--shadow-input-field: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
+		--color-fill-toggle-btn-active: 85 0 255;
+		--color-fill-btn-primary: 85 0 255;
+	}
 }
 
+
+/* 
 :root.theme-dark {
 	--gray-0: #ffffff;
 	--gray-50: #f3f4f7;
@@ -174,10 +133,10 @@ h4 {
 
 h5 {
 	font-size: var(--text-xl);
-}
+} */
 
 /* Utilities */
-
+/* 
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -225,9 +184,9 @@ h5 {
 }
 .gap-48 {
 	gap: 12rem;
-}
+} */
 
-@media (min-width: 50em) {
+/* @media (min-width: 50em) {
 	.lg\:gap-2 {
 		gap: 0.5rem;
 	}
@@ -252,4 +211,4 @@ h5 {
 	.lg\:gap-48 {
 		gap: 12rem;
 	}
-}
+} */
