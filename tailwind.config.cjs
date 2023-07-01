@@ -35,7 +35,11 @@ module.exports = {
         button: {
           primary: "rgb(var(--color-fill-btn-primary) / <alpha-value>)",
         },
-        input: "rgb(var(--color-fill-input) / <alpha-value>)",
+        input: {
+          primary: "rgb(var(--color-fill-input) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-border-fill-input-dark) / <alpha-value>)",
+        },
         page: {
           lignt: "rgb(var(--color-fill-page-light) / <alpha-value>)",
           dark: "rgb(var(--color-fill-page-dark) / <alpha-value>)",
@@ -50,8 +54,15 @@ module.exports = {
           "primary-dark":
             "rgb(var(--color-border-fill-navigation-primary-dark) / <alpha-value>)",
         },
+        footer: {
+          primary: "rgb(var(--color-border-fill-footer) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-border-fill-footer-dark) / <alpha-value>)",
+        },
         input: {
           primary: "rgb(var(--color-border-fill-input) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-border-fill-input-dark) / <alpha-value>)",
         },
       },
       boxShadow: {
