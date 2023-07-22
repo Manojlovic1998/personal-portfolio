@@ -36,7 +36,7 @@ const { Content } = await entry.render();
           <Hero title={entry.data.title}>
             <div class="details">
               <div class="tags">
-                {entry.data.tags.map((t) => <Chip>{t}</Chip>)}
+                {entry.data.tags.map((t) => <Chip type="primary">{t}</Chip>)}
               </div>
               <p class="description">{entry.data.description}</p>
             </div>
