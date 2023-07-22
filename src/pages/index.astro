@@ -9,12 +9,11 @@ import CallToAction from "../components/CallToAction.astro";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
-import Pill from "../components/Pill.astro";
+import Chip from "../components/Chip.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 import BlogCard from "../components/BlogCard.astro";
 
 // Page section components
-import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
 
 type blogPost = {
@@ -82,45 +81,59 @@ const blogPosts: blogPost[] = data.user.publication.posts;
 ---
 
 <BaseLayout>
-  <div class="stack gap-20 lg:gap-48">
-    <div class="wrapper stack gap-8 lg:gap-20">
-      <header class="hero">
-        <Hero
-          title="Hello, my name is Nemanja Manojlovic"
-          tagline="I am a Software Engineer who is currently based in Stockholm, Sweden."
-          align="start"
-        >
-          <div class="roles">
-            <Pill><Icon icon="code" size="1.33em" /> Software Engineer</Pill>
-            <Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
-          </div>
-        </Hero>
+  <div class="flex flex-col max-w-[1290px] gap-16 mt-16 content-center">
+    <header class="flex flex-col gap-8 md:flex-row content-center items-center">
+      <Hero
+        title="Hello, my name is Nemanja Manojlovic"
+        tagline="I am a Software Engineer who is currently based in Stockholm, Sweden."
+      >
+        <div class="roles">
+          <Chip type="primary">
+            <Icon icon="code" size="1.33em" color="stroke-icon-inverted" /> Software
+            Engineer
+          </Chip>
+          <Chip type="primary">
+            <Icon
+              icon="pencil-line"
+              size="1.33em"
+              color="stroke-nav-icon-inverted"
+            /> Writer
+          </Chip>
+        </div>
+      </Hero>
 
-        <img
-          alt="Nemanja Manojlovic smiling in a winter jacket."
-          width="480"
-          height="620"
-          src={`${import.meta.env.BASE_URL}assets/portrait.webp`}
-        />
-      </header>
+      <img
+        alt="Nemanja Manojlovic smiling in a winter jacket."
+        width="340"
+        height="494"
+        class="rounded-lg md:ml-auto"
+        src={`${import.meta.env.BASE_URL}assets/portrait.webp`}
+      />
+    </header>
 
-      <Skills />
-    </div>
-    <main class="wrapper stack gap-20 lg:gap-48">
-      <section class="section with-background with-cta">
-        <header class="section-header stack gap-2 lg:gap-4">
-          <h3>Selected Work</h3>
-          <p>
+    <Skills />
+    <main class="container mx-auto flex flex-col gap-32">
+      <!-- Selected Work -->
+      <section class="md:grid grid-flow-row auto-rows-auto grid-cols-2">
+        <header class="text-center md:text-start col-span-1">
+          <h3
+            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark"
+          >
+            Selected Work
+          </h3>
+          <p
+            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mt-4"
+          >
             Take a look below at some of my featured work for clients from the
             past few years.
           </p>
         </header>
 
-        <div class="gallery">
-          <Grid variant="offset">
+        <div class="md:block md:col-span-2 md:grid-rows-2 md:row-start-2 mt-16">
+          <Grid className="flex flex-col gap-20 md:gap-0 md:grid">
             {
               projects.map((project) => (
-                <li>
+                <li class="col-span-2 odd:place-self-end  bg-card-primary dark:bg-card-primary-dark/[16%] border border-card-primary dark:border-card-primary-dark/[8%] rounded-lg w-full md:w-1/2 min-h-[300px] md:max-w-[600px] backdrop-blur-sm flex">
                   <PortfolioPreview project={project} />
                 </li>
               ))
@@ -128,34 +141,75 @@ const blogPosts: blogPost[] = data.user.publication.posts;
           </Grid>
         </div>
 
-        <div class="cta">
-          <CallToAction href={`${import.meta.env.BASE_URL}work/`}>
+        <div class="flex md:block md:col-span-2 md:col-start-2 md:row-start-1">
+          <CallToAction
+            href={`${import.meta.env.BASE_URL}work/`}
+            className="mx-auto md:ml-auto md:mr-0 mt-11"
+          >
+            <Icon
+              icon="arrow-right"
+              size="1.2em"
+              color="stroke-icon-inverted"
+            />
             View All
-            <Icon icon="arrow-right" size="1.2em" />
           </CallToAction>
         </div>
       </section>
-
-      <section class="section with-background bg-variant">
-        <header class="section-header stack gap-2 lg:gap-4">
-          <h3>Blog Posts</h3>
-          <p>
+      <!-- Blog Posts -->
+      <section class="md:grid grid-flow-row auto-rows-auto grid-cols-2">
+        <header class="text-center md:text-start col-span-1">
+          <h3
+            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark"
+          >
+            Blog Posts
+          </h3>
+          <p
+            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mt-4"
+          >
             Occasionally I write tech blog posts, feel free to check them out.
           </p>
         </header>
 
-        <div class="gallery">
-          {
-            blogPosts.map((post) => {
-              return <BlogCard {...post} />;
-            })
-          }
+        <div class="gallery md:block md:col-span-2 md:row-start-2 mt-16">
+          <Grid className="grid-cols-3 place-items-center gap-20 md:gap-5">
+            {
+              blogPosts.map((post) => (
+                <>
+                  <li class="col-span-3 md:col-span-1 max-w-[343px]">
+                    <BlogCard {...post} />
+                  </li>
+                </>
+              ))
+            }
+          </Grid>
+        </div>
+
+        <div class="flex md:block md:col-span-2 md:col-start-2 md:row-start-1">
+          <CallToAction
+            href={"https://blog.nemanjamanojlovic.com/"}
+            target={"_blank"}
+            className="mx-auto md:ml-auto md:mr-0 mt-11"
+          >
+            <Icon
+              icon="arrow-right"
+              size="1.2em"
+              color="stroke-icon-inverted"
+            />
+            View All
+          </CallToAction>
         </div>
       </section>
-      <section class="section with-background bg-variant">
-        <header class="section-header stack gap-2 lg:gap-4">
-          <h3>My Hobbies</h3>
-          <p>
+      <!-- My Hobbies -->
+      <section class="flex flex-col">
+        <header class="text-center md:text-start">
+          <h3
+            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark"
+          >
+            My Hobbies
+          </h3>
+          <p
+            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mt-4"
+          >
             My hobbies are designing logos, illustrations, and user interfaces,
             hobbyist photography, thinkering with electronics and spending time
             with dogs.
@@ -211,49 +265,19 @@ const blogPosts: blogPost[] = data.user.publication.posts;
         </div>
       </section>
     </main>
-
-    <ContactCTA />
   </div>
 </BaseLayout>
 
 <style>
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
   .roles {
     display: none;
   }
 
-  .hero img {
-    aspect-ratio: 5 / 4;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-md);
-  }
-
   @media (min-width: 50em) {
-    .hero {
-      display: grid;
-      grid-template-columns: 6fr 4fr;
-      padding-inline: 2.5rem;
-      gap: 3.75rem;
-    }
-
     .roles {
       margin-top: 0.5rem;
       display: flex;
       gap: 0.5rem;
-    }
-
-    .hero img {
-      aspect-ratio: 3 / 4;
-      border-radius: 4.5rem;
-      object-fit: cover;
     }
   }
 
@@ -262,33 +286,6 @@ const blogPosts: blogPost[] = data.user.publication.posts;
   .section {
     display: grid;
     gap: 2rem;
-  }
-
-  .with-background {
-    position: relative;
-  }
-
-  .with-background::before {
-    --hero-bg: var(--bg-image-subtle-2);
-
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    left: 50%;
-    width: 100vw;
-    aspect-ratio: calc(2.25 / var(--bg-scale));
-    top: 0;
-    transform: translateY(-75%) translateX(-50%);
-    background: url("/assets/backgrounds/noise.png") top center/220px repeat,
-      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-      var(--gray-999);
-    background-blend-mode: overlay, normal, normal, normal;
-    mix-blend-mode: var(--bg-blend-mode);
-    z-index: -1;
-  }
-
-  .with-background.bg-variant::before {
-    --hero-bg: var(--bg-image-subtle-1);
   }
 
   .section-header {

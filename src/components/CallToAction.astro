@@ -1,13 +1,19 @@
 ---
+import { twMerge, ClassNameValue } from "tailwind-merge";
 interface Props {
-	href: string;
+  href: string;
+  className?: ClassNameValue;
+  target?: astroHTML.JSX.HTMLAttributeAnchorTarget | null | undefined;
 }
 
-const { href } = Astro.props;
+const { className, href, target } = Astro.props;
 ---
 
 <a
-	href={href}
-	class="rounded-[3px] flex flex-row gap-1 px-5 py-3 bg-button-primary w-fit text-skin-inverted font-semibold items-center"
-	><slot /></a
+  href={href}
+  class={twMerge(
+    className,
+    "rounded-[3px] flex flex-row gap-1 px-5 py-3 bg-button-primary w-fit text-skin-inverted font-semibold items-center"
+  )}
+  target={target}><slot /></a
 >

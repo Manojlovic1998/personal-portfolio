@@ -11,15 +11,17 @@ module.exports = {
           "base-dark": "rgb(var(--color-text-base-dark) / <alpha-value>)",
           "muted-dark": "rgb(var(--color-text-muted-dark) / <alpha-value>)",
         },
-        burger: {
-          light:
-            "rgb(var(--color-fill-navigation-burger-light) / <alpha-value>)",
-          dark: "rgb(var(--color-fill-navigation-burgerk-dark) / <alpha-value>)",
+        chip: {
+          inverted: "rgb(var(--color-text-chip-inverted) / <alpha-value>)",
+          "tertiary-dark":
+            "rgb(var(--color-text-chip-tertiary-dark) / <alpha-value>)",
         },
       },
       backgroundColor: {
         chip: {
           primary: "rgb(var(--color-fill-chip-primary)/ <alpha-value>)",
+          "tertiary-dark":
+            "rgb(var(--color-fill-chip-tertiary-dark)/ <alpha-value>)",
         },
         navigation: {
           primary: "rgb(var(--color-fill-navigation-primary) / <alpha-value>)",
@@ -44,6 +46,11 @@ module.exports = {
           lignt: "rgb(var(--color-fill-page-light) / <alpha-value>)",
           dark: "rgb(var(--color-fill-page-dark) / <alpha-value>)",
         },
+        card: {
+          primary: "rgb(var(--color-fill-card-primary) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-fill-card-primary-dark) / <alpha-value>)",
+        },
       },
       borderColor: {
         navigation: {
@@ -64,10 +71,56 @@ module.exports = {
           "primary-dark":
             "rgb(var(--color-border-fill-input-dark) / <alpha-value>)",
         },
+        card: {
+          primary: "rgb(var(--color-border-fill-card-primary) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-border-fill-card-primary-dark) / <alpha-value>)",
+        },
+        chip: {
+          primary: "rgb(var(--color-border-fill-chip-primary) / <alpha-value>)",
+          tertiary:
+            "rgb(var(--color-border-fill-chip-tertiary) / <alpha-value>)",
+          "tertiary-dark":
+            "rgb(var(--color-border-fill-chip-tertiary-dark) / <alpha-value>)",
+        },
       },
       boxShadow: {
         navigation: "var(--shadow-navigation-primary)",
         input: "var(--shadow-input-field)",
+        "card-primary": "var(--shadow-card-primary)",
+      },
+      stroke: {
+        "nav-icon": {
+          primary: "rgb(var(--color-stroke-nav-icon-primary) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-stroke-nav-icon-primary-dark) / <alpha-value>)",
+          muted: "rgb(var(--color-stroke-nav-icon-muted) / <alpha-value>)",
+          "muted-dark":
+            "rgb(var(--color-stroke-nav-icon-muted-dark) / <alpha-value>)",
+          inverted:
+            "rgb(var(--color-stroke-nav-icon-inverted) / <alpha-value>)",
+        },
+        icon: {
+          primary: "rgb(var(--color-stroke-icon-primary) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-stroke-icon-primary-dark) / <alpha-value>)",
+          inverted: "rgb(var(--color-stroke-icon-inverted) / <alpha-value>)",
+        },
+      },
+      fill: {
+        "nav-icon": {
+          primary: "rgb(var(--color-fill-nav-icon-primary) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-fill-nav-icon-primary-dark) / <alpha-value>)",
+          muted: "rgb(var(--color-fill-nav-icon-muted) / <alpha-value>)",
+          "muted-dark":
+            "rgb(var(-color-fill-nav-icon-muted-dark) / <alpha-value>)",
+        },
+        icon: {
+          primary: "rgb(var(--color-fill-icon-primary) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-fill-icon-primary-dark) / <alpha-value>)",
+        },
       },
     },
   },

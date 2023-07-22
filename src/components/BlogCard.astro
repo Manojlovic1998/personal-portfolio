@@ -1,5 +1,6 @@
 ---
 import moment from "moment";
+import Chip from "./Chip.astro";
 interface Props {
   coverImage: string;
   title: string;
@@ -11,83 +12,25 @@ interface Props {
 const { coverImage, title, brief, dateAdded, slug } = Astro.props;
 ---
 
-<div class="card">
+<div class="flex flex-col">
   <div class="card-image-wrapper">
     <a
       href={`https://nemanjamanojlovic.com/${slug}`}
       target="_blank"
       class="image-anchor"
     >
-      <img src={coverImage} alt={title} class="card-image" />
+      <img src={coverImage} alt={title} class="bg-cover rounded-3xl" />
     </a>
   </div>
-  <div class="card-body">
-    <h3>{title}</h3>
-    <small>Date: {moment(dateAdded).format("LLLL")}</small>
-    <p>{brief}</p>
-    <div>
-      <a href={`https://nemanjamanojlovic.com/${slug}`} target="_blank"
-        >View Post</a
-      >
-    </div>
+  <div class="flex flex-col items-start gap-2.5 mt-6">
+    <Chip type="tertiary">{slug}</Chip>
+    <h3
+      class="text-2xl leading-8 font-bold text-skin-base dark:text-skin-base-dark"
+    >
+      {title}
+    </h3>
+    <p class="text-base leading-6 text-skin-muted dark:text-skin-muted-dark">
+      {brief}
+    </p>
   </div>
 </div>
-
-<style>
-  .card {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--gray-800);
-    overflow: hidden;
-    border-radius: 1.5rem;
-    color: var(--gray-300);
-    background: var(--gradient-subtle);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .card-body {
-    display: flex;
-    padding: 0 1rem 1rem 1rem;
-    flex-direction: column;
-  }
-
-  .card-body > small {
-    margin-top: 0.5rem;
-    font-weight: 600;
-    opacity: 0.8;
-  }
-
-  .card-body > h3 {
-    margin-top: 1rem;
-  }
-  .card-body > p {
-    margin-top: 0.8rem;
-  }
-
-  @media (min-width: 50em) {
-    .card {
-      flex-direction: row;
-      gap: 1rem;
-    }
-
-    .image-anchor {
-      display: flex;
-      height: 100%;
-    }
-
-    .card-image {
-      max-width: 100%;
-      height: auto;
-      object-fit: cover;
-      object-position: left;
-    }
-
-    .card-body > div {
-      margin-top: auto;
-    }
-
-    .card-body > p {
-      padding-right: 2rem;
-    }
-  }
-</style>
