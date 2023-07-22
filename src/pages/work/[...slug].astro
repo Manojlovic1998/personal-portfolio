@@ -6,7 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ContactCTA from "../../components/ContactCTA.astro";
 import Hero from "../../components/Hero.astro";
 import Icon from "../../components/Icon.astro";
-import Pill from "../../components/Pill.astro";
+import Chip from "../../components/Chip.astro";
 
 interface Props {
   entry: CollectionEntry<"work">;
@@ -33,10 +33,10 @@ const { Content } = await entry.render();
       <header>
         <div class="wrapper stack gap-2">
           <a class="back-link" href="/work/"><Icon icon="arrow-left" /> Work</a>
-          <Hero title={entry.data.title} align="start">
+          <Hero title={entry.data.title}>
             <div class="details">
               <div class="tags">
-                {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
+                {entry.data.tags.map((t) => <Chip>{t}</Chip>)}
               </div>
               <p class="description">{entry.data.description}</p>
             </div>
