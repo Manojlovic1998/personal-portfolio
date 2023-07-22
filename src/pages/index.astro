@@ -87,7 +87,7 @@ const blogPosts: blogPost[] = data.user.publication.posts;
         title="Hello, my name is Nemanja Manojlovic"
         tagline="I am a Software Engineer who is currently based in Stockholm, Sweden."
       >
-        <div class="flex gap-2">
+        <div class="flex gap-2 justify-center md:justify-start">
           <Chip type="primary">
             <Icon icon="code" size="1.33em" color="stroke-icon-inverted" /> Software
             Engineer
@@ -130,7 +130,7 @@ const blogPosts: blogPost[] = data.user.publication.posts;
         </header>
 
         <div class="md:block md:col-span-2 md:grid-rows-2 md:row-start-2 mt-16">
-          <Grid className="flex flex-col gap-20 md:gap-0 md:grid">
+          <Grid className="flex flex-col gap-20 md:gap-6 md:grid">
             {
               projects.map((project) => (
                 <li class="col-span-2 odd:place-self-end  bg-card-primary dark:bg-card-primary-dark/[16%] border border-card-primary dark:border-card-primary-dark/[8%] rounded-lg w-full md:w-1/2 min-h-[300px] md:max-w-[600px] backdrop-blur-sm flex">
