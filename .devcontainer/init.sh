@@ -1,4 +1,5 @@
 # Install All Dependencies
+echo "Installing NPM Dependencies"
 npm i
 
 echo "Cloning img-optimize project repo"
