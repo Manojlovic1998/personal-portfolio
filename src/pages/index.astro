@@ -110,8 +110,8 @@ const blogPosts: blogPost[] = data.user.publication.posts;
         src={`${import.meta.env.BASE_URL}assets/portrait.webp`}
       />
     </header>
-
     <Skills />
+
     <main class="container mx-auto flex flex-col gap-32 pb-32 with-background">
       <!-- Selected Work -->
       <section class="md:grid grid-flow-row auto-rows-auto grid-cols-2">
@@ -295,7 +295,7 @@ const blogPosts: blogPost[] = data.user.publication.posts;
     transform: translateY(-10%);
     width: 100%;
     height: 100%;
-    background: var(--bg-image-subtle-1) top center no-repeat;
+    background: var(--bg-image-subtle-1) center top no-repeat;
     z-index: -99999;
   }
 
@@ -325,10 +325,22 @@ const blogPosts: blogPost[] = data.user.publication.posts;
     box-shadow: var(--shadow-sm);
   }
 
-  @media (min-width: 50em) {
+  @media (min-width: 768px) {
     .mention-card {
       border-radius: 1.5rem;
       height: 9.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .with-background::after {
+      transform: translateY(-12%);
+      background-position: center top;
+    }
+
+    .with-background::before {
+      transform: translateY(-12%);
+      background-position: center top;
     }
   }
 </style>
