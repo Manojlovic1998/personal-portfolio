@@ -76,5 +76,14 @@
 		--color-fill-toggle-btn-active: 85 0 255;
 		/* Fill Button */
 		--color-fill-btn-primary: 85 0 255;
+
+
+		/* Media Screens */
+		/* https://tailwindcss.com/docs/responsive-design */
+		--screen-sm: 640px;
+		--screen-md: 768px;
+		--screen-lg: 1024px;
+		--screen-xl: 1280px;
+		--screen-2xl: 1536px;
 	}
 }
