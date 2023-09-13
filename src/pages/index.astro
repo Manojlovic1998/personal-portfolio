@@ -299,6 +299,10 @@ const blogPosts: blogPost[] = data.user.publication.posts;
     z-index: -99999;
   }
 
+  :root.dark .with-background::after {
+    background-position: center top -10rem;
+  }
+
   .with-background::before {
     position: absolute;
     content: "";
