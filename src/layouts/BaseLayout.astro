@@ -52,7 +52,7 @@ const { title, description } = Astro.props;
       }
 
       :root.dark {
-        --bg-image-main: url("/assets/backgrounds/bg-subtle-1.png");
+        --bg-image-main: url("/assets/backgrounds/bg-nav-mobile-dark.png");
         --bg-blend-mode: lighten;
       }
 
@@ -66,9 +66,7 @@ const { title, description } = Astro.props;
       }
       /* Mobile Dark Theme Post Load */
       :root.loaded.dark {
-        --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-dark-800w.jpg");
-        --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2-dark-800w.jpg");
-        --bg-image-footer: url("/assets/backgrounds/bg-footer-dark-800w.jpg");
+        --bg-image-footer: url("/assets/backgrounds/bg-footer-mobile-dark.png");
       }
 
       .backgrounds {
@@ -78,6 +76,10 @@ const { title, description } = Astro.props;
           /*header1*/ var(--bg-image-main) top
             center/var(--bg-gradient-size) no-repeat,
           /* footer */ var(--bg-image-footer) center 95% no-repeat;
+      }
+
+      .dark div.backgrounds {
+        background-position: top center/var(--bg-gradient-size), left no-repeat;
       }
 
       /* Desktop */
