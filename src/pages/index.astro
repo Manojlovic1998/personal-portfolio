@@ -286,8 +286,6 @@ const blogPosts: blogPost[] = data.user.publication.posts;
 </BaseLayout>
 
 <style>
-  /* ====================================================== */
-
   .with-background::after {
     position: absolute;
     content: "";
@@ -297,10 +295,6 @@ const blogPosts: blogPost[] = data.user.publication.posts;
     height: 100%;
     background: var(--bg-image-subtle-1) center top no-repeat;
     z-index: -99999;
-  }
-
-  :root.dark .with-background::after {
-    background-position: center top -10rem;
   }
 
   .with-background::before {
@@ -314,6 +308,14 @@ const blogPosts: blogPost[] = data.user.publication.posts;
       var(--bg-image-subtle-3) top center no-repeat;
     background-position: top center, left 30%;
     z-index: -99999;
+  }
+
+  :root.dark .with-background::after {
+    background-position: center top -10rem;
+  }
+
+  :root.dark .with-background::before {
+    background-position: center top -10rem;
   }
 
   :root.dark .with-background::before {
@@ -350,6 +352,14 @@ const blogPosts: blogPost[] = data.user.publication.posts;
     .with-background::before {
       transform: translateY(-12%);
       background-position: center top;
+    }
+
+    :root.dark .with-background::after {
+      background: none;
+    }
+
+    :root.dark .with-background::before {
+      background: var(--bg-image-subtle-3) left center no-repeat;
     }
   }
 </style>
