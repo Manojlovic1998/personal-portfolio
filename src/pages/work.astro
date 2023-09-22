@@ -16,21 +16,23 @@ const projects = (await getCollection("work")).sort(
   title="My Work | Nemanja Manojlovic"
   description="Learn about Nemanja Manojlovic's most recent projects"
 >
-  <div class="stack gap-20">
-    <main class="wrapper stack gap-8">
+  <div class="container px-6 py-16">
+    <main class="max-w-[1290px] mx-auto">
       <Hero
         title="My Work"
         tagline="See my most recent projects below to get an idea of my past experience."
       />
-      <Grid>
-        {
-          projects.map((project) => (
-            <li>
-              <PortfolioPreview project={project} />
-            </li>
-          ))
-        }
-      </Grid>
+      <div class="md:block md:col-span-2 md:grid-rows-2 md:row-start-2 mt-16">
+        <Grid className="flex flex-col gap-20 md:gap-6 md:grid">
+          {
+            projects.map((project) => (
+              <li class="col-span-2 odd:place-self-end  bg-card-primary/[50%] dark:bg-card-primary-dark/[16%] border border-card-primary dark:border-card-primary-dark/[8%] rounded-lg w-full md:w-1/2 min-h-[300px] md:max-w-[600px] backdrop-blur-sm flex">
+                <PortfolioPreview project={project} />
+              </li>
+            ))
+          }
+        </Grid>
+      </div>
     </main>
   </div>
 </BaseLayout>
