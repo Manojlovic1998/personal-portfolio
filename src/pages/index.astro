@@ -81,7 +81,7 @@ const blogPosts: blogPost[] = data.user.publication.posts;
 ---
 
 <BaseLayout>
-  <div class="flex flex-col max-w-[1290px] gap-32 mt-16 content-center">
+  <div class="flex flex-col max-w-[1290px] gap-32 mt-16 content-center px-6">
     <header class="flex flex-col gap-8 md:flex-row content-center items-center">
       <Hero
         title="Hello, my name is Nemanja Manojlovic"
@@ -359,7 +359,7 @@ const blogPosts: blogPost[] = data.user.publication.posts;
     }
 
     :root.dark .with-background::before {
-      background: var(--bg-image-subtle-3) left center no-repeat;
+      background: none;
     }
   }
 </style>
