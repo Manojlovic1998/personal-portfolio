@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import type { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+import type { GLTF } from "three/addons/loaders/GLTFLoader.js";
 import type { Controls } from "./createControls";
 
 type GLTFUpdatable = {

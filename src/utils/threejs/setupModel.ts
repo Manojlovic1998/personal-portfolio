@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import type { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+import type { GLTF } from "three/addons/loaders/GLTFLoader.js";
 
 const setupModel = (data: GLTF) => {
   const model = data.scene.children[0];
