@@ -1,5 +1,5 @@
 import type { PerspectiveCamera } from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 export interface Controls extends OrbitControls {
   tick: () => void;
@@ -8,7 +8,7 @@ export interface Controls extends OrbitControls {
 export type ControlSettings = {
   enableDamping?: boolean;
   autoRotate?: boolean;
-  enabled?: true
+  enabled?: true;
 };
 
 // Takes configuration and returns Controls
@@ -23,7 +23,7 @@ const createControls = (
     autoRotate: false,
   };
 
-  const { enableDamping, autoRotate, enabled} = {
+  const { enableDamping, autoRotate, enabled } = {
     ...defaultControlSettings,
     ...controlSettings,
   };

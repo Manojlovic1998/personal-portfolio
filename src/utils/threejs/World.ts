@@ -11,7 +11,7 @@ import type { CameraSettings } from "./createCamera";
 import createLights from "./createLights";
 import createRenderer from "./createRenderer";
 import createScene from "./createScene";
-import createControls, { ControlSettings } from "./createControls";
+import createControls, { type ControlSettings } from "./createControls";
 import type { Controls } from "./createControls";
 import Loop from "./Loop";
 import Resizer from "./Resizer";
@@ -66,7 +66,12 @@ class World implements WorldReference {
     this.renderer.domElement.classList.add("scene");
     container.appendChild(this.renderer.domElement);
 
-    this.resizer = new Resizer(container, this.camera, this.renderer, resizerCallback);
+    this.resizer = new Resizer(
+      container,
+      this.camera,
+      this.renderer,
+      resizerCallback
+    );
   }
 
   async init() {
@@ -81,7 +86,8 @@ class World implements WorldReference {
 
   start() {
     // Run custom resize callback before first frame
-    if (this.resizer.onResizeCallback) this.resizer.onResize(this.resizer.onResizeCallback);
+    if (this.resizer.onResizeCallback)
+      this.resizer.onResize(this.resizer.onResizeCallback);
     // Start loop
     this.loop.start();
   }
