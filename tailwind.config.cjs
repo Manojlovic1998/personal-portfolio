@@ -11,6 +11,9 @@ module.exports = {
           "base-dark": "rgb(var(--color-text-base-dark) / <alpha-value>)",
           "muted-dark": "rgb(var(--color-text-muted-dark) / <alpha-value>)",
         },
+        link: {
+          primary: "rgb(var(--color-link-text-primary) / <alpha-value>)",
+        },
         chip: {
           inverted: "rgb(var(--color-text-chip-inverted) / <alpha-value>)",
           "tertiary-dark":
