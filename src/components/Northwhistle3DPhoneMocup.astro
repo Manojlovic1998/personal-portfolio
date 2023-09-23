@@ -35,6 +35,7 @@
 
     // Modify world light
     world.lights.ambientLight.intensity = 0.4;
+    world.lights.mainLight.intensity = 3.5;
 
     world.init = async () => {
       // Load models
@@ -51,6 +52,7 @@
         const northwhistle = objectList[0];
         northwhistle.model.scale.set(0.02, 0.02, 0.02);
         northwhistle.model.position.set(0, -1, 0.5);
+        
         world.scene.add(northwhistle.model);
       }
     };
