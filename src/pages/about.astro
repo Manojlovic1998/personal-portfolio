@@ -10,48 +10,78 @@ import Hero from "../components/Hero.astro";
   description="About Nemanja Manojlovic"
 >
   <div class="container max-w-[1290px] py-16">
-    <main class="wrapper about">
+    <main class="flex flex-col gap-6 relative">
       <Hero
         title="About"
         tagline="Thanks for stopping by. Here you can learn more more about me and my background."
       />
-      <section>
-        <div class="qr-code-wrapper">
-          <p class="qr-title">Scan to Download CV</p>
-          <!-- <img
+      <!-- QR Code and Download Button -->
+      <section class="absolute right-0">
+        <div class="flex flex-col">
+          <p class="font-bold text-skin-base dark:text-skin-base-dark">
+            Scan to Download CV
+          </p>
+          <img
             height="250px"
             width="250px"
             src=`${import.meta.env.BASE_URL}assets/qr-code-resume.webp`
             alt="QR Code for downloading word version of Nemanja's CV."
-            class="qr-img"
-          /> -->
+            class="max-h-32 max-w-[128px] mx-auto mt-3"
+          />
         </div>
+      </section>
+
+      <!-- Preamble -->
+      <section class="max-w-3xl mx-auto w-full mt-16">
+        <h2 class="text-4xl font-bold text-skin-base dark:text-skin-base-dark">
+          Nemanja Manojlovic
+        </h2>
+        <p class="mt-3 font-medium text-skin-base dark:text-skin-muted-dark">
+          Sweden, Stockholm
+        </p>
+        <a
+          href="mailto:contact@nemanjamanojlovic.com"
+          class="block mt-2 text-link-primary font-medium"
+          >contact@nemanjamanojlovic.com</a
+        >
+        <p class="inline-block mt-2">LinkedIn:</p><a
+          href="https://www.linkedin.com/in/nemanja-manojlovic/"
+          class="text-link-primary font-medium"
+          target="_blank"
+        >
+          https://www.linkedin.com/in/nemanja-manojlovic/</a
+        >
       </section>
       <!-- Summary -->
-      <section>
-        <h2 class="text-2xl font-bold">Summary</h2>
-        <div>
-          <p>
-            I am results-driven and highly skilled software engineer with 2+
-            years of experience in developing and delivering high-quality
-            software solutions. Proficient in multiple programming languages,
-            frameworks, and methodologies. Adept at problem-solving and
-            collaborating with cross-functional teams to deliver exceptional
-            products.
-          </p>
-        </div>
+      <section class="max-w-3xl mx-auto w-full">
+        <h2 class="text-2xl font-bold text-skin-base dark:text-skin-base-dark">
+          Summary
+        </h2>
+
+        <p class="font-medium text-skin-base dark:text-skin-muted-dark mt-3">
+          I am results-driven and highly skilled software engineer with 2+ years
+          of experience in developing and delivering high-quality software
+          solutions. Proficient in multiple programming languages, frameworks,
+          and methodologies. Adept at problem-solving and collaborating with
+          cross-functional teams to deliver exceptional products.
+        </p>
       </section>
       <!-- Education -->
-      <section>
-        <h2 class="text-2xl font-bold">Education</h2>
-        <ul class="list-disc">
+      <section class="max-w-3xl mx-auto w-full">
+        <h2 class="text-2xl font-bold text-skin-base dark:text-skin-base-dark">
+          Education
+        </h2>
+        <ul class="font-medium text-skin-base dark:text-skin-muted-dark mt-3">
           <li>
             <p>
-              Diploma in Software Development, Code Institute, Dublin, Ireland
-              2019-2021
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Diploma in Software Development</b
+              >, Code Institute, Dublin, Ireland 2019-2021
             </p>
-            <p>Relevant Coursework:</p>
-            <ul class="list-disc list-inside">
+            <p class="font-bold text-skin-base dark:text-skin-base-dark">
+              Relevant Coursework:
+            </p>
+            <ul class="list-disc list-inside mt-1">
               <li>Programming Languages (JavaScript, Python, Bash)</li>
               <li>Web Programming (HTML, CSS, JavaScript)</li>
               <li>Front-End Frameworks (Bootstrap, React, jQuery)</li>
@@ -69,11 +99,15 @@ import Hero from "../components/Hero.astro";
             </ul>
           </li>
           <li>
-            <p>
-              Bachelor of Science in Computer Science, University of London,
-              2022-ongoing
+            <p class="mt-3">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Bachelor of Science in Computer Science</b
+              >, Goldsmits, University of London, 2022-ongoing
             </p>
-            <ul class="list-disc list-inside">
+            <p class="font-bold text-skin-base dark:text-skin-base-dark">
+              Relevant Coursework:
+            </p>
+            <ul class="list-disc list-inside mt-1">
               <li>Software Design and Development</li>
               <li>Parallel Processing</li>
               <li>Object-Oriented Programming</li>
@@ -86,88 +120,108 @@ import Hero from "../components/Hero.astro";
             </ul>
           </li>
           <li>
-            <p>
-              Natural Science (2014 - 2017) International Baccalaureate,
-              Stockholm, Sweden
+            <p class="mt-3">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Natural Science</b
+              > International Baccalaureate, Stockholm, Sweden (2014 - 2017)
             </p>
           </li>
         </ul>
       </section>
       <!-- Technical Skills -->
-      <section>
-        <h2 class="text-2xl font-bold">Technical Skills</h2>
-        <ul>
+      <section class="max-w-3xl mx-auto w-full">
+        <h2 class="text-2xl font-bold text-skin-base dark:text-skin-base-dark">
+          Technical Skills
+        </h2>
+        <ul class="font-medium text-skin-base dark:text-skin-muted-dark mt-3">
           <li>
             <p>
-              <b>Languages:</b> JavaScript, TypeScript, Python, Ruby, Bash, PowerShell,
-              C++
+              <b class="text-skin-base dark:text-skin-base-dark">Languages:</b> JavaScript,
+              TypeScript, Python, Ruby, Bash, PowerShell, C++
             </p>
           </li>
           <li>
-            <p>
-              <b>Front-End:</b> HTML, CSS, JavaScript, React, Vue, Angular, Astro,
-              Tailwind, Bootstrap, jQuery, ThreeJS, GraphQL, Webpack, GSAP
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark">Front-End:</b> HTML,
+              CSS, JavaScript, React, Vue, Angular, Astro, Tailwind, Bootstrap, jQuery,
+              ThreeJS, GraphQL, Webpack, GSAP
             </p>
           </li>
           <li>
-            <p>
-              <b>Back-End:</b> Django, Flask, Node.js, Express, Next, Nest, Rails,
-              GraphQL
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark">Back-End:</b> Django,
+              Flask, Node.js, Express, Next, Nest, Rails, GraphQL
             </p>
           </li>
           <li>
-            <p>
-              <b>Cloud Providers:</b> GCP, AWS, Heroku, Digital Ocean, Azure
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Cloud Providers:</b
+              > GCP, AWS, Heroku, Digital Ocean, Azure
             </p>
           </li>
           <li>
-            <p>
-              <b>Databases:</b> MySQL, Postgres, NoSQL, MongoDB
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark">Databases:</b> MySQL,
+              Postgres, NoSQL, MongoDB
             </p>
           </li>
           <li>
-            <p>
-              <b>Testing:</b> Unit Testing, Jest
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark">Testing:</b> Unit
+              Testing, Jest
             </p>
           </li>
           <li>
-            <p>
-              <b>Version Control:</b> Git, GitHub, GitLab
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Version Control:</b
+              > Git, GitHub, GitLab
             </p>
           </li>
           <li>
-            <p>
-              <b>Payment Processing:</b> Stripe
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Payment Processing:</b
+              > Stripe
             </p>
           </li>
           <li>
-            <p>
-              <b>Agile Methodologies:</b> Scrum, Kanban
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Agile Methodologies:</b
+              > Scrum, Kanban
             </p>
           </li>
           <li>
-            <p>
-              <b>Software Design and Development:</b> Figma, Blender, Logo Design,
-              Vector Design, 3D Design and Modelling, Mockups, Adobe XD, Photoshop
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Software Design and Development:</b
+              > Figma, Blender, Logo Design, Vector Design, 3D Design and Modelling,
+              Mockups, Adobe XD, Photoshop
             </p>
           </li>
           <li>
-            <p>
-              <b>Continuous Integration and Continuous Development (CI/CD):</b> Docker,
-              Docker-compose, Kubernetes, Kubectl, Skaffold, Minikube, Dokku, Github
-              Actions, Dependabot
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Continuous Integration and Continuous Development (CI/CD):</b
+              > Docker, Docker-compose, Kubernetes, Kubectl, Skaffold, Minikube,
+              Dokku, Github Actions, Dependabot
             </p>
           </li>
         </ul>
       </section>
       <!-- Experience -->
-      <section>
-        <h2 class="text-2xl font-bold">Experience</h2>
-        <ul class="list-disc">
+      <section class="max-w-3xl mx-auto w-full">
+        <h2 class="text-2xl font-bold text-skin-base dark:text-skin-base-dark">
+          Experience
+        </h2>
+        <ul class="font-medium text-skin-base dark:text-skin-muted-dark mt-3">
           <li>
             <p>
-              <b>Full-Stack Software Engineer</b>, Aug 2022 - March 2023 Nebulr
-              Group, Sweden, Stockholm
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Full-Stack Software Engineer</b
+              >, Aug 2022 - March 2023 Nebulr Group, Sweden, Stockholm
             </p>
             <ul class="list-disc list-inside">
               <li>
@@ -210,8 +264,10 @@ import Hero from "../components/Hero.astro";
             </ul>
           </li>
           <li>
-            <p>
-              <b> Full-Stack Software Engineer,</b>
+            <p class="mt-3">
+              <b class="text-skin-base dark:text-skin-base-dark">
+                Full-Stack Software Engineer,</b
+              >
               Jan 2021 - Jan 2022 Freelance/Contract Basis, Self-Employed
             </p>
             <ul class="list-disc list-inside">
@@ -253,14 +309,17 @@ import Hero from "../components/Hero.astro";
         </ul>
       </section>
       <!-- Projects -->
-      <section>
-        <h2 class="text-2xl font-bold">Projects:</h2>
-        <ul class="list-disc">
+      <section class="max-w-3xl mx-auto w-full">
+        <h2 class="text-2xl font-bold text-skin-base dark:text-skin-base-dark">
+          Projects:
+        </h2>
+        <ul class="font-medium text-skin-base dark:text-skin-muted-dark mt-3">
           <li>
             <a
               href="https://nebulr-group.github.io/nblocks-docs/docs/getting-started/what-is-nblocks"
+              class="font-bold text-link-primary"
               target="_blank">Nblocks Project,</a
-            ><b>Nebulr:</b>
+            ><b class="text-skin-base dark:text-skin-base-dark"> Nebulr:</b>
             <ul class="list-disc list-inside">
               <li>
                 Developed Nblocks, an innovative product designed to streamline
@@ -278,11 +337,12 @@ import Hero from "../components/Hero.astro";
               </li>
             </ul>
           </li>
-          <li>
+          <li class="mt-2">
             <a
               href=`${import.meta.env.BASE_URL}work/nebulr/northwhistle/`
+              class="font-bold text-link-primary"
               target="_blank">NorthWhistle App,</a
-            ><b>Nebulr:</b>
+            ><b class="text-skin-base dark:text-skin-base-dark"> Nebulr:</b>
             <ul class="list-disc list-inside">
               <li>
                 Contributed to development of NorthWhistle, a plug-and-play
@@ -291,11 +351,14 @@ import Hero from "../components/Hero.astro";
               </li>
             </ul>
           </li>
-          <li>
+          <li class="mt-2">
             <a
               href="https://github.com/Manojlovic1998/react-ts-template"
+              class="font-bold text-link-primary"
               target="_blank">React Typescript Github Repository Template,</a
-            ><b>Open Source:</b>
+            ><b class="text-skin-base dark:text-skin-base-dark">
+              Open Source:</b
+            >
             <ul class="list-disc list-inside">
               <li>
                 Built a powerful GitHub Repository Template integrating
@@ -308,11 +371,17 @@ import Hero from "../components/Hero.astro";
               </li>
             </ul>
           </li>
-          <li>
-            <a href="https://www.mikicloud.net/" target="_blank">
+          <li class="mt-2">
+            <a
+              href="https://www.mikicloud.net/"
+              class="font-bold text-link-primary"
+              target="_blank"
+            >
               MikiCloud Company’s Website,</a
             >
-            <b>Contract Based:</b>
+            <b class="text-skin-base dark:text-skin-base-dark">
+              Contract Based:</b
+            >
             <ul class="list-disc list-inside">
               <li>Designed and developed the company’s website</li>
             </ul>
@@ -320,11 +389,17 @@ import Hero from "../components/Hero.astro";
         </ul>
       </section>
       <!-- Extra Cirricular Activities -->
-      <section>
-        <h2 class="text-2xl font-bold">Extra-curricular Activities:</h2>
-        <ul class="list-disc">
+      <section class="max-w-3xl mx-auto w-full">
+        <h2 class="text-2xl font-bold text-skin-base dark:text-skin-base-dark">
+          Extra-curricular Activities:
+        </h2>
+        <ul class="font-medium text-skin-base dark:text-skin-muted-dark mt-3">
           <li>
-            <p><b>Active Programming and UI/UX Blogging:</b></p>
+            <p>
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Active Programming and UI/UX Blogging:</b
+              >
+            </p>
             <ul class="list-disc list-inside">
               <li>
                 Regularly publish insightful articles about programming
@@ -341,7 +416,11 @@ import Hero from "../components/Hero.astro";
             </ul>
           </li>
           <li>
-            <p><b>Volunteer Work with Children with Special Needs:</b></p>
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Volunteer Work with Children with Special Needs:</b
+              >
+            </p>
             <ul class="list-disc list-inside">
               <li>
                 Volunteered at a school for children with special needs through
@@ -360,11 +439,17 @@ import Hero from "../components/Hero.astro";
         </ul>
       </section>
       <!-- Leadership -->
-      <section>
-        <h2 class="text-2xl font-bold">Leadership</h2>
-        <ul>
+      <section class="max-w-3xl mx-auto w-full">
+        <h2 class="text-2xl font-bold text-skin-base dark:text-skin-base-dark">
+          Leadership
+        </h2>
+        <ul class="font-medium text-skin-base dark:text-skin-muted-dark mt-3">
           <li>
-            <p><b>Team Collaboration:</b></p>
+            <p>
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Team Collaboration:</b
+              >
+            </p>
             <ul class="list-disc list-inside">
               <li>
                 Collaborated with cross-functional teams to deliver Nblocks, and
@@ -377,7 +462,11 @@ import Hero from "../components/Hero.astro";
             </ul>
           </li>
           <li>
-            <p><b>Initiative and Inovation:</b></p>
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Initiative and Inovation:</b
+              >
+            </p>
             <ul class="list-disc list-inside">
               <li>
                 Introduced streamlined processes for efficient tooling and
@@ -390,7 +479,11 @@ import Hero from "../components/Hero.astro";
             </ul>
           </li>
           <li>
-            <p><b>Agile Team Contribution:</b></p>
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Agile Team Contribution:</b
+              >
+            </p>
             <ul class="list-disc list-inside">
               <li>
                 Actively participated in agile processes, contributing ideas to
@@ -399,7 +492,11 @@ import Hero from "../components/Hero.astro";
             </ul>
           </li>
           <li>
-            <p><b>Cross-Functional Collaboration:</b></p>
+            <p class="mt-2">
+              <b class="text-skin-base dark:text-skin-base-dark"
+                >Cross-Functional Collaboration:</b
+              >
+            </p>
             <ul class="list-disc list-inside">
               <li>
                 Partnered with Product Managers to troubleshoot and resolve
