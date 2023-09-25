@@ -69,6 +69,11 @@ module.exports = {
           "primary-dark":
             "rgb(var(--color-border-fill-footer-dark) / <alpha-value>)",
         },
+        hero: {
+          primary: "rgb(var(--color-border-fill-hero) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-border-fill-hero-dark) / <alpha-value>)",
+        },
         input: {
           primary: "rgb(var(--color-border-fill-input) / <alpha-value>)",
           "primary-dark":
