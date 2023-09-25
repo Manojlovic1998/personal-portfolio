@@ -13,7 +13,7 @@ const { type, className } = Astro.props;
 <div
   class:list={twMerge(
     clsx([
-      "flex align-center content-center py-2 px-3.5 gap-2.5 rounded-full font-semibold text-sm",
+      "flex align-center content-center py-2 px-3.5 gap-2.5 rounded-full font-semibold text-lg flex-nowrap whitespace-nowrap",
       {
         "text-skin-inverted bg-chip-primary": type === "primary",
         "border border-chip-primary text-chip-inverted dark:text-skin-inverted dark:bg-chip-primary":
