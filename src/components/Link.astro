@@ -1,0 +1,19 @@
+---
+import {twMerge, type ClassNameValue } from "tailwind-merge";
+import {clsx} from "clsx";
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  type: "primary";
+  className?: ClassNameValue;
+}
+
+const {className, type, ...other} = Astro.props;
+---
+
+
+<a class:list={twMerge(clsx([
+  "flex items-center content-center font-semibold text-base",
+  {
+    "text-link-primary font-medium": type === "primary",
+  },
+  ,className]))} {...other}><slot/></a>
