@@ -32,6 +32,9 @@
 		/* Border Fill Input */
 		--color-border-fill-input: 189 189 189;
 		--color-border-fill-input-dark: 202 176 255;
+		/* Border Fill Hero */
+		--color-border-fill-hero: 207 207 207;
+		--color-border-fill-hero-dark: 202 176 255;
 		/* Border Fill Footer */
 		--color-border-fill-footer: 207 207 207;
 		--color-border-fill-footer-dark: 202 176 255;
@@ -42,6 +45,9 @@
 		/* Border Fill Card */
 		--color-border-fill-card-primary: 250 250 250;
 		--color-border-fill-card-primary-dark: 202 176 255;
+		/* Border Fill Blockquote */
+		--color-border-fill-blockquote-primary: 38 38 38;
+		--color-border-fill-blockquote-primary-dark: 250 250 250;
 		/* Background Fill Card  */
 		--color-fill-card-primary: 255 255 255;
 		--color-fill-card-primary-dark: 202 176 255;
@@ -86,5 +92,21 @@
 		--screen-lg: 1024px;
 		--screen-xl: 1280px;
 		--screen-2xl: 1536px;
+
+		/* Font Sizes */
+		--text-sm: 0.875rem;
+		--text-sm-line-height: 1.25rem;
+		--text-base: 1rem;
+		--text-base-line-height: 1.5rem;
+		--text-lg: 1.125rem;
+		--text-lg-line-height: 1.75rem;
+		--text-xl: 1.25rem;
+		--text-xl-line-height: 1.75rem;
+		--text-2xl: 1.5rem;
+		--text-2xl-line-height: 2rem;
+		--text-3xl: 1.875rem;
+		--text-3x-line-height: 2.25rem;
+		/* Font Weight */
+		--text-bold: 700;
 	}
 }
