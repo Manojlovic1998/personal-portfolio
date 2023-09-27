@@ -1,15 +1,17 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { iconPaths } from "./IconPaths";
+import {twMerge, type ClassNameValue } from "tailwind-merge";
+import {clsx} from "clsx";
 
 export interface Props {
 	icon: keyof typeof iconPaths;
 	color?: string;
 	size?: string;
-	class?: string;
+	className?: string;
 }
 
-const { color = "currentcolor", icon, size } = Astro.props;
+const { color = "currentcolor", icon, size, className } = Astro.props;
 const iconPath = iconPaths[icon];
 
 const attrs: HTMLAttributes<"svg"> = {};
@@ -25,7 +27,7 @@ const gradientId =
 	height="40"
 	viewBox={"0 0 256 256"}
 	aria-hidden="true"
-	class:list={[color]}
+	class:list={[color, className]}
 	{...attrs}
 >
 	<g set:html={iconPath} />

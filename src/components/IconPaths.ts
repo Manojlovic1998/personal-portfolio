@@ -35,9 +35,9 @@ export const iconPaths = {
   "linkedin-logo": `<rect width="184" height="184" x="36" y="36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" rx="8"/><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M120 112v64m-32-64v64m32-36a28 28 0 0 1 56 0v36"/><circle stroke="none" cx="88" cy="80" r="12"/>`,
   "instagram-logo": `<circle cx="128" cy="128" r="40" fill="none" stroke-miterlimit="10" stroke-width="16"/><rect width="184" height="184" x="36" y="36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" rx="48"/><circle cx="180" cy="76" r="12" stroke="none" />`,
   "tiktok-logo": `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M168 106a96 96 0 0 0 56 18V84a56 56 0 0 1-56-56h-40v128a28 28 0 1 1-40-25V89a68 68 0 1 0 80 67Z"/>`,
-  nlogo: `<path d="M0 20C0 8.95431 8.95431 0 20 0H236C247.046 0 256 8.95431 256 20V236C256 247.046 247.046 256 236 256H20C8.95431 256 0 247.046 0 236V20Z" fill="#5500FF"/>
-  <path d="M64 192L48 160L64 128L80 96L96 64H128L144.002 96L160.002 128H128L112 96L96 128L80 160H112L96 192H64Z" fill="white"/>
-  <path d="M160.002 128L176 96H144.002L160.002 64H192.002L208 96L192.002 128L176 160L160.002 192H128L112 160L96.0001 128H128L144.002 160L160.002 128Z" fill="white"/>`,
+  nlogo: `<path d="M0 0H256V256H0V0Z" fill="#5500FF"/>
+<path d="M64 192L48 160L64 128L79.9999 96L95.9999 64H128L144.001 96L160.001 128H128L112 96L95.9999 128L79.9999 160H112L95.9999 192H64Z" fill="white"/>
+<path d="M160.001 128L176 96H144.002L160.001 64H192.001L208 96L192.001 128L176 160L160.001 192H128L112 160L96 128H128L144.002 160L160.001 128Z" fill="white"/>`,
   x: `<path d="M9.76566 229.703C6.66713 226.553 6.66713 221.447 9.76566 218.297L218.909 5.70315C222.007 2.5535 227.031 2.5535 230.13 5.70316L250.39 26.2972C253.488 29.4469 253.488 34.5535 250.39 37.7031L41.2462 250.297C38.1477 253.447 33.124 253.447 30.0255 250.297L9.76566 229.703Z" stroke="none"/>
   <path d="M25.8701 5.70295C28.9686 2.5533 33.9923 2.5533 37.0909 5.70295L246.234 218.297C249.333 221.446 249.333 226.553 246.234 229.703L225.974 250.297C222.876 253.446 217.852 253.446 214.754 250.297L5.61027 37.7029C2.51174 34.5533 2.51174 29.4467 5.61027 26.297L25.8701 5.70295Z" stroke="none"/>`,
 };
