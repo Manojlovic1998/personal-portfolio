@@ -9,11 +9,12 @@ import Icon from "./Icon.astro";
 	>
 		<span class="sr-only">Dark theme</span>
 		<span
-			class="z-1 flex p-2 before:content-[''] before:dark:round-full before:dark:rounded-full before:dark:bg-toggle-btn-active before:dark:w-full before:dark:h-full before:dark:absolute relative before:dark:top-0 before:dark:left-0 before:dark:z-[-1]"
+			class="z-1 flex p-2 before:content-[''] before:dark:round-full before:dark:rounded-full before:dark:bg-toggle-btn-active before:dark:w-full before:dark:h-full before:dark:absolute relative before:dark:top-0 before:dark:left-0 before:dark:z-[1]"
 			><Icon
 				icon="moon-stars"
 				size="1rem"
 				color="stroke-nav-icon-primary dark:stroke-nav-icon-primary-dark"
+				className="z-20"
 			/></span
 		>
 		<span
@@ -33,13 +34,6 @@ import Icon from "./Icon.astro";
 		cursor: pointer;
 	}
 
-	.icon.light::before {
-		content: "";
-		z-index: -1;
-		position: absolute;
-		inset: 0;
-	}
-
 	:global(.theme-dark) .icon.light::before {
 		transform: translateX(100%);
 	}
@@ -55,12 +49,6 @@ import Icon from "./Icon.astro";
 		.icon.light::before {
 			/* transition: transform var(--theme-transition),
 				color var(--theme-transition); */
-		}
-	}
-
-	@media (forced-colors: active) {
-		.icon.light::before {
-			background-color: SelectedItem;
 		}
 	}
 </style>

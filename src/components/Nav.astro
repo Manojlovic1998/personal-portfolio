@@ -30,17 +30,17 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 ---
 
 <nav
-  class="w-full md:max-w-[1616px] flex justify-between items-center md:mt-7 md:mb-7"
+  class="w-full md:max-w-[1616px] flex justify-between items-center md:mt-7 md:mb-7 md:px-4 z-10"
 >
   <div class="menu-header w-full md:w-fit flex content-between p-6 md:p-0">
     <a
       href={`${import.meta.env.BASE_URL}`}
-      class="site-title text-2xl text-skin-base dark:text-skin-base-dark z-20"
+      class="flex gap-2 justify-center items-center text-2xl text-skin-base dark:text-skin-base-dark z-20"
     >
       <Icon icon="nlogo" size="41px" className="rounded-lg" />
-      <span class="hidden md:inline font-medium text-xl">Nemanja Manojlovic</span>
+      <span class="hidden lg:inline font-medium text-xl">Nemanja Manojlovic</span>
     </a>
-    <menu-button class="ml-auto">
+    <menu-button class="ml-auto relative flex">
       <template>
         <button
           class="menu-button z-20 text-burger-light dark:text-burger-dark px-3 py-3 rounded-2xl border dark:border-navigation-primary-dark/[16%] dark:bg-navigation-primary-dark/[8%]"
@@ -58,10 +58,10 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
   </div>
   <div
     id="menu-content"
-    class="backdrop-blur-sm md:backdrop-blur-none rounded-bl-2xl rounded-br-2xl md:rounded-none overflow-hidden border md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:border-none top-0"
+    class="absolute right-0 w-full md:contents backdrop-blur-sm md:backdrop-blur-none rounded-bl-2xl rounded-br-2xl md:rounded-none overflow-hidden border md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:border-none top-0"
   >
     <ul
-      class="nav-items flex flex-col justify-center gap-6 md:flex-row bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark md:border md:rounded-2xl border-navigation-primary dark:border-navigation-primary-dark/[16%] flex-grow md:max-w-[392px] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-5 md:px-0 pb-6 pt-[6.5rem] md:py-2.5"
+      class="flex flex-col justify-center gap-6 md:flex-row bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark md:border md:rounded-2xl border-navigation-primary dark:border-navigation-primary-dark/[16%] flex-grow md:max-w-[392px] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-5 md:px-0 pb-6 pt-[6.5rem] md:py-2.5"
     >
       {
         textLinks.map(({ label, href }) => (
@@ -69,7 +69,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
             <a
               aria-current={Astro.url.pathname === href}
               class:list={[
-                "link px-2 md:px-2.5 py-1.5 text-2xl md:text-xl rounded-lg text-skin-base dark:text-skin-base-dark font-bold hover:bg-nav-link-active/[6%] text-skin-base",
+                "md:flex px-2 md:px-2.5 py-1.5 text-2xl md:text-xl rounded-lg text-skin-base dark:text-skin-base-dark font-bold hover:bg-nav-link-active/[6%] text-skin-base",
                 {
                   "bg-nav-link-active text-skin-inverted hover:hover:bg-nav-link-active":
                     Astro.url.pathname === href ||
@@ -86,9 +86,9 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
       }
     </ul>
     <div
-      class="flex flex-row items-center gap-x-5 w-full md:max-w-[225px] bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark border-t md:border md:rounded-full md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-7 pt-6 pb-7 md:px-3 md:py-1 h-fit"
+      class="flex flex-row items-center gap-x-5 w-full md:max-w-fit lg:max-w-[225px] bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark border-t md:border md:rounded-full md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-7 pt-6 pb-7 md:px-3 md:py-1 h-fit"
     >
-      <div class="flex flex-row gap-x-5">
+      <div class="flex flex-row gap-x-5 md:hidden lg:flex">
         {
           iconLinks.map(({ href, icon, label }) => (
             <a
@@ -148,102 +148,3 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
   }
   customElements.define("menu-button", MenuButton);
 </script>
-
-<style>
-  nav {
-    z-index: 9999;
-    position: relative;
-  }
-
-  .site-title {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    line-height: 1.1;
-    color: var(--gray-0);
-    text-decoration: none;
-  }
-
-  .menu-button {
-    position: relative;
-    display: flex;
-  }
-
-  .menu-button[aria-expanded="true"] {
-    color: var(--gray-0);
-    background: linear-gradient(180deg, var(--gray-600), transparent),
-      radial-gradient(var(--gray-900), var(--gray-800) 150%);
-  }
-
-  .menu-button[hidden] {
-    display: none;
-  }
-
-  .menu-button::before {
-    position: absolute;
-    inset: -1px;
-    content: "";
-    background: var(--gradient-stroke);
-    border-radius: 999rem;
-    z-index: -1;
-  }
-
-  #menu-content {
-    position: absolute;
-    left: 0;
-    right: 0;
-  }
-
-  .nav-items {
-    margin: 0;
-    line-height: 1.2;
-    list-style: none;
-  }
-
-  .link {
-    display: inline-block;
-    text-decoration: none;
-  }
-
-  .menu-footer {
-    background-color: var(--gray-999);
-  }
-
-  .theme-toggle {
-    display: flex;
-    align-items: center;
-    height: calc(var(--icon-size) + 2 * var(--icon-padding));
-  }
-
-  @media (min-width: 50em) {
-    /* .menu-header {
-			padding: 0;
-		} */
-
-    .site-title {
-      font-size: var(--text-lg);
-    }
-
-    #menu-content {
-      display: contents;
-    }
-
-    .nav-items {
-      position: relative;
-    }
-
-    .nav-items::before {
-      position: absolute;
-      inset: -1px;
-      content: "";
-      background: var(--gradient-stroke);
-      border-radius: 999rem;
-      z-index: -1;
-    }
-  }
-  @media (forced-colors: active) {
-    .link.active {
-      color: SelectedItem;
-    }
-  }
-</style>
