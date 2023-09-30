@@ -15,7 +15,7 @@ export type ControlSettings = {
 const createControls = (
   camera: PerspectiveCamera,
   canvas: HTMLCanvasElement,
-  controlSettings?: ControlSettings
+  controlSettings?: ControlSettings,
 ): Controls => {
   const defaultControlSettings = {
     enabled: true,

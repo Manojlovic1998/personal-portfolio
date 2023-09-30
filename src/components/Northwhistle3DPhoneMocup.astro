@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <!--Component Template -->
@@ -15,7 +16,7 @@
   const main = async () => {
     // Get a reference to the container element
     const container = document.getElementById(
-      "northwhistle-canvas-container"
+      "northwhistle-canvas-container",
     ) as HTMLElement;
     const camneraSettings: CameraSettings = {
       fov: 50,
@@ -30,7 +31,7 @@
       {
         autoRotate: true,
       },
-      enableMobileTouchAction
+      enableMobileTouchAction,
     );
 
     // Modify world light
@@ -52,7 +53,7 @@
         const northwhistle = objectList[0];
         northwhistle.model.scale.set(0.02, 0.02, 0.02);
         northwhistle.model.position.set(0, -1, 0.5);
-        
+
         world.scene.add(northwhistle.model);
       }
     };

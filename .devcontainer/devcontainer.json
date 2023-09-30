@@ -22,10 +22,10 @@
   "customizations": {
     "vscode": {
       "extensions": [
-		"astro-build.astro-vscode",
-		"esbenp.prettier-vscode",
-		"bradlc.vscode-tailwindcss"
-	]
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
     }
   },
 

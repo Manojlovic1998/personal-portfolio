@@ -34,7 +34,7 @@ const createCamera = (cameraSettings?: CameraSettings) => {
     fov, // fov = Field of View
     aspect, // aspect ratio
     near, // near clipping plane
-    far // far clipping plane
+    far, // far clipping plane
   );
 
   // Move the camera back so we can view the scene
