@@ -45,7 +45,7 @@ class World implements WorldReference {
     cameraSettings?: CameraSettings,
     rendererSettings?: THREE.WebGLRendererParameters,
     controlSettings?: ControlSettings,
-    resizerCallback?: () => void
+    resizerCallback?: () => void,
   ) {
     // synchronous setup here
     // create camera, renderer, scene, etc..
@@ -58,7 +58,7 @@ class World implements WorldReference {
     this.controls = createControls(
       this.camera,
       this.renderer.domElement,
-      controlSettings
+      controlSettings,
     );
     this.loop = new Loop(this.camera, this.scene, this.renderer);
     this.loop.updatables.push(this.controls);
@@ -70,7 +70,7 @@ class World implements WorldReference {
       container,
       this.camera,
       this.renderer,
-      resizerCallback
+      resizerCallback,
     );
   }
 

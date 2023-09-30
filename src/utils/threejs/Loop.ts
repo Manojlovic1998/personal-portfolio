@@ -31,7 +31,7 @@ class Loop implements SceneLoop {
   constructor(
     camera: THREE.PerspectiveCamera,
     scene: THREE.Scene,
-    renderer: THREE.WebGLRenderer
+    renderer: THREE.WebGLRenderer,
   ) {
     this.camera = camera;
     this.scene = scene;

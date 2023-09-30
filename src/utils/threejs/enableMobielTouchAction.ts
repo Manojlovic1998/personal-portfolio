@@ -5,7 +5,6 @@
   touch-action: none;
 } */
 
-
 const enableMobileTouchAction = () => {
   const mediaQuery = window.matchMedia("(max-width: 768px)");
   const canvas = document.getElementsByClassName("scene")[0] as HTMLElement;

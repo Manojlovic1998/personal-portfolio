@@ -7,7 +7,7 @@ type ObjectSource = { url?: string; path?: string };
 const loadGLTFObject = async (objectSource: ObjectSource[]) => {
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath(
-    "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+    "https://www.gstatic.com/draco/versioned/decoders/1.5.6/",
   );
   await dracoLoader.preload();
 

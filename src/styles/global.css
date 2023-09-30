@@ -3,110 +3,109 @@
 @tailwind utilities;
 
 @layer base {
-	/* Global variables  */
-	:root {
-		--color-text-base: #262626;
-		--color-text-muted: #4B4B4B;
-		--color-text-inverted: 255 255 255;
-		--color-text-base-dark: 250 250 250;
-		--color-text-muted-dark: 207 207 207;
-		--color-link-text-primary : 112 40 255;
-		/* Text Chip */
-		--color-text-chip-inverted: 85 0 255;
-		--color-text-chip-tertiary-dark: 226 212 255;
-		/* Background Fill Chip */
-		--color-fill-chip-primary: 80 0 255;
-		--color-fill-chip-tertiary-dark: 226 212 255;
-		/* Background Fill Navigation */
-		--color-fill-navigation-primary: 250 250 250;
-		--color-fill-navigation-primary-dark: 0 0 0;
-		--color-fill-navigation-burger-light: 57 57 57;
-		--color-fill-navigation-burgerk-dark: 250 250 250;
-		/* Background Fill Page */
-		--color-fill-page-light: 202 176 255;
-		--color-fill-page-dark: 0 0 0;
-		/* Border Fill Navigation */
-		--color-border-fill-navigation-primary: 250 250 250;
-		--color-border-fill-navigation-primary-dark: 202 176 255;
-		--color-border-fill-navigation-muted: 189 189 189;
-		/* Border Fill Input */
-		--color-border-fill-input: 189 189 189;
-		--color-border-fill-input-dark: 202 176 255;
-		/* Border Fill Hero */
-		--color-border-fill-hero: 207 207 207;
-		--color-border-fill-hero-dark: 202 176 255;
-		/* Border Fill Footer */
-		--color-border-fill-footer: 207 207 207;
-		--color-border-fill-footer-dark: 202 176 255;
-		/* Border Fill Chip */
-		--color-border-fill-chip-primary: 85 0 255;
-		--color-border-fill-chip-tertiary: 85 0 255;
-		--color-border-fill-chip-tertiary-dark: 226 212 255;
-		/* Border Fill Card */
-		--color-border-fill-card-primary: 250 250 250;
-		--color-border-fill-card-primary-dark: 202 176 255;
-		/* Border Fill Blockquote */
-		--color-border-fill-blockquote-primary: 38 38 38;
-		--color-border-fill-blockquote-primary-dark: 250 250 250;
-		/* Background Fill Card  */
-		--color-fill-card-primary: 255 255 255;
-		--color-fill-card-primary-dark: 202 176 255;
-		/* Background Fill Input  */
-		--color-fill-input: 248 248 248;
-		/* Background Fill Nav Link */
-		--color-fill-nav-link-active: 85 0 255;
-		/* Fill Icons */
-		--color-fill-icon-primary: 112 40 255;
-		--color-fill-icon-primary-dark: 180 143 255;
-		/* Fill Nav Icons */
-		--color-fill-nav-icon-primary: 57 57 57;
-		--color-fill-nav-icon-primary-dark: 250 250 250;
-		--color-fill-nav-icon-muted: 189 189 189;
-		--color-fill-nav-icon-muted-dark: 189 189 189;
-		/* Stroke Icons */
-		--color-stroke-icon-primary: 112 40 255;
-		--color-stroke-icon-primary-dark: 180 143 255;
-		--color-stroke-icon-inverted: 255 255 255;
-		/* Stroke Nav Icons */
-		--color-stroke-nav-icon-primary: 57 57 57;
-		--color-stroke-nav-icon-primary-dark: 255 255 255;
-		--color-stroke-nav-icon-muted: 189 189 189;
-		--color-stroke-nav-icon-muted-dark: 189 189 189;
-		--color-stroke-nav-icon-inverted: 255 255 255;
-		/* Shadow Navigation */
-		--shadow-navigation-primary: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
-		/* Shadow Input Field */
-		--shadow-input-field: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
-		/* Shadow Card */
-		--shadow-card-primary: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
-		/* Fill Toggle Btn */
-		--color-fill-toggle-btn-active: 85 0 255;
-		/* Fill Button */
-		--color-fill-btn-primary: 85 0 255;
+  /* Global variables  */
+  :root {
+    --color-text-base: #262626;
+    --color-text-muted: #4b4b4b;
+    --color-text-inverted: 255 255 255;
+    --color-text-base-dark: 250 250 250;
+    --color-text-muted-dark: 207 207 207;
+    --color-link-text-primary: 112 40 255;
+    /* Text Chip */
+    --color-text-chip-inverted: 85 0 255;
+    --color-text-chip-tertiary-dark: 226 212 255;
+    /* Background Fill Chip */
+    --color-fill-chip-primary: 80 0 255;
+    --color-fill-chip-tertiary-dark: 226 212 255;
+    /* Background Fill Navigation */
+    --color-fill-navigation-primary: 250 250 250;
+    --color-fill-navigation-primary-dark: 0 0 0;
+    --color-fill-navigation-burger-light: 57 57 57;
+    --color-fill-navigation-burgerk-dark: 250 250 250;
+    /* Background Fill Page */
+    --color-fill-page-light: 202 176 255;
+    --color-fill-page-dark: 0 0 0;
+    /* Border Fill Navigation */
+    --color-border-fill-navigation-primary: 250 250 250;
+    --color-border-fill-navigation-primary-dark: 202 176 255;
+    --color-border-fill-navigation-muted: 189 189 189;
+    /* Border Fill Input */
+    --color-border-fill-input: 189 189 189;
+    --color-border-fill-input-dark: 202 176 255;
+    /* Border Fill Hero */
+    --color-border-fill-hero: 207 207 207;
+    --color-border-fill-hero-dark: 202 176 255;
+    /* Border Fill Footer */
+    --color-border-fill-footer: 207 207 207;
+    --color-border-fill-footer-dark: 202 176 255;
+    /* Border Fill Chip */
+    --color-border-fill-chip-primary: 85 0 255;
+    --color-border-fill-chip-tertiary: 85 0 255;
+    --color-border-fill-chip-tertiary-dark: 226 212 255;
+    /* Border Fill Card */
+    --color-border-fill-card-primary: 250 250 250;
+    --color-border-fill-card-primary-dark: 202 176 255;
+    /* Border Fill Blockquote */
+    --color-border-fill-blockquote-primary: 38 38 38;
+    --color-border-fill-blockquote-primary-dark: 250 250 250;
+    /* Background Fill Card  */
+    --color-fill-card-primary: 255 255 255;
+    --color-fill-card-primary-dark: 202 176 255;
+    /* Background Fill Input  */
+    --color-fill-input: 248 248 248;
+    /* Background Fill Nav Link */
+    --color-fill-nav-link-active: 85 0 255;
+    /* Fill Icons */
+    --color-fill-icon-primary: 112 40 255;
+    --color-fill-icon-primary-dark: 180 143 255;
+    /* Fill Nav Icons */
+    --color-fill-nav-icon-primary: 57 57 57;
+    --color-fill-nav-icon-primary-dark: 250 250 250;
+    --color-fill-nav-icon-muted: 189 189 189;
+    --color-fill-nav-icon-muted-dark: 189 189 189;
+    /* Stroke Icons */
+    --color-stroke-icon-primary: 112 40 255;
+    --color-stroke-icon-primary-dark: 180 143 255;
+    --color-stroke-icon-inverted: 255 255 255;
+    /* Stroke Nav Icons */
+    --color-stroke-nav-icon-primary: 57 57 57;
+    --color-stroke-nav-icon-primary-dark: 255 255 255;
+    --color-stroke-nav-icon-muted: 189 189 189;
+    --color-stroke-nav-icon-muted-dark: 189 189 189;
+    --color-stroke-nav-icon-inverted: 255 255 255;
+    /* Shadow Navigation */
+    --shadow-navigation-primary: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
+    /* Shadow Input Field */
+    --shadow-input-field: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
+    /* Shadow Card */
+    --shadow-card-primary: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
+    /* Fill Toggle Btn */
+    --color-fill-toggle-btn-active: 85 0 255;
+    /* Fill Button */
+    --color-fill-btn-primary: 85 0 255;
 
+    /* Media Screens */
+    /* https://tailwindcss.com/docs/responsive-design */
+    --screen-sm: 640px;
+    --screen-md: 768px;
+    --screen-lg: 1024px;
+    --screen-xl: 1280px;
+    --screen-2xl: 1536px;
 
-		/* Media Screens */
-		/* https://tailwindcss.com/docs/responsive-design */
-		--screen-sm: 640px;
-		--screen-md: 768px;
-		--screen-lg: 1024px;
-		--screen-xl: 1280px;
-		--screen-2xl: 1536px;
-
-		/* Font Sizes */
-		--text-sm: 0.875rem;
-		--text-sm-line-height: 1.25rem;
-		--text-base: 1rem;
-		--text-base-line-height: 1.5rem;
-		--text-lg: 1.125rem;
-		--text-lg-line-height: 1.75rem;
-		--text-xl: 1.25rem;
-		--text-xl-line-height: 1.75rem;
-		--text-2xl: 1.5rem;
-		--text-2xl-line-height: 2rem;
-		--text-3xl: 1.875rem;
-		--text-3x-line-height: 2.25rem;
-		/* Font Weight */
-		--text-bold: 700;
-	}
+    /* Font Sizes */
+    --text-sm: 0.875rem;
+    --text-sm-line-height: 1.25rem;
+    --text-base: 1rem;
+    --text-base-line-height: 1.5rem;
+    --text-lg: 1.125rem;
+    --text-lg-line-height: 1.75rem;
+    --text-xl: 1.25rem;
+    --text-xl-line-height: 1.75rem;
+    --text-2xl: 1.5rem;
+    --text-2xl-line-height: 2rem;
+    --text-3xl: 1.875rem;
+    --text-3x-line-height: 2.25rem;
+    /* Font Weight */
+    --text-bold: 700;
+  }
 }
