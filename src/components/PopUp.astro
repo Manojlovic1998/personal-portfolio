@@ -1,0 +1,170 @@
+---
+import Button from "./Button.astro";
+interface Props {
+  title: string;
+  description: string;
+  timer: number;
+}
+
+const { title, description, timer } = Astro.props;
+---
+
+<pop-up-modal
+  role="dialog"
+  arial-modal="false"
+  id="pop-up-modal"
+  aria-label={description}
+  aria-hidden="true"
+  data-message={timer}
+  class="w-screen h-screen backdrop-blur-sm bg-opacity-50 bg-gray-500 top-0 left-0 z-[9999] fixed"
+>
+  <div
+    class="pop-up-content overflow-hidden flex justify-between flex-col bg-card-primary top-1/4 -translate-x-1/2 left-1/2 absolute rounded-lg isolate max-w-2xl w-full shadow-lg min-h-[20rem]"
+  >
+    <!-- Modal Header -->
+    <div class="border px-8 py-3">
+      <h2 id="pop-up-modal-heading" class="text-2xl font-bold">{title}</h2>
+    </div>
+    <!-- Modal Body -->
+    <div class="grow px-8 mt-6" id="pop-up-modal-body">
+      {description}
+    </div>
+    <!-- Modal Footer -->
+    <div class="px-8 py-3 border flex justify-end">
+      <Button id="pop-up-close-button">Cancel</Button>
+    </div>
+  </div>
+</pop-up-modal>
+
+<script>
+  class PopUp extends HTMLElement {
+    timer: number;
+    popUpClose: HTMLElement | null;
+    boundHandleOutsideClick: (event: MouseEvent) => void;
+    boundHandleEscapeKey: (event: KeyboardEvent) => void;
+    boundClosePopUp: () => void;
+
+    constructor() {
+      super();
+
+      this.timer = Number(this.getAttribute("data-message"));
+      this.boundHandleOutsideClick = this.handleOutsideClick.bind(this);
+      this.boundHandleEscapeKey = this.handleEscapeKey.bind(this);
+      this.boundClosePopUp = this.closePopUp.bind(this);
+
+      this.popUpClose = null;
+    }
+
+    /**
+     * Lifecycle method called when element is inserted in DOM
+     *
+     * @returns {void}
+     */
+    connectCallbacks() {
+      setTimeout(() => {
+        this.popUpClose = this.shadowRoot
+          ? this.shadowRoot.getElementById("pop-up-close-button")
+          : this.querySelector("#pop-up-close-button");
+
+        if (!this.popUpClose) {
+          console.error("PopUp Element: No close button found");
+          return;
+        }
+
+        // Use the bound function for the close button as well
+        this.popUpClose.addEventListener("click", this.boundClosePopUp);
+        this.openPopUp();
+
+        // Add the event listeners using the bound handlers
+        this.addEventListener("click", this.boundHandleOutsideClick);
+        document.addEventListener("keydown", this.boundHandleEscapeKey);
+      }, this.timer * 1000);
+    }
+
+    disconnectCallbacks() {
+      // Remove the event listeners using the bound handlers
+      if (this.popUpClose) {
+        this.popUpClose.removeEventListener("click", this.boundClosePopUp);
+      }
+
+      this.removeEventListener("click", this.boundHandleOutsideClick);
+      document.removeEventListener("keydown", this.boundHandleEscapeKey);
+    }
+
+    /**
+     * Outside click event handler
+     *
+     * @returns {void}
+     */
+    handleOutsideClick(event: MouseEvent) {
+      const target = event.target as HTMLElement;
+      const popUpContent = this.querySelector(".pop-up-content") as HTMLElement;
+      const isClickedOutside = !popUpContent.contains(target);
+
+      if (isClickedOutside) {
+        this.closePopUp();
+      }
+    }
+
+    /**
+     * Escape key event handler
+     *
+     * @returns {void}
+     */
+    handleEscapeKey(event: KeyboardEvent) {
+      const isEscapeKey = event.key === "Escape";
+
+      if (isEscapeKey) {
+        this.closePopUp();
+      }
+    }
+
+    /**
+     * Lifecycle method called when element is inserted in DOM
+     *
+     * @returns {void}
+     */
+    openPopUp() {
+      this.classList.remove("hidden");
+      this.classList.add("fade-in");
+      this.setAttribute("aria-hidden", "false");
+      this.setAttribute("tabindex", "0");
+      this.addEventListener("click", this.boundHandleOutsideClick);
+      this.addEventListener("keydown", this.boundHandleEscapeKey);
+    }
+
+    /**
+     * Lifecycle method called when element is removed from DOM
+     *
+     * @returns {void}
+     */
+    closePopUp() {
+      this.classList.add("hidden");
+      this.classList.remove("fade-in");
+      this.setAttribute("aria-hidden", "true");
+      this.setAttribute("tabindex", "-1");
+      this.removeEventListener("click", this.boundHandleOutsideClick);
+      this.removeEventListener("keydown", this.boundHandleEscapeKey);
+    }
+
+    /**
+     * Lifecycle method called when element is removed from DOM
+     *
+     * @returns {void}
+     */
+    disableScroll() {
+      document.body.style.overflow = "hidden";
+    }
+
+    /**
+     * Lifecycle method called when element is removed from DOM
+     *
+     * @returns {void}
+     */
+    enableScroll() {
+      document.body.style.overflow = "";
+    }
+  }
+
+  customElements.define("pop-up-modal", PopUp);
+</script>
