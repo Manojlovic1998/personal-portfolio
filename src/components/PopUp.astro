@@ -1,5 +1,6 @@
 ---
 import Button from "./Button.astro";
+import Icon from "./Icon.astro";
 interface Props {
   title: string;
   description: string;
@@ -16,17 +17,23 @@ const { title, description, timer } = Astro.props;
   aria-label={description}
   aria-hidden="true"
   data-message={timer}
-  class="w-screen h-screen backdrop-blur-sm bg-opacity-50 bg-gray-500 top-0 left-0 z-[9999] fixed"
+  class="hidden w-screen h-screen backdrop-blur-sm bg-opacity-50 bg-gray-500 top-0 left-0 z-[9999] fixed"
 >
   <div
     class="pop-up-content overflow-hidden flex justify-between flex-col bg-card-primary top-1/4 -translate-x-1/2 left-1/2 absolute rounded-lg isolate max-w-2xl w-full shadow-lg min-h-[20rem]"
   >
     <!-- Modal Header -->
-    <div class="border px-8 py-3">
+    <div class="flex justify-between border px-8 py-3">
       <h2 id="pop-up-modal-heading" class="text-2xl font-bold">{title}</h2>
+      <button class="mt-1" id="pop-up-close-button-x">
+        <Icon icon={"x"} />
+      </button>
     </div>
     <!-- Modal Body -->
-    <div class="grow px-8 mt-6" id="pop-up-modal-body">
+    <div
+      class="grow px-8 mt-6 font-medium text-skin-muted dark:text-skin-muted-dark"
+      id="pop-up-modal-body"
+    >
       {description}
     </div>
     <!-- Modal Footer -->
@@ -40,6 +47,7 @@ const { title, description, timer } = Astro.props;
   class PopUp extends HTMLElement {
     timer: number;
     popUpClose: HTMLElement | null;
+    popUpXClose: HTMLElement | null;
     boundHandleOutsideClick: (event: MouseEvent) => void;
     boundHandleEscapeKey: (event: KeyboardEvent) => void;
     boundClosePopUp: () => void;
@@ -53,6 +61,7 @@ const { title, description, timer } = Astro.props;
       this.boundClosePopUp = this.closePopUp.bind(this);
 
       this.popUpClose = null;
+      this.popUpXClose = null;
     }
 
     /**
@@ -66,13 +75,25 @@ const { title, description, timer } = Astro.props;
           ? this.shadowRoot.getElementById("pop-up-close-button")
           : this.querySelector("#pop-up-close-button");
 
+        this.popUpXClose = this.shadowRoot
+          ? this.shadowRoot.getElementById("pop-up-close-button-x")
+          : this.querySelector("#pop-up-close-button-x");
+
         if (!this.popUpClose) {
           console.error("PopUp Element: No close button found");
           return;
         }
 
-        // Use the bound function for the close button as well
+        if (!this.popUpXClose) {
+          console.error("PopUp Element: No close button found");
+          return;
+        }
+
+        // Use the bound function for the close button
         this.popUpClose.addEventListener("click", this.boundClosePopUp);
+        // Use the bound function for the close button x
+        this.popUpXClose.addEventListener("click", this.boundClosePopUp);
+        this.disableScroll();
         this.openPopUp();
 
         // Add the event listeners using the bound handlers
@@ -102,7 +123,9 @@ const { title, description, timer } = Astro.props;
       const isClickedOutside = !popUpContent.contains(target);
 
       if (isClickedOutside) {
+        this.enableScroll();
         this.closePopUp();
+        this.disconnectCallbacks();
       }
     }
 
@@ -115,7 +138,9 @@ const { title, description, timer } = Astro.props;
       const isEscapeKey = event.key === "Escape";
 
       if (isEscapeKey) {
+        this.enableScroll();
         this.closePopUp();
+        this.disconnectCallbacks();
       }
     }
 
@@ -128,9 +153,7 @@ const { title, description, timer } = Astro.props;
       this.classList.remove("hidden");
       this.classList.add("fade-in");
       this.setAttribute("aria-hidden", "false");
-      this.setAttribute("tabindex", "0");
-      this.addEventListener("click", this.boundHandleOutsideClick);
-      this.addEventListener("keydown", this.boundHandleEscapeKey);
+      this.disableScroll();
     }
 
     /**
@@ -142,9 +165,8 @@ const { title, description, timer } = Astro.props;
       this.classList.add("hidden");
       this.classList.remove("fade-in");
       this.setAttribute("aria-hidden", "true");
-      this.setAttribute("tabindex", "-1");
-      this.removeEventListener("click", this.boundHandleOutsideClick);
-      this.removeEventListener("keydown", this.boundHandleEscapeKey);
+      this.enableScroll();
+      this.disconnectCallbacks();
     }
 
     /**
@@ -153,7 +175,7 @@ const { title, description, timer } = Astro.props;
      * @returns {void}
      */
     disableScroll() {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("overflow-hidden");
     }
 
     /**
@@ -162,7 +184,7 @@ const { title, description, timer } = Astro.props;
      * @returns {void}
      */
     enableScroll() {
-      document.body.style.overflow = "";
+      document.body.classList.remove("overflow-hidden");
     }
   }
 
