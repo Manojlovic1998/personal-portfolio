@@ -1,8 +1,14 @@
 ---
+import PopUp from "./PopUp.astro";
 
+interface Props {
+  className?: string | null | undefined;
+}
+
+const { className } = Astro.props;
 ---
 
-<div>
+<div class={className}>
   <h2
     class="text-skin-base dark:text-skin-base-dark font-semibold text-2xl text-center md:text-start"
   >
@@ -13,7 +19,11 @@
   >
     Get new articles delivered to your inbox!
   </p>
-  <form class="flex flex-col items-center md:flex-row gap-2">
+  <form
+    class="flex flex-col items-center md:flex-row gap-2"
+    id="newsletterForm"
+    method="POST"
+  >
     <input
       type="email"
       name="email"
@@ -26,4 +36,100 @@
       >Subscribe</button
     >
   </form>
+  <PopUp title="Modal" description="Modal" timer={2} />
 </div>
+
+<script>
+  interface PopUpElement extends HTMLElement {
+    openPopUp: () => void;
+    closePopUp: () => void;
+    connectCallbacks: () => void;
+  }
+
+  const subscribe = async (email: string) => {
+    // Change for production
+    const subscribeURL = "http://localhost:8787";
+
+    let response;
+
+    try {
+      response = await fetch(subscribeURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // Change for production
+          origin: "http://localhost:4321",
+        },
+        body: JSON.stringify({ email }),
+      });
+    } catch {
+      throw new Error("Something went wrong!");
+    }
+
+    if (response.ok) {
+      return true;
+    }
+
+    const { error } = await response.json();
+    if (error) throw new Error(error);
+  };
+
+  const handleSubmit = async (event: Event) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const email = form.email.value;
+    try {
+      const subscriptionStatus = await subscribe(email);
+
+      form.reset();
+      // If subscription was successful, use template to show modal
+      if (subscriptionStatus) {
+        showNewsletterModal(
+          "Thank you for subscribing! 🎉",
+          "You will receive an email shortly to confirm your subscription.",
+        );
+      }
+    } catch (error) {
+      // If subscription was unsuccessful, use template to show modal
+      showNewsletterModal(
+        "Something went wrong! 👾",
+        'Please try again later or you can contact me directly at "contact@nemanjamanojlovic.com".',
+      );
+    }
+  };
+
+  const newsletterForm = document.getElementById("newsletterForm");
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", handleSubmit);
+  }
+
+  const showNewsletterModal = (heading: string, body: string) => {
+    const popUpModal = document.getElementById("pop-up-modal") as PopUpElement;
+
+    const popUpModalHeading = document.getElementById(
+      "pop-up-modal-heading",
+    ) as HTMLElement;
+
+    const popUpModalBody = document.getElementById(
+      "pop-up-modal-body",
+    ) as HTMLElement;
+
+    popUpModalHeading.innerText = heading;
+
+    // Create a new element to avoid XSS
+    const modalBodyParagraph = document.createElement("p");
+    // Set some text content for the paragraph
+    const paragraphText = document.createTextNode(body);
+    // Append the text node to the newly created p
+    modalBodyParagraph.appendChild(paragraphText);
+    // Clear the modal body avoids XSS
+    while (popUpModalBody.firstChild) {
+      popUpModalBody.removeChild(popUpModalBody.firstChild);
+    }
+    // Append the p to the modal body
+    popUpModalBody.appendChild(modalBodyParagraph);
+
+    popUpModal.connectCallbacks();
+  };
+</script>
