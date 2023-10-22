@@ -1,78 +1,55 @@
 ---
 import ContactCTA from "./ContactCTA.astro";
+import Newsletter from "./Newsletter.astro";
 const currentYear = new Date().getFullYear();
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
-	{ label: "Home", href: `${import.meta.env.BASE_URL}` },
-	{ label: "Work", href: `${import.meta.env.BASE_URL}work/` },
-	{ label: "About", href: `${import.meta.env.BASE_URL}about/` },
+  { label: "Home", href: `${import.meta.env.BASE_URL}` },
+  { label: "Work", href: `${import.meta.env.BASE_URL}work/` },
+  { label: "About", href: `${import.meta.env.BASE_URL}about/` },
 ];
 ---
 
 <footer class="container flex flex-col md:block gap-11">
-	<div
-		class="pt-11 md:py-10 max-w-[1290px] flex flex-col md:flex-row md:justify-between mx-auto border-t border-footer-primary/70 dark:border-footer-primary-dark/[16%] gap-11"
-	>
-		<ContactCTA />
-		<div>
-			<h2
-				class="text-skin-base dark:text-skin-base-dark font-semibold text-2xl text-center md:text-start"
-			>
-				General
-			</h2>
-			<ul class="text-center md:text-start mt-8 md:mt-0">
-				{
-					textLinks.map(({ label, href }) => (
-						<li class="mt-4">
-							<a
-								href={href}
-								class="text-skin-muted dark:text-skin-muted-dark font-semibold"
-							>
-								{label}
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</div>
-		<div>
-			<h2
-				class="text-skin-base dark:text-skin-base-dark font-semibold text-2xl text-center md:text-start"
-			>
-				Newsletter
-			</h2>
-			<p
-				class="font-semibold text-skin-muted dark:text-skin-muted-dark mt-4 mb-4 text-center md:text-start"
-			>
-				Get new articles delivered to your inbox!
-			</p>
-			<form class="flex flex-col items-center md:flex-row gap-2">
-				<input
-					type="email"
-					name="email"
-					id="email"
-					class="border pl-2 py-3 rounded-lg shadow-input dark:shadow-none border-input-primary dark:border-input-primary-dark/[16%] bg-input-primary/50 dark:bg-input-primary-dark/[8%] filter backdrop-blur-sm"
-					placeholder="Enter your email address."
-				/>
-				<button
-					class="rounded-[3px] flex flex-row gap-1 px-5 py-3 mt-4 md:mt-0 bg-button-primary w-fit text-skin-inverted font-semibold items-center"
-					>Subscribe</button
-				>
-			</form>
-		</div>
-	</div>
-	<div
-		class="flex flex-col md:flex-row md:justify-between px-6 text-center font-semibold text-skin-muted dark:text-skin-muted-dark gap-4 py-11 border-t border-footer-primary/70 dark:border-footer-primary-dark/[16%] max-w-[1290px] mx-auto"
-	>
-		<p>
-			Designed & Developed in Sweden &copy; {currentYear} Nemanja Manojlovic
-		</p>
-		<p class="flex justify-center gap-4">
-			<a href="https://github.com/Manojlovic1998" target="_blank"> GitHub</a>
-			<a href="https://codepen.io/nemanja-manojlovic" target="_blank">
-				CodePen</a
-			>
-		</p>
-	</div>
+  <div
+    class="pt-11 md:py-10 max-w-[1290px] flex flex-col md:flex-row md:justify-between mx-auto border-t border-footer-primary/70 dark:border-footer-primary-dark/[16%] gap-11"
+  >
+    <ContactCTA />
+    <div>
+      <h2
+        class="text-skin-base dark:text-skin-base-dark font-semibold text-2xl text-center md:text-start"
+      >
+        General
+      </h2>
+      <ul class="text-center md:text-start mt-8 md:mt-0">
+        {
+          textLinks.map(({ label, href }) => (
+            <li class="mt-4">
+              <a
+                href={href}
+                class="text-skin-muted dark:text-skin-muted-dark font-semibold"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <Newsletter />
+  </div>
+  <div
+    class="flex flex-col md:flex-row md:justify-between px-6 text-center font-semibold text-skin-muted dark:text-skin-muted-dark gap-4 py-11 border-t border-footer-primary/70 dark:border-footer-primary-dark/[16%] max-w-[1290px] mx-auto"
+  >
+    <p>
+      Designed & Developed in Sweden &copy; {currentYear} Nemanja Manojlovic
+    </p>
+    <p class="flex justify-center gap-4">
+      <a href="https://github.com/Manojlovic1998" target="_blank"> GitHub</a>
+      <a href="https://codepen.io/nemanja-manojlovic" target="_blank">
+        CodePen</a
+      >
+    </p>
+  </div>
 </footer>
