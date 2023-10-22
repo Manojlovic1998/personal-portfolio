@@ -1,0 +1,37 @@
+---
+import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
+import Icon from "./Icon.astro";
+import type { iconPaths } from "./IconPaths";
+interface Props {
+  id?: string;
+  className?: string;
+  ariaLabel?: string;
+  icon?: {
+    name: keyof typeof iconPaths;
+    color: string;
+    size?: string;
+    className?: string;
+  };
+}
+
+const { id, className, ariaLabel, icon } = Astro.props;
+---
+
+<button
+  aria-label={ariaLabel ? ariaLabel : null}
+  id={id ? id : null}
+  class={twMerge(
+    clsx(
+      "rounded-[3px] flex flex-row gap-1 px-5 py-3 mt-4 md:mt-0 bg-button-primary w-fit text-skin-inverted font-semibold items-center",
+      className,
+    ),
+  )}
+>
+  {
+    icon && (
+      <Icon icon={icon.name} color={icon.color} className={icon.className} />
+    )
+  }
+  <slot />
+</button>
