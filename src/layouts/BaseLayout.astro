@@ -31,7 +31,7 @@ const { title, description } = Astro.props;
     <script>
       // Add “loaded” class once the document has completely loaded.
       addEventListener("load", () =>
-        document.documentElement.classList.add("loaded")
+        document.documentElement.classList.add("loaded"),
       );
     </script>
 
@@ -73,13 +73,15 @@ const { title, description } = Astro.props;
         min-height: 100%;
         isolation: isolate;
         background:
-          /*header1*/ var(--bg-image-main) top
-            center/var(--bg-gradient-size) no-repeat,
+          /*header1*/
+          var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
           /* footer */ var(--bg-image-footer) center 95% no-repeat;
       }
 
       .dark div.backgrounds {
-        background-position: top center/var(--bg-gradient-size), left no-repeat;
+        background-position:
+          top center/var(--bg-gradient-size),
+          left no-repeat;
       }
 
       /* Desktop */
@@ -110,11 +112,15 @@ const { title, description } = Astro.props;
         }
 
         .backgrounds {
-          background-position: center top, center bottom;
+          background-position:
+            center top,
+            center bottom;
         }
 
         .dark div.backgrounds {
-          background-position: -300px 0%, center bottom;
+          background-position:
+            -300px 0%,
+            center bottom;
         }
       }
 
