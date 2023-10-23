@@ -49,6 +49,11 @@ module.exports = {
           lignt: "rgb(var(--color-fill-page-light) / <alpha-value>)",
           dark: "rgb(var(--color-fill-page-dark) / <alpha-value>)",
         },
+        modal: {
+          primary: "rgb(var(--color-fill-modal-primary) / <alpha-value>)",
+          "primary-dark":
+            "rgb(var(--color-fill-modal-primary-dark) / <alpha-value>)",
+        },
         card: {
           primary: "rgb(var(--color-fill-card-primary) / <alpha-value>)",
           "primary-dark":
