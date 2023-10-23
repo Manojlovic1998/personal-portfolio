@@ -17,13 +17,15 @@ const { title, description, timer } = Astro.props;
   aria-label={description}
   aria-hidden="true"
   data-message={timer}
-  class="hidden w-screen h-screen backdrop-blur-sm bg-opacity-50 bg-gray-500 top-0 left-0 z-[9999] fixed"
+  class="hidden w-screen h-screen backdrop-blur-sm dark:bg-modal-primary-dark/[50%] top-0 left-0 z-[9999] fixed"
 >
   <div
-    class="pop-up-content overflow-hidden flex justify-between flex-col bg-card-primary top-1/4 -translate-x-1/2 left-1/2 absolute rounded-lg isolate max-w-2xl w-full shadow-lg min-h-[20rem]"
+    class="pop-up-content overflow-hidden flex justify-between flex-col dark:bg-modal-primary-dark bg-modal-primary top-1/4 -translate-x-1/2 left-1/2 absolute rounded-lg isolate max-w-2xl w-full shadow-lg min-h-[20rem] border dark:border-card-primary-dark/[16%]"
   >
     <!-- Modal Header -->
-    <div class="flex justify-between border px-8 py-3">
+    <div
+      class="flex justify-between border px-8 py-3 text-skin-base dark:text-skin-base-dark dark:border-card-primary-dark/[16%]"
+    >
       <h2 id="pop-up-modal-heading" class="text-2xl font-bold">{title}</h2>
       <button class="mt-1" id="pop-up-close-button-x">
         <Icon icon={"x"} />
@@ -37,7 +39,9 @@ const { title, description, timer } = Astro.props;
       {description}
     </div>
     <!-- Modal Footer -->
-    <div class="px-8 py-3 border flex justify-end">
+    <div
+      class="px-8 py-3 border flex justify-end dark:border-card-primary-dark/[16%]"
+    >
       <Button id="pop-up-close-button">Cancel</Button>
     </div>
   </div>
