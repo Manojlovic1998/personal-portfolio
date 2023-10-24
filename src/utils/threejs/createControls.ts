@@ -8,7 +8,7 @@ export interface Controls extends OrbitControls {
 export type ControlSettings = {
   enableDamping?: boolean;
   autoRotate?: boolean;
-  enabled?: true;
+  enabled?: boolean;
 };
 
 // Takes configuration and returns Controls
