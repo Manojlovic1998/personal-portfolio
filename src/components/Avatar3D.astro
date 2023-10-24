@@ -1,0 +1,83 @@
+---
+
+---
+
+<!--Component Template -->
+<div id="avatar-canvas-container" class="max-w-[591px] min-h-[494px] h-full">
+</div>
+<script>
+  import World from "../utils/threejs/World";
+
+  import loadGLTFObject from "../utils/threejs/loadGLTFObject";
+
+  import type { CameraSettings } from "../utils/threejs/createCamera";
+
+  import enableMobileTouchAction from "../utils/threejs/enableMobielTouchAction";
+  import { AnimationMixer } from "three";
+  import { MathUtils } from "three/src/math/MathUtils";
+
+  const main = async () => {
+    // Get a reference to the container element
+    const container = document.getElementById(
+      "avatar-canvas-container",
+    ) as HTMLElement;
+    const camneraSettings: CameraSettings = {
+      fov: 50,
+      position: { x: 2.3, y: 0, z: 0 },
+    };
+
+    // Crate a new World
+    const world = new World(
+      container,
+      undefined,
+      camneraSettings,
+      undefined,
+      {
+        enabled: true,
+        enableDamping: true,
+      },
+      enableMobileTouchAction,
+    );
+
+    world.init = async () => {
+      // Load models
+      const objectList = await loadGLTFObject([
+        {
+          path: `${
+            import.meta.env.BASE_URL
+          }assets/models/obj/avatar/avatarAnim.glb`,
+        },
+      ]);
+      // Check if the models have been loaded
+      // If so add them to the scene
+      if (objectList && objectList[0]) {
+        const avatar = objectList[0];
+        avatar.model.position.set(0, -0.9, 0);
+        avatar.model.tick = (delta: number) => {
+          avatar.model.rotation.y += delta * 0.0005;
+        };
+
+        world.loop.updatables.push(avatar);
+
+        avatar.model.rotation.z = MathUtils.degToRad(-90);
+        await world.scene.add(avatar.model);
+      }
+    };
+
+    // const mixer = new AnimationMixer()
+    // Complete async tasks
+    await world.init();
+
+    // Start the animation loop
+    world.start();
+  };
+
+  main();
+</script>
+
+<style>
+  #avatar-canvas-container {
+    width: 100%;
+    height: 100%;
+  }
+</style>
