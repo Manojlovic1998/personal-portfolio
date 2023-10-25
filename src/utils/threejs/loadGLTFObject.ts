@@ -1,10 +1,28 @@
 import { type GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import setupModel from "./setupModel";
+import type { Object3D, Object3DEventMap } from "three";
 
 type ObjectSource = { url?: string; path?: string };
 
-const loadGLTFObject = async (objectSource: ObjectSource[]) => {
+type ModelData = Promise<
+  | (
+      | {
+          model: Object3D<Object3DEventMap>;
+          tick: (delta: number) => void;
+        }
+      | {
+          model: Object3D<Object3DEventMap>;
+          tick?: undefined;
+        }
+    )[]
+  | undefined
+>;
+
+const loadGLTFObject = async (
+  objectSource: ObjectSource[],
+  clipMap?: (animation: THREE.AnimationClip) => void,
+): ModelData => {
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath(
     "https://www.gstatic.com/draco/versioned/decoders/1.5.6/",
@@ -30,7 +48,7 @@ const loadGLTFObject = async (objectSource: ObjectSource[]) => {
   // Set up model
   if (objectsData.length !== 0) {
     const loadedObjects = objectsData.map((modelData) => {
-      return setupModel(modelData);
+      return setupModel(modelData, clipMap);
     });
 
     return loadedObjects;
