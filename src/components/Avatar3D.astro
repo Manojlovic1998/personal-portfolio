@@ -7,16 +7,16 @@
 </div>
 <script>
   import World from "../utils/threejs/World";
-
   import loadGLTFObject from "../utils/threejs/loadGLTFObject";
-
   import type { CameraSettings } from "../utils/threejs/createCamera";
-
   import enableMobileTouchAction from "../utils/threejs/enableMobielTouchAction";
-  import { AnimationMixer } from "three";
+  import { getMousePos, getMouseDegrees } from "../utils/threejs/mouseHelpers";
   import { MathUtils } from "three/src/math/MathUtils";
+  import { Bone } from "three";
 
   const main = async () => {
+    let neck: null | Bone = null;
+    let waist: null | Bone = null;
     // Get a reference to the container element
     const container = document.getElementById(
       "avatar-canvas-container",
@@ -41,26 +41,57 @@
 
     world.init = async () => {
       // Load models
-      const objectList = await loadGLTFObject([
-        {
-          path: `${
-            import.meta.env.BASE_URL
-          }assets/models/obj/avatar/avatarAnim.glb`,
+      const objectList = await loadGLTFObject(
+        [
+          {
+            path: `${
+              import.meta.env.BASE_URL
+            }assets/models/obj/avatar/avatarAnim.glb`,
+          },
+        ],
+        (animation) => {
+          if (animation.name === "Armature.001|mixamo.com|Layer0") {
+            // Remove neck and spine skeleton tracks out of the animation
+            animation.tracks.splice(3, 3);
+            animation.tracks.splice(3, 3);
+            animation.tracks.splice(3, 3);
+            animation.tracks.splice(3, 3);
+          }
         },
-      ]);
+      );
       // Check if the models have been loaded
       // If so add them to the scene
       if (objectList && objectList[0]) {
+        // Get the avatar model
         const avatar = objectList[0];
-        avatar.model.position.set(0, -0.9, 0);
-        avatar.model.tick = (delta: number) => {
-          avatar.model.rotation.y += delta * 0.0005;
-        };
 
+        // Set the position of the model
+        avatar.model.position.set(0, -0.9, 0);
+
+        // Rotate the model
+        avatar.model.rotation.z = MathUtils.degToRad(-90);
+
+        // Add the model to the updatable list
         world.loop.updatables.push(avatar);
 
-        avatar.model.rotation.z = MathUtils.degToRad(-90);
+        // Add the model to the scene
         await world.scene.add(avatar.model);
+
+        // Get the neck and waist bones
+        avatar.model.traverse((object) => {
+          if (object instanceof Bone && object.name === "mixamorigNeck")
+            neck = object;
+          if (object instanceof Bone && object.name === "mixamorigSpine1")
+            waist = object;
+        });
+
+        document.addEventListener("mousemove", (event) => {
+          var mousecoords = getMousePos(event);
+          if (neck && waist) {
+            moveJoint(mousecoords, neck, 45, world.renderer.domElement);
+            moveJoint(mousecoords, waist, 20, world.renderer.domElement);
+          }
+        });
       }
     };
 
@@ -70,6 +101,18 @@
 
     // Start the animation loop
     world.start();
+  };
+
+  const moveJoint = (
+    mouse: { x: number; y: number },
+    joint: Bone,
+    degreeLimit: number,
+    canvas: HTMLElement,
+  ) => {
+    let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit, canvas);
+
+    joint.rotation.y = MathUtils.degToRad(degrees.x);
+    joint.rotation.x = MathUtils.degToRad(degrees.y);
   };
 
   main();
