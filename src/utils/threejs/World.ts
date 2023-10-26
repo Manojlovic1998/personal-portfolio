@@ -16,7 +16,7 @@ import type { Controls } from "./createControls";
 import Loop from "./Loop";
 import Resizer from "./Resizer";
 
-interface WorldReference {
+export interface WorldReference {
   scene: Scene;
   camera: PerspectiveCamera;
   renderer: WebGLRenderer;
@@ -45,7 +45,6 @@ class World implements WorldReference {
     cameraSettings?: CameraSettings,
     rendererSettings?: THREE.WebGLRendererParameters,
     controlSettings?: ControlSettings,
-    resizerCallback?: () => void,
   ) {
     // synchronous setup here
     // create camera, renderer, scene, etc..
@@ -66,12 +65,9 @@ class World implements WorldReference {
     this.renderer.domElement.classList.add("scene");
     container.appendChild(this.renderer.domElement);
 
-    this.resizer = new Resizer(
-      container,
-      this.camera,
-      this.renderer,
-      resizerCallback,
-    );
+    this.resizer = new Resizer(container, this.camera, this.renderer, () => {
+      this.render();
+    });
   }
 
   async init() {
