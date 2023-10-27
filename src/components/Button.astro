@@ -13,9 +13,10 @@ interface Props {
     size?: string;
     className?: string;
   };
+  type: "primary";
 }
 
-const { id, className, ariaLabel, icon } = Astro.props;
+const { id, className, ariaLabel, icon, type } = Astro.props;
 ---
 
 <button
@@ -23,7 +24,11 @@ const { id, className, ariaLabel, icon } = Astro.props;
   id={id ? id : null}
   class={twMerge(
     clsx(
-      "rounded-[3px] flex flex-row gap-1 px-5 py-3 mt-4 md:mt-0 bg-button-primary w-fit text-skin-inverted font-semibold items-center",
+      "rounded-[3px] flex flex-row gap-1 px-5 py-3 mt-4 md:mt-0 w-fit font-semibold items-center",
+      {
+        "bg-button-primary text-skin-inverted hover:bg-button-primary-hover":
+          type === "primary",
+      },
       className,
     ),
   )}

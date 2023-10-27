@@ -13,7 +13,7 @@ const { className, href, target } = Astro.props;
   href={href}
   class={twMerge(
     className,
-    "rounded-[3px] flex flex-row gap-1 px-5 py-3 bg-button-primary w-fit text-skin-inverted font-semibold items-center",
+    "rounded-[3px] flex flex-row gap-1 px-5 py-3 bg-button-primary w-fit text-skin-inverted font-semibold items-center hover:bg-button-primary-hover",
   )}
   target={target}><slot /></a
 >
