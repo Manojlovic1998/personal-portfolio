@@ -1,4 +1,5 @@
 ---
+import Button from "./Button.astro";
 import PopUp from "./PopUp.astro";
 
 interface Props {
@@ -31,10 +32,7 @@ const { className } = Astro.props;
       class="border pl-2 py-3 rounded-lg shadow-input dark:shadow-none border-input-primary dark:border-input-primary-dark/[16%] bg-input-primary/50 dark:bg-input-primary-dark/[8%] filter backdrop-blur-sm"
       placeholder="Enter your email address."
     />
-    <button
-      class="rounded-[3px] flex flex-row gap-1 px-5 py-3 mt-4 md:mt-0 bg-button-primary w-fit text-skin-inverted font-semibold items-center"
-      >Subscribe</button
-    >
+    <Button type="primary">Subscribe</Button>
   </form>
   <PopUp title="Modal" description="Modal" timer={2} />
 </div>

@@ -39,6 +39,8 @@ module.exports = {
         },
         button: {
           primary: "rgb(var(--color-fill-btn-primary) / <alpha-value>)",
+          "primary-hover":
+            "rgb(var(--color-fill-btn-primary-hover) / <alpha-value>)",
         },
         input: {
           primary: "rgb(var(--color-fill-input) / <alpha-value>)",
