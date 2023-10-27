@@ -38,7 +38,9 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
       class="flex gap-2 justify-center items-center text-2xl text-skin-base dark:text-skin-base-dark z-20"
     >
       <Icon icon="nlogo" size="41px" className="rounded-lg" />
-      <span class="hidden lg:inline font-medium text-xl">Nemanja Manojlovic</span>
+      <span class="hidden lg:inline font-medium text-xl"
+        >Nemanja Manojlovic</span
+      >
     </a>
     <menu-button class="ml-auto relative flex">
       <template>
@@ -58,7 +60,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
   </div>
   <div
     id="menu-content"
-    class="absolute right-0 w-full md:contents backdrop-blur-sm md:backdrop-blur-none rounded-bl-2xl rounded-br-2xl md:rounded-none overflow-hidden border md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:border-none top-0"
+    class="absolute right-0 w-full md:contents backdrop-blur-sm md:backdrop-blur-none rounded-bl-2xl rounded-br-2xl md:rounded-none overflow-hidden border md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:border-none top-0 transition-transform duration-200 ease-in-out -translate-y-full"
   >
     <ul
       class="flex flex-col justify-center gap-6 md:flex-row bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark md:border md:rounded-2xl border-navigation-primary dark:border-navigation-primary-dark/[16%] flex-grow md:max-w-[392px] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-5 md:px-0 pb-6 pt-[6.5rem] md:py-2.5"
@@ -125,16 +127,37 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
       // Hide menu (shown by default to support no-JS browsers).
       const menu = document.getElementById("menu-content")!;
-      menu.hidden = true;
 
       /** Set whether the menu is currently expanded or collapsed. */
       const setExpanded = (expand: boolean) => {
         btn.setAttribute("aria-expanded", expand ? "true" : "false");
-        menu.hidden = !expand;
       };
 
       // Toggle menu visibility when the menu button is clicked.
-      btn.addEventListener("click", () => setExpanded(menu.hidden));
+      btn.addEventListener("click", () => {
+        const isHidden = menu.classList.contains("-translate-y-full");
+
+        setExpanded(isHidden);
+
+        translateMenu(isHidden);
+      });
+
+      const translateMenu = (expand: boolean) => {
+        switch (expand) {
+          case false:
+            menu.classList.remove("translate-y-0");
+            menu.classList.add("-translate-y-full");
+            break;
+          case true:
+            menu.classList.remove("-translate-y-full");
+            menu.classList.add("translate-y-0");
+            break;
+          default:
+            menu.classList.add("-translate-y-full");
+            menu.classList.remove("translate-y-0");
+            break;
+        }
+      };
 
       // Hide menu button for large screens.
       const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
