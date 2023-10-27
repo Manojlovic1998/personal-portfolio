@@ -1,9 +1,10 @@
 import * as THREE from "three";
 import type { GLTF } from "three/addons/loaders/GLTFLoader.js";
 import type { Controls } from "./createControls";
+import type { Object3D, Object3DEventMap } from "three";
 
-type GLTFUpdatable = {
-  glTFObject: GLTF;
+export type GLTFUpdatable = {
+  model: GLTF | Object3D<Object3DEventMap>;
   tick: (delta: number) => void;
 };
 
