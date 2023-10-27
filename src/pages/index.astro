@@ -82,11 +82,16 @@ const blogPosts: blogPost[] = data.user.publication.posts;
 ---
 
 <BaseLayout>
-  <div class="flex flex-col max-w-[1290px] gap-32 mt-16 content-center px-6">
-    <header class="flex flex-col gap-8 md:flex-row content-center items-center">
+  <div
+    class="flex flex-col max-w-full md:max-w-[1290px] gap-32 mt-16 content-center px-6"
+  >
+    <header
+      class="flex flex-col gap-8 md:flex-row content-center items-center min-h-[494px] relative z-3"
+    >
       <Hero
         title="Hello, my name is Nemanja Manojlovic"
         tagline="I am a Software Engineer who is currently based in Stockholm, Sweden."
+        className="md:w-1/2"
       >
         <div class="flex gap-2 justify-center md:justify-start">
           <Chip type="primary">
@@ -102,14 +107,6 @@ const blogPosts: blogPost[] = data.user.publication.posts;
           </Chip>
         </div>
       </Hero>
-
-      <!-- <img
-        alt="Nemanja Manojlovic smiling in a winter jacket."
-        width="340"
-        height="494"
-        class="rounded-lg md:ml-auto"
-        src={`${import.meta.env.BASE_URL}assets/portrait.webp`}
-      /> -->
       <Avatar3D />
     </header>
     <Skills />
