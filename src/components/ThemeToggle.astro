@@ -3,80 +3,57 @@ import Icon from "./Icon.astro";
 ---
 
 <theme-toggle>
-	<button
-		type="button"
-		class="rounded-full flex border border-navigation-muted dark:border-navigation-primary-dark/[18%] p-0"
-	>
-		<span class="sr-only">Dark theme</span>
-		<span
-			class="z-1 flex p-2 before:content-[''] before:dark:round-full before:dark:rounded-full before:dark:bg-toggle-btn-active before:dark:w-full before:dark:h-full before:dark:absolute relative before:dark:top-0 before:dark:left-0 before:dark:z-[1]"
-			><Icon
-				icon="moon-stars"
-				size="1rem"
-				color="stroke-nav-icon-primary dark:stroke-nav-icon-primary-dark"
-				className="z-20"
-			/></span
-		>
-		<span
-			class="z-1 flex p-2 light before:content-[''] text-skin-inverted before:round-full before:rounded-full before:bg-toggle-btn-active  before:dark:bg-inherit before:w-full before:h-full before:absolute relative before:top-0 before:left-0 before:z-[1]"
-			><Icon
-				icon="sun"
-				size="1rem"
-				color="stroke-nav-icon-inverted dark:stroke-nav-icon-muted-dark"
-				className="z-20"
-			/></span
-		>
-	</button>
+  <button
+    type="button"
+    class="rounded-full flex border border-navigation-muted dark:border-navigation-primary-dark/[18%] relative h-8 w-16 items-center"
+  >
+    <span class="sr-only">Dark theme</span>
+    <div class="w-1/2 flex justify-center">
+      <Icon
+        icon="moon-stars"
+        size="1rem"
+        color="stroke-nav-icon-primary dark:stroke-nav-icon-primary-dark transition-colors delay-150"
+        className="z-20"
+      />
+    </div>
+    <span
+      class="z-1 flex p-2 absolute rounded-full bg-toggle-btn-active h-full w-1/2 right-0 transition-transform delay-150 dark:-translate-x-full"
+    ></span>
+    <div class="w-1/2 flex justify-center">
+      <Icon
+        icon="sun"
+        size="1rem"
+        color="stroke-nav-icon-inverted dark:stroke-nav-icon-muted-dark transition-colors delay-150"
+        className="z-20"
+      />
+    </div>
+  </button>
 </theme-toggle>
 
-<style>
-	button {
-		cursor: pointer;
-	}
-
-	:global(.theme-dark) .icon.light::before {
-		transform: translateX(100%);
-	}
-
-	:global(.theme-dark) .icon.dark,
-	:global(html:not(.theme-dark)) .icon.light,
-	button[aria-pressed="false"] .icon.light {
-		/* color: var(--accent-text-over); */
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		.icon,
-		.icon.light::before {
-			/* transition: transform var(--theme-transition),
-				color var(--theme-transition); */
-		}
-	}
-</style>
-
 <script>
-	class ThemeToggle extends HTMLElement {
-		constructor() {
-			super();
+  class ThemeToggle extends HTMLElement {
+    constructor() {
+      super();
 
-			const button = this.querySelector("button")!;
+      const button = this.querySelector("button")!;
 
-			/** Set the theme to dark/light mode. */
-			const setTheme = (dark: boolean) => {
-				document.documentElement.classList[dark ? "add" : "remove"]("dark");
-				button.setAttribute("aria-pressed", String(dark));
-			};
+      /** Set the theme to dark/light mode. */
+      const setTheme = (dark: boolean) => {
+        document.documentElement.classList[dark ? "add" : "remove"]("dark");
+        button.setAttribute("aria-pressed", String(dark));
+      };
 
-			// Toggle the theme when a user clicks the button.
-			button.addEventListener("click", () => setTheme(!this.isDark()));
+      // Toggle the theme when a user clicks the button.
+      button.addEventListener("click", () => setTheme(!this.isDark()));
 
-			// Initialize button state to reflect current theme.
-			setTheme(this.isDark());
-		}
+      // Initialize button state to reflect current theme.
+      setTheme(this.isDark());
+    }
 
-		isDark() {
-			return document.documentElement.classList.contains("dark");
-		}
-	}
+    isDark() {
+      return document.documentElement.classList.contains("dark");
+    }
+  }
 
-	customElements.define("theme-toggle", ThemeToggle);
+  customElements.define("theme-toggle", ThemeToggle);
 </script>
