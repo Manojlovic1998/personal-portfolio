@@ -1,24 +1,27 @@
 ---
+import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 interface Props {
-	title: string;
-	tagline?: string;
+  title: string;
+  tagline?: string;
+  className?: string;
 }
 
-const { tagline, title } = Astro.props;
+const { tagline, title, className } = Astro.props;
 ---
 
-<div class:list={["flex flex-col gap-8"]}>
-	<h1
-		class="text-5xl sm:text-6xl font-bold text-skin-base dark:text-skin-base-dark  w-full md:max-w-[591px] text-center md:text-left"
-	>
-		{title}
-	</h1>
-	{
-		tagline && (
-			<p class="text-skin-muted dark:text-skin-muted-dark text-2xl font-semibold max-w-[591px] text-center md:text-left">
-				{tagline}
-			</p>
-		)
-	}
-	<slot />
+<div class:list={twMerge("flex flex-col gap-8", className)}>
+  <h1
+    class="text-5xl sm:text-6xl font-bold text-skin-base dark:text-skin-base-dark w-full md:max-w-[591px] text-center md:text-left"
+  >
+    {title}
+  </h1>
+  {
+    tagline && (
+      <p class="text-skin-muted dark:text-skin-muted-dark text-2xl font-semibold max-w-[591px] text-center md:text-left">
+        {tagline}
+      </p>
+    )
+  }
+  <slot />
 </div>
