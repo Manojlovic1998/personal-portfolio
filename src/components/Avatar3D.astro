@@ -3,16 +3,16 @@
 ---
 
 <!--Component Template -->
-<div id="avatar-canvas-container" class="max-w-[591px] min-h-[494px] h-full">
-</div>
+<div id="avatar-canvas-container" class="w-full min-h-[inherit] md:w-1/2"></div>
 <script>
   import World from "../utils/threejs/World";
   import loadGLTFObject from "../utils/threejs/loadGLTFObject";
   import type { CameraSettings } from "../utils/threejs/createCamera";
   import enableMobileTouchAction from "../utils/threejs/enableMobielTouchAction";
   import { getMousePos, getMouseDegrees } from "../utils/threejs/mouseHelpers";
-  import { MathUtils } from "three/src/math/MathUtils";
-  import { Bone } from "three";
+  import createFloor from "../utils/threejs/createFloor";
+  import { MathUtils } from "three";
+  import { Bone, Vector3, Mesh } from "three";
 
   const main = async () => {
     let neck: null | Bone = null;
@@ -39,7 +39,11 @@
       enableMobileTouchAction,
     );
 
+    world.renderer.shadowMap.enabled = true;
+
     world.init = async () => {
+      world.lights.mainLight.castShadow = true;
+
       // Load models
       const objectList = await loadGLTFObject(
         [
@@ -72,13 +76,18 @@
         avatar.model.rotation.z = MathUtils.degToRad(-90);
 
         // Add the model to the updatable list
-        world.loop.updatables.push(avatar);
+        if (avatar.tick) world.loop.updatables.push(avatar);
 
         // Add the model to the scene
         await world.scene.add(avatar.model);
 
         // Get the neck and waist bones
         avatar.model.traverse((object) => {
+          if (object instanceof Mesh) {
+            object.castShadow = true;
+            object.receiveShadow = true;
+          }
+
           if (object instanceof Bone && object.name === "mixamorigNeck")
             neck = object;
           if (object instanceof Bone && object.name === "mixamorigSpine1")
@@ -92,6 +101,22 @@
             moveJoint(mousecoords, waist, 20, world.renderer.domElement);
           }
         });
+
+        // Create floor
+        const floor = createFloor({
+          width: 10000,
+          height: 10000,
+          widthSegments: 1,
+          heightSegments: 1,
+          rotation: -90,
+          receiveShadow: true,
+          meshParameters: {
+            opacity: 0.1,
+          },
+          position: new Vector3(0, -0.9, 0),
+        });
+
+        world.scene.add(floor);
       }
     };
 
@@ -117,10 +142,3 @@
 
   main();
 </script>
-
-<style>
-  #avatar-canvas-container {
-    width: 100%;
-    height: 100%;
-  }
-</style>
