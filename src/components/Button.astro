@@ -24,7 +24,11 @@ const { id, className, ariaLabel, icon, type } = Astro.props;
   id={id ? id : null}
   class={twMerge(
     clsx(
-      "rounded-[3px] flex flex-row gap-1 px-5 py-3 mt-4 md:mt-0 w-fit font-semibold items-center",
+      "rounded-[3px] flex flex-row gap-1 px-5 py-3 mt-4 md:mt-0 w-fit font-semibold items-center transition duration-200 ease-in-out",
+      {
+        "bg-button-primary text-skin-inverted hover:bg-button-primary-hover":
+          type === "primary",
+      },
       {
         "bg-button-primary text-skin-inverted hover:bg-button-primary-hover":
           type === "primary",
