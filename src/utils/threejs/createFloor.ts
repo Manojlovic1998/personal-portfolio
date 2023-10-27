@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import type { WorldReference } from "./World";
 
 type FloorSettings = {
   width?: number | undefined;
@@ -23,8 +22,6 @@ const createFloor = (floorSettings: FloorSettings) => {
     receiveShadow,
     position,
   } = floorSettings;
-
-  console.log(floorSettings);
 
   const floorGeometry = new THREE.PlaneGeometry(
     width,
