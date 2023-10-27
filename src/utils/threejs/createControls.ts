@@ -1,5 +1,8 @@
-import type { PerspectiveCamera } from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import type { PerspectiveCamera, EventListener, BaseEvent } from "three";
+import {
+  OrbitControls,
+  type OrbitControlsEventMap,
+} from "three/addons/controls/OrbitControls.js";
 
 export interface Controls extends OrbitControls {
   tick: () => void;
@@ -38,7 +41,39 @@ const createControls = (
     tick: () => {
       controls.update();
     },
-  } as Controls;
+    listenToKeyEvents: controls.listenToKeyEvents,
+    stopListenToKeyEvents: controls.stopListenToKeyEvents,
+    saveState: controls.saveState,
+    update: controls.update,
+    reset: controls.reset,
+    dispose: controls.dispose,
+    getPolarAngle: controls.getPolarAngle,
+    getAzimuthalAngle: controls.getAzimuthalAngle,
+    getDistance: controls.getDistance,
+    addEventListener: <T extends keyof OrbitControlsEventMap>(
+      type: T,
+      listener: (event: OrbitControlsEventMap[T]) => void,
+    ): void => {
+      controls.addEventListener(type, listener);
+    },
+    hasEventListener: <T extends keyof OrbitControlsEventMap>(
+      type: T,
+      listener: (event: OrbitControlsEventMap[T]) => void,
+    ): boolean => {
+      return controls.hasEventListener(type, listener);
+    },
+    removeEventListener: <T extends keyof OrbitControlsEventMap>(
+      type: T,
+      listener: (event: OrbitControlsEventMap[T]) => void,
+    ): void => {
+      controls.removeEventListener(type, listener);
+    },
+    dispatchEvent: <T extends keyof OrbitControlsEventMap>(
+      event: BaseEvent<T> & OrbitControlsEventMap[T],
+    ): void => {
+      controls.dispatchEvent(event);
+    },
+  };
 };
 
 export default createControls;
