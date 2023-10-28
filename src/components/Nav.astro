@@ -71,12 +71,17 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
             <a
               aria-current={Astro.url.pathname === href}
               class:list={[
-                "md:flex px-2 md:px-2.5 py-1.5 text-2xl md:text-xl rounded-lg text-skin-base dark:text-skin-base-dark font-bold hover:bg-nav-link-active/[6%] text-skin-base",
+                "md:flex px-2 md:px-2.5 py-1.5 text-2xl md:text-xl rounded-lg text-skin-base dark:text-skin-base-dark font-bold text-skin-base",
                 {
                   "bg-nav-link-active text-skin-inverted hover:hover:bg-nav-link-active":
                     Astro.url.pathname === href ||
                     (href !== import.meta.env.BASE_URL &&
                       Astro.url.pathname.startsWith(href)),
+                  "hover:text-link-primary-hover dark:hover:text-link-primary-hover transition-colors duration-200 ease-in-out":
+                    (href === import.meta.env.BASE_URL &&
+                      Astro.url.pathname !== href) ||
+                    (href !== import.meta.env.BASE_URL &&
+                      !Astro.url.pathname.startsWith(href)),
                 },
               ]}
               href={href}
@@ -102,7 +107,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
               <Icon
                 icon={icon}
                 size="1.25rem"
-                color="stroke-nav-icon-primary dark:stroke-nav-icon-primary-dark"
+                color="stroke-nav-icon-primary dark:stroke-nav-icon-primary-dark hover:stroke-nav-icon-hover dark:hover:stroke-nav-icon-hover transition-colors duration-200 ease-in-out"
               />
             </a>
           ))
