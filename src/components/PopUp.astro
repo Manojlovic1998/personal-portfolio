@@ -28,7 +28,10 @@ const { title, description, timer } = Astro.props;
     >
       <h2 id="pop-up-modal-heading" class="text-2xl font-bold">{title}</h2>
       <button class="mt-1" id="pop-up-close-button-x">
-        <Icon icon={"x"} />
+        <Icon
+          icon={"x"}
+          className="fill-nav-icon-muted dark:fill-icon-primary-dark"
+        />
       </button>
     </div>
     <!-- Modal Body -->
