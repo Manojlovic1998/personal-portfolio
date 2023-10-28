@@ -77,6 +77,7 @@
     --color-stroke-nav-icon-muted: 189 189 189;
     --color-stroke-nav-icon-muted-dark: 189 189 189;
     --color-stroke-nav-icon-inverted: 255 255 255;
+    --color-stroke-nav-icon-hover: 85 0 255;
     /* Shadow Navigation */
     --shadow-navigation-primary: 0px 5px 21px 0px rgba(207, 207, 207, 0.55);
     /* Shadow Input Field */
