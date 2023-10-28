@@ -11,6 +11,7 @@
     --color-text-base-dark: 250 250 250;
     --color-text-muted-dark: 207 207 207;
     --color-link-text-primary: 112 40 255;
+    --color-link-text-primary-hover: 85 0 255;
     /* Text Chip */
     --color-text-chip-inverted: 85 0 255;
     --color-text-chip-tertiary-dark: 226 212 255;
