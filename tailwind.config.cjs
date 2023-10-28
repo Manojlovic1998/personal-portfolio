@@ -13,6 +13,8 @@ module.exports = {
         },
         link: {
           primary: "rgb(var(--color-link-text-primary) / <alpha-value>)",
+          "primary-hover":
+            "rgb(var(--color-link-text-primary-hover) / <alpha-value>)",
         },
         chip: {
           inverted: "rgb(var(--color-text-chip-inverted) / <alpha-value>)",
@@ -114,6 +116,7 @@ module.exports = {
             "rgb(var(--color-stroke-nav-icon-muted-dark) / <alpha-value>)",
           inverted:
             "rgb(var(--color-stroke-nav-icon-inverted) / <alpha-value>)",
+          hover: "rgb(var(--color-stroke-nav-icon-hover) / <alpha-value>)",
         },
         icon: {
           primary: "rgb(var(--color-stroke-icon-primary) / <alpha-value>)",
