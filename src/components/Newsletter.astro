@@ -29,8 +29,10 @@ const { className } = Astro.props;
       type="email"
       name="email"
       id="email"
-      class="border pl-2 py-3 rounded-lg shadow-input dark:shadow-none border-input-primary dark:border-input-primary-dark/[16%] bg-input-primary/50 dark:bg-input-primary-dark/[8%] filter backdrop-blur-sm"
+      class="border pl-2 py-3 rounded-lg shadow-input dark:text-skin-muted-dark dark:shadow-none border-input-primary dark:border-input-primary-dark/[16%] bg-input-primary/50 dark:bg-input-primary-dark/[8%] filter backdrop-blur-sm"
       placeholder="Enter your email address."
+      autocomplete="email"
+      required
     />
     <Button type="primary">Subscribe</Button>
   </form>
