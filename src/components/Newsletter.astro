@@ -48,7 +48,8 @@ const { className } = Astro.props;
 
   const subscribe = async (email: string) => {
     // Change for production
-    const subscribeURL = "http://localhost:8787";
+    const subscribeURL =
+      "https://hashnode-newsletter-subscribe.nemanjamanojlovic.workers.dev/";
 
     let response;
 
@@ -58,7 +59,7 @@ const { className } = Astro.props;
         headers: {
           "Content-Type": "application/json",
           // Change for production
-          origin: "http://localhost:4321",
+          origin: "http://nemanjamanojlovic.com",
         },
         body: JSON.stringify({ email }),
       });
