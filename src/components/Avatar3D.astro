@@ -102,6 +102,14 @@
           }
         });
 
+        document.addEventListener("touchmove", (event) => {
+          var mousecoords = getMousePos(event);
+          if (neck && waist) {
+            moveJoint(mousecoords, neck, 45, world.renderer.domElement);
+            moveJoint(mousecoords, waist, 20, world.renderer.domElement);
+          }
+        });
+
         // Create floor
         const floor = createFloor({
           width: 10000,

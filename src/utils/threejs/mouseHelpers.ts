@@ -1,4 +1,11 @@
-export const getMousePos = (event: MouseEvent) => {
+export const getMousePos = (event: MouseEvent | TouchEvent) => {
+  if ("touches" in event) {
+    return {
+      x: event.touches[0].clientX,
+      y: event.touches[0].clientY,
+    };
+  }
+
   return {
     x: event.clientX,
     y: event.clientY,
