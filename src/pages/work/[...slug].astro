@@ -45,7 +45,9 @@ const { Content } = await entry.render();
           <div class="flex gap-2 justify-center md:justify-start flex-wrap">
             {entry.data.tags.map((t) => <Chip type="primary">{t}</Chip>)}
           </div>
-          <p class="block text-center md:hidden mt-4 text-lg">
+          <p
+            class="block text-center md:hidden mt-4 text-lg font-medium text-skin-muted dark:text-skin-muted-dark"
+          >
             {entry.data.description}
           </p>
         </div>
@@ -80,6 +82,12 @@ const { Content } = await entry.render();
     color: var(--color-text-base);
   }
 
+  :root.dark .wrapper :global(blockquote) {
+    border-inline-start: 0.25rem solid
+      rgb(var(--color-border-fill-blockquote-primary-dark));
+    color: rgb(var(--color-text-base-dark));
+  }
+
   .wrapper :global(a) {
     color: rgb(var(--color-link-text-primary));
     font-weight: var(--text-bold);
@@ -104,12 +112,6 @@ const { Content } = await entry.render();
       border-inline-start: 0.25rem solid
         rgb(var(--color-border-fill-blockquote-primary));
       color: var(--color-text-base);
-    }
-
-    :root.dark .wrapper :global(blockquote) {
-      border-inline-start: 0.25rem solid
-        rgb(var(--color-border-fill-blockquote-primary-dark));
-      color: rgb(var(--color-text-base-dark));
     }
   }
 </style>
