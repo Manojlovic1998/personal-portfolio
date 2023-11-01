@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:18-buster AS builder
+FROM node:20-buster AS builder
 SHELL ["/bin/bash", "-c"]
 
 
