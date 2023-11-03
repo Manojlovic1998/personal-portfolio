@@ -27,17 +27,10 @@
     };
 
     // Crate a new World
-    const world = new World(
-      container,
-      undefined,
-      camneraSettings,
-      undefined,
-      {
-        enabled: true,
-        enableDamping: true,
-      },
-      enableMobileTouchAction,
-    );
+    const world = new World(container, undefined, camneraSettings, undefined, {
+      enabled: true,
+      enableDamping: true,
+    });
 
     world.renderer.shadowMap.enabled = true;
 
@@ -94,6 +87,7 @@
             waist = object;
         });
 
+        // Event listeners
         document.addEventListener("mousemove", (event) => {
           var mousecoords = getMousePos(event);
           if (neck && waist) {
@@ -109,6 +103,9 @@
             moveJoint(mousecoords, waist, 20, world.renderer.domElement);
           }
         });
+
+        // Enable mobile touch action
+        enableMobileTouchAction("(max-width: 768px)");
 
         // Create floor
         const floor = createFloor({

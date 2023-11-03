@@ -5,17 +5,23 @@
   touch-action: none;
 } */
 
-const enableMobileTouchAction = () => {
-  const mediaQuery = window.matchMedia("(max-width: 768px)");
+import matchMediaQuery from "./matchMediaQuery";
+
+const enableMobileTouchAction = (query: string) => {
   const canvas = document.getElementsByClassName("scene")[0] as HTMLElement;
-  switch (mediaQuery.matches) {
-    case true:
-      canvas.style.touchAction = "pan-y";
-      break;
-    case false:
-      canvas.style.touchAction = "none";
-      break;
-  }
+  const onMatchCallback = () => {
+    canvas.style.touchAction = "pan-y";
+  };
+
+  const onMismatchCallback = () => {
+    canvas.style.touchAction = "none";
+  };
+
+  const mediaQuery = matchMediaQuery(
+    query,
+    onMatchCallback,
+    onMismatchCallback,
+  );
 };
 
 export default enableMobileTouchAction;

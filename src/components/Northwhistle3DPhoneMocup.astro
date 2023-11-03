@@ -23,16 +23,9 @@
       position: { x: -2, y: -1, z: 4 },
     };
     // Crate a new World
-    const world = new World(
-      container,
-      undefined,
-      camneraSettings,
-      undefined,
-      {
-        autoRotate: true,
-      },
-      enableMobileTouchAction,
-    );
+    const world = new World(container, undefined, camneraSettings, undefined, {
+      autoRotate: true,
+    });
 
     // Modify world light
     world.lights.ambientLight.intensity = 0.4;
@@ -56,6 +49,9 @@
 
         world.scene.add(northwhistle.model);
       }
+
+      // Enable mobile touch action
+      enableMobileTouchAction("(max-width: 768px)");
     };
 
     // Complete async tasks

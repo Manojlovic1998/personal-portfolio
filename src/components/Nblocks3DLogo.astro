@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <!--Component Template -->
@@ -15,7 +16,7 @@
   const main = async () => {
     // Get a reference to the container element
     const container = document.getElementById(
-      "nblocks-canvas-container"
+      "nblocks-canvas-container",
     ) as HTMLElement;
     const camneraSettings: CameraSettings = {
       fov: 50,
@@ -23,16 +24,9 @@
     };
 
     // Crate a new World
-    const world = new World(
-      container,
-      undefined,
-      camneraSettings,
-      undefined,
-      {
-        autoRotate: true,
-      },
-      enableMobileTouchAction
-    );
+    const world = new World(container, undefined, camneraSettings, undefined, {
+      autoRotate: true,
+    });
 
     world.init = async () => {
       // Load models
@@ -50,6 +44,9 @@
         nblocks.model.scale.set(0.01, 0.01, 0.01);
         world.scene.add(nblocks.model);
       }
+
+      // Enable mobile touch action
+      enableMobileTouchAction("(max-width: 768px)");
     };
 
     // Complete async tasks
