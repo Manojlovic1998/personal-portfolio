@@ -91,7 +91,7 @@
 
         // Event listeners
         document.addEventListener("mousemove", (event) => {
-          var mousecoords = getMousePos(event);
+          const mousecoords = getMousePos(event);
           if (neck && waist) {
             moveJoint(mousecoords, neck, 45, world.renderer.domElement);
             moveJoint(mousecoords, waist, 20, world.renderer.domElement);
@@ -120,7 +120,6 @@
           const canvas = document.getElementsByClassName(
             "scene",
           )[0] as HTMLElement;
-          console.log("mismatch");
           canvas.style.touchAction = "none";
           world.controls.enabled = false;
           world.controls.reset();
@@ -171,7 +170,14 @@
     degreeLimit: number,
     canvas: HTMLElement,
   ) => {
-    let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit, canvas);
+    let degrees = getMouseDegrees(
+      mouse.x,
+      mouse.y,
+      degreeLimit,
+      canvas,
+      canvas.clientWidth / 2,
+      canvas.clientHeight / 2,
+    );
 
     joint.rotation.y = MathUtils.degToRad(degrees.x);
     joint.rotation.x = MathUtils.degToRad(degrees.y);

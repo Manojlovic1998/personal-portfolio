@@ -43,39 +43,43 @@ export const getMouseDegrees = (
   let ydiff = 0;
   let yPercentage = 0;
 
-  // let w = { x: target.clientWidth, y: target.clientHeight };
-  let w = { x: window.innerWidth, y: window.innerHeight };
-  // Left (Rotates left between 0 and -degreesLimit)
+  const { x: targetXBounding, y: targetYBounding } =
+    target.getBoundingClientRect();
 
+  let wTarget = { x: target.clientWidth, y: target.clientHeight };
+
+  // Left (Rotates left between 0 and -degreesLimit)
   // 1. If cursor is in the left half of screen
-  if (x <= w.x / 2) {
+  if (x <= targetXBounding + wTarget.x / 2) {
     // 2. Get the difference between middle of screen and cursor position
-    xdiff = w.x / 2 - x;
+    xdiff = targetXBounding + wTarget.x / 2 - x;
     // 3. Find the percentage of that difference (percentage toward edge of screen)
-    xPercentage = (xdiff / (w.x / 2)) * 100;
+    xPercentage = (xdiff / (targetXBounding + wTarget.x / 2)) * 100;
     // 4. Convert that to a percentage of the maximum rotation we allow for the neck
     dx = ((degreeLimit * xPercentage) / 100) * -1;
   }
 
   // Right (Rotates right between 0 and degreeLimit)
-  if (x >= w.x / 2) {
-    xdiff = x - w.x / 2;
-    xPercentage = (xdiff / (w.x / 2)) * 100;
+  if (x >= targetXBounding + wTarget.x / 2) {
+    xdiff = x - (targetXBounding + wTarget.x / 2);
+
+    xPercentage = (xdiff / (targetXBounding + wTarget.x / 2)) * 100;
     dx = (degreeLimit * xPercentage) / 100;
   }
 
   // Up (Rotates up between 0 and -degreeLimit)
-  if (y <= w.y / 2) {
-    ydiff = w.y / 2 - y;
-    yPercentage = (ydiff / (w.y / 2)) * 100;
+  if (y <= targetYBounding + wTarget.y / 2) {
+    ydiff = targetYBounding + wTarget.y / 2 - y;
+
+    yPercentage = (ydiff / (targetYBounding + wTarget.y / 2)) * 100;
     // Note that I cut degreeLimit in half when she looks up
     dy = ((degreeLimit * 0.5 * yPercentage) / 100) * -1;
   }
 
   // Down (Rotates down between 0 and degreeLimit)
-  if (y >= w.y / 2) {
-    ydiff = y - w.y / 2;
-    yPercentage = (ydiff / (w.y / 2)) * 100;
+  if (y >= targetYBounding + wTarget.y / 2) {
+    ydiff = y - (targetYBounding + wTarget.y / 2);
+    yPercentage = (ydiff / (targetYBounding + wTarget.y / 2)) * 100;
     dy = (degreeLimit * yPercentage) / 100;
   }
 
