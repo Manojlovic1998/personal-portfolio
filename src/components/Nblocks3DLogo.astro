@@ -6,12 +6,9 @@
 <div id="nblocks-canvas-container"></div>
 <script>
   import World from "../utils/threejs/World";
-
   import loadGLTFObject from "../utils/threejs/loadGLTFObject";
-
   import type { CameraSettings } from "../utils/threejs/createCamera";
-
-  import enableMobileTouchAction from "../utils/threejs/enableMobielTouchAction";
+  import matchMediaQuery from "../utils/threejs/matchMediaQuery";
 
   const main = async () => {
     // Get a reference to the container element
@@ -45,8 +42,31 @@
         world.scene.add(nblocks.model);
       }
 
+      // Three.js's OrbitalControls class sets the following inline style within its constructor method
+      // It is a very case specific option which interfiers with touch scroll on mobile, therefore I have wrote this script which removes it
+      // based on screen size.
+      // touch-action: none;
+
       // Enable mobile touch action
-      enableMobileTouchAction("(max-width: 768px)");
+      const onMatchCallback = () => {
+        const canvas = document.getElementsByClassName(
+          "scene",
+        )[0] as HTMLElement;
+        canvas.style.touchAction = "pan-y";
+      };
+
+      const onMismatchCallback = () => {
+        const canvas = document.getElementsByClassName(
+          "scene",
+        )[0] as HTMLElement;
+        canvas.style.touchAction = "none";
+      };
+
+      const mobileTouchAction = matchMediaQuery(
+        "(max-width: 768px)",
+        onMatchCallback,
+        onMismatchCallback,
+      );
     };
 
     // Complete async tasks

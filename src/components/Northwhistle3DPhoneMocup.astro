@@ -6,12 +6,9 @@
 <div id="northwhistle-canvas-container"></div>
 <script>
   import World from "../utils/threejs/World";
-
   import loadGLTFObject from "../utils/threejs/loadGLTFObject";
-
   import type { CameraSettings } from "../utils/threejs/createCamera";
-
-  import enableMobileTouchAction from "../utils/threejs/enableMobielTouchAction";
+  import matchMediaQuery from "../utils/threejs/matchMediaQuery";
 
   const main = async () => {
     // Get a reference to the container element
@@ -51,7 +48,25 @@
       }
 
       // Enable mobile touch action
-      enableMobileTouchAction("(max-width: 768px)");
+      const onMatchCallback = () => {
+        const canvas = document.getElementsByClassName(
+          "scene",
+        )[0] as HTMLElement;
+        canvas.style.touchAction = "pan-y";
+      };
+
+      const onMismatchCallback = () => {
+        const canvas = document.getElementsByClassName(
+          "scene",
+        )[0] as HTMLElement;
+        canvas.style.touchAction = "none";
+      };
+
+      const mobileTouchAction = matchMediaQuery(
+        "(max-width: 768px)",
+        onMatchCallback,
+        onMismatchCallback,
+      );
     };
 
     // Complete async tasks

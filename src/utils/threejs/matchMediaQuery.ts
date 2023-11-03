@@ -19,15 +19,17 @@ const matchMediaQuery = (
     switch (e.matches) {
       case true:
         onMatchCallback();
-        break;
+        return mediaQuery;
       case false:
         onMismatchCallback();
-        break;
+        return mediaQuery;
       default:
         console.error("Unexpected value for e.matches:", e.matches);
-        break;
+        return mediaQuery;
     }
   };
+
+  return mediaQuery;
 };
 
 export default matchMediaQuery;

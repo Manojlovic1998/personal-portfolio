@@ -8,11 +8,11 @@
   import World from "../utils/threejs/World";
   import loadGLTFObject from "../utils/threejs/loadGLTFObject";
   import type { CameraSettings } from "../utils/threejs/createCamera";
-  import enableMobileTouchAction from "../utils/threejs/enableMobielTouchAction";
   import { getMousePos, getMouseDegrees } from "../utils/threejs/mouseHelpers";
   import createFloor from "../utils/threejs/createFloor";
   import { MathUtils } from "three";
   import { Bone, Vector3, Mesh } from "three";
+  import matchMediaQuery from "../utils/threejs/matchMediaQuery";
 
   const main = async () => {
     let neck: null | Bone = null;
@@ -104,8 +104,26 @@
           }
         });
 
-        // Enable mobile touch action
-        enableMobileTouchAction("(max-width: 768px)");
+        const onMatchCallback = () => {
+          console.log("match");
+          const canvas = document.getElementsByClassName(
+            "scene",
+          )[0] as HTMLElement;
+          canvas.style.touchAction = "pan-y";
+        };
+
+        const onMismatchCallback = () => {
+          const canvas = document.getElementsByClassName(
+            "scene",
+          )[0] as HTMLElement;
+          canvas.style.touchAction = "none";
+        };
+
+        const mobileTouchAction = matchMediaQuery(
+          "(max-width: 768px)",
+          onMatchCallback,
+          onMismatchCallback,
+        );
 
         // Create floor
         const floor = createFloor({
