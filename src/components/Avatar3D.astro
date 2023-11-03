@@ -30,6 +30,8 @@
     const world = new World(container, undefined, camneraSettings, undefined, {
       enabled: true,
       enableDamping: true,
+      enablePan: false,
+      enableZoom: false,
     });
 
     world.renderer.shadowMap.enabled = true;
@@ -96,27 +98,40 @@
           }
         });
 
-        document.addEventListener("touchmove", (event) => {
-          var mousecoords = getMousePos(event);
-          if (neck && waist) {
-            moveJoint(mousecoords, neck, 45, world.renderer.domElement);
-            moveJoint(mousecoords, waist, 20, world.renderer.domElement);
-          }
-        });
-
         const onMatchCallback = () => {
           console.log("match");
           const canvas = document.getElementsByClassName(
             "scene",
           )[0] as HTMLElement;
           canvas.style.touchAction = "pan-y";
+          world.controls.enabled = true;
+          world.controls.enableZoom = false;
+
+          world.controls.update();
+
+          avatar.model.traverse((object) => {
+            if (object instanceof Mesh) {
+              object.castShadow = false;
+              object.receiveShadow = false;
+            }
+          });
         };
 
         const onMismatchCallback = () => {
           const canvas = document.getElementsByClassName(
             "scene",
           )[0] as HTMLElement;
+          console.log("mismatch");
           canvas.style.touchAction = "none";
+          world.controls.enabled = false;
+          world.controls.reset();
+
+          avatar.model.traverse((object) => {
+            if (object instanceof Mesh) {
+              object.castShadow = true;
+              object.receiveShadow = true;
+            }
+          });
         };
 
         const mobileTouchAction = matchMediaQuery(

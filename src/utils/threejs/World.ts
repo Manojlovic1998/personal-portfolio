@@ -20,7 +20,7 @@ export interface WorldReference {
   scene: Scene;
   camera: PerspectiveCamera;
   renderer: WebGLRenderer;
-  controls: Controls;
+  controls: Controls["orbitControls"];
   loop: Loop;
   lights: {
     ambientLight: AmbientLight;
@@ -55,13 +55,16 @@ class World implements WorldReference {
     this.lights = createLights();
 
     this.scene.add(this.lights.ambientLight, this.lights.mainLight);
-    this.controls = createControls(
+    const controls = createControls(
       this.camera,
       this.renderer.domElement,
       controlSettings,
     );
+
+    this.controls = controls.orbitControls;
+
     this.loop = new Loop(this.camera, this.scene, this.renderer);
-    this.loop.updatables.push(this.controls);
+    this.loop.updatables.push(controls);
 
     this.renderer.domElement.classList.add("scene");
     container.appendChild(this.renderer.domElement);

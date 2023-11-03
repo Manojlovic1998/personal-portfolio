@@ -4,13 +4,16 @@ import {
   type OrbitControlsEventMap,
 } from "three/addons/controls/OrbitControls.js";
 
-export interface Controls extends OrbitControls {
+export interface Controls {
+  orbitControls: OrbitControls;
   tick: () => void;
 }
 
 export type ControlSettings = {
   enableDamping?: boolean;
   autoRotate?: boolean;
+  enableZoom?: boolean;
+  enablePan?: boolean;
   enabled?: boolean;
 };
 
@@ -24,9 +27,11 @@ const createControls = (
     enabled: true,
     enableDamping: true,
     autoRotate: false,
+    enablePan: true,
+    enableZoom: true,
   };
 
-  const { enableDamping, autoRotate, enabled } = {
+  const { enableDamping, autoRotate, enabled, enablePan } = {
     ...defaultControlSettings,
     ...controlSettings,
   };
@@ -35,43 +40,13 @@ const createControls = (
   controls.enableDamping = enableDamping;
   controls.autoRotate = autoRotate;
   controls.enabled = enabled;
+  controls.enablePan = enablePan;
   controls.update();
+
   return {
-    ...controls,
+    orbitControls: controls,
     tick: () => {
       controls.update();
-    },
-    listenToKeyEvents: controls.listenToKeyEvents,
-    stopListenToKeyEvents: controls.stopListenToKeyEvents,
-    saveState: controls.saveState,
-    update: controls.update,
-    reset: controls.reset,
-    dispose: controls.dispose,
-    getPolarAngle: controls.getPolarAngle,
-    getAzimuthalAngle: controls.getAzimuthalAngle,
-    getDistance: controls.getDistance,
-    addEventListener: <T extends keyof OrbitControlsEventMap>(
-      type: T,
-      listener: (event: OrbitControlsEventMap[T]) => void,
-    ): void => {
-      controls.addEventListener(type, listener);
-    },
-    hasEventListener: <T extends keyof OrbitControlsEventMap>(
-      type: T,
-      listener: (event: OrbitControlsEventMap[T]) => void,
-    ): boolean => {
-      return controls.hasEventListener(type, listener);
-    },
-    removeEventListener: <T extends keyof OrbitControlsEventMap>(
-      type: T,
-      listener: (event: OrbitControlsEventMap[T]) => void,
-    ): void => {
-      controls.removeEventListener(type, listener);
-    },
-    dispatchEvent: <T extends keyof OrbitControlsEventMap>(
-      event: BaseEvent<T> & OrbitControlsEventMap[T],
-    ): void => {
-      controls.dispatchEvent(event);
     },
   };
 };

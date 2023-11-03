@@ -19,17 +19,31 @@ const matchMediaQuery = (
     switch (e.matches) {
       case true:
         onMatchCallback();
-        return mediaQuery;
+        break;
       case false:
         onMismatchCallback();
-        return mediaQuery;
+        break;
       default:
         console.error("Unexpected value for e.matches:", e.matches);
-        return mediaQuery;
+        break;
     }
   };
 
-  return mediaQuery;
+  // Ran once on load
+  switch (mediaQuery.matches) {
+    case true:
+      onMatchCallback();
+      return mediaQuery;
+    case false:
+      onMismatchCallback();
+      return mediaQuery;
+    default:
+      console.error(
+        "Unexpected value for mediaQuery.matches:",
+        mediaQuery.matches,
+      );
+      return mediaQuery;
+  }
 };
 
 export default matchMediaQuery;
