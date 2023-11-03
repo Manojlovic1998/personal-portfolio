@@ -39,7 +39,7 @@ const { title, description } = Astro.props;
       /* Mobile Light Theme Post Load. */
       :root {
         --_placeholder-bg: linear-gradient(transparent, transparent);
-        --bg-image-main: url("/assets/backgrounds/bg-nav-mobile.png");
+        --bg-image-main: url("/assets/backgrounds/bg-nav-mobile.webp");
         --bg-image-subtle-1: var(--_placeholder-bg);
         --bg-image-subtle-2: var(--_placeholder-bg);
         --bg-image-subtle-3: var(--_placeholder-bg);
@@ -52,21 +52,21 @@ const { title, description } = Astro.props;
       }
 
       :root.dark {
-        --bg-image-main: url("/assets/backgrounds/bg-nav-mobile-dark.png");
+        --bg-image-main: url("/assets/backgrounds/bg-nav-mobile-dark.webp");
         --bg-blend-mode: lighten;
       }
 
       /* These backgrounds are displayed below the fold, so we lazy load them
 			   once the `.loaded` class has been set.  */
       :root.loaded {
-        --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-mobile.png");
-        --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2.png");
-        --bg-image-subtle-3: url("/assets/backgrounds/bg-subtle-3.png");
-        --bg-image-footer: url("/assets/backgrounds/bg-footer-mobile.png");
+        --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-mobile.webp");
+        --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2.webp");
+        --bg-image-subtle-3: url("/assets/backgrounds/bg-subtle-3.webp");
+        --bg-image-footer: url("/assets/backgrounds/bg-footer-mobile.webp");
       }
       /* Mobile Dark Theme Post Load */
       :root.loaded.dark {
-        --bg-image-footer: url("/assets/backgrounds/bg-footer-mobile-dark.png");
+        --bg-image-footer: url("/assets/backgrounds/bg-footer-mobile-dark.webp");
       }
 
       .backgrounds {
@@ -88,27 +88,27 @@ const { title, description } = Astro.props;
       @media (min-width: 768px) {
         :root {
           --bg-scale: 1;
-          --bg-image-main: url("/assets/backgrounds/bg-nav.png");
+          --bg-image-main: url("/assets/backgrounds/bg-nav.webp");
         }
         /* Dark Theme */
         :root.dark {
-          --bg-image-main: url("/assets/backgrounds/bg-nav-dark.png");
+          --bg-image-main: url("/assets/backgrounds/bg-nav-dark.webp");
         }
 
         /* Light Theme */
         :root.loaded {
-          --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1.png");
-          --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2.png");
-          --bg-image-subtle-3: url("/assets/backgrounds/bg-subtle-3.png");
-          --bg-image-footer: url("/assets/backgrounds/bg-footer.png");
+          --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1.webp");
+          --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2.webp");
+          --bg-image-subtle-3: url("/assets/backgrounds/bg-subtle-3.webp");
+          --bg-image-footer: url("/assets/backgrounds/bg-footer.webp");
         }
 
         /* Dark Theme Post Load */
         :root.loaded.dark {
-          --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-dark.png");
-          --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2-dark.png");
-          --bg-image-subtle-3: url("/assets/backgrounds/bg-subtle-3-dark.png");
-          --bg-image-footer: url("/assets/backgrounds/bg-footer-dark.png");
+          --bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-dark.webp");
+          --bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2-dark.webp");
+          --bg-image-subtle-3: url("/assets/backgrounds/bg-subtle-3-dark.webp");
+          --bg-image-footer: url("/assets/backgrounds/bg-footer-dark.webp");
         }
 
         .backgrounds {
