@@ -88,15 +88,15 @@
           if (object instanceof Bone && object.name === "mixamorigSpine1")
             waist = object;
         });
-
         // Event listeners
-        document.addEventListener("mousemove", (event) => {
+
+        const moveJoints = (event: MouseEvent) => {
           const mousecoords = getMousePos(event);
           if (neck && waist) {
             moveJoint(mousecoords, neck, 45, world.renderer.domElement);
             moveJoint(mousecoords, waist, 20, world.renderer.domElement);
           }
-        });
+        };
 
         const onMatchCallback = () => {
           const canvas = document.getElementsByClassName(
@@ -107,6 +107,15 @@
           world.controls.enableZoom = false;
 
           world.controls.update();
+
+          document.removeEventListener("mousemove", moveJoints);
+
+          if (neck && waist) {
+            neck.rotation.y = 0;
+            neck.rotation.x = 0;
+            waist.rotation.y = 0;
+            waist.rotation.x = 0;
+          }
 
           avatar.model.traverse((object) => {
             if (object instanceof Mesh) {
@@ -124,6 +133,9 @@
           world.controls.enabled = false;
           world.controls.reset();
 
+          // Event listeners
+          document.addEventListener("mousemove", moveJoints);
+
           avatar.model.traverse((object) => {
             if (object instanceof Mesh) {
               object.castShadow = true;
@@ -140,8 +152,8 @@
 
         // Create floor
         const floor = createFloor({
-          width: 10000,
-          height: 10000,
+          width: 5000,
+          height: 5000,
           widthSegments: 1,
           heightSegments: 1,
           rotation: -90,
@@ -170,14 +182,7 @@
     degreeLimit: number,
     canvas: HTMLElement,
   ) => {
-    let degrees = getMouseDegrees(
-      mouse.x,
-      mouse.y,
-      degreeLimit,
-      canvas,
-      canvas.clientWidth / 2,
-      canvas.clientHeight / 2,
-    );
+    let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit, canvas);
 
     joint.rotation.y = MathUtils.degToRad(degrees.x);
     joint.rotation.x = MathUtils.degToRad(degrees.y);
