@@ -183,9 +183,17 @@
     canvas: HTMLElement,
   ) => {
     let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit, canvas);
-
-    joint.rotation.y = MathUtils.degToRad(degrees.x);
-    joint.rotation.x = MathUtils.degToRad(degrees.y);
+    console.log(degrees, joint.name);
+    joint.rotation.y = MathUtils.degToRad(
+      degrees.x > degreeLimit || degrees.x < -degreeLimit
+        ? degreeLimit
+        : degrees.x,
+    );
+    joint.rotation.x = MathUtils.degToRad(
+      degrees.y > degreeLimit || degrees.y < -degreeLimit
+        ? degreeLimit
+        : degrees.y,
+    );
   };
 
   main();
