@@ -2,14 +2,14 @@
 import moment from "moment";
 import Chip from "./Chip.astro";
 interface Props {
-  coverImage: string;
+  coverImage: { url: string };
   title: string;
   brief: string;
-  dateAdded: string;
+  publishedAt: string;
   slug: string;
 }
 
-const { coverImage, title, brief, dateAdded, slug } = Astro.props;
+const { coverImage, title, brief, publishedAt, slug } = Astro.props;
 ---
 
 <div class="flex flex-col">
@@ -19,7 +19,7 @@ const { coverImage, title, brief, dateAdded, slug } = Astro.props;
       target="_blank"
       class="image-anchor"
     >
-      <img src={coverImage} alt={title} class="bg-cover rounded-3xl" />
+      <img src={coverImage.url} alt={title} class="bg-cover rounded-3xl" />
     </a>
   </div>
   <div class="flex flex-col items-start gap-2.5 mt-6">

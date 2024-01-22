@@ -1,5 +1,8 @@
 ---
 import { getCollection } from "astro:content";
+import type { TypedDocumentNode } from "@graphql-typed-document-node/core";
+import { GraphQLClient, gql } from "graphql-request";
+import { parse } from "graphql";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -34,51 +37,55 @@ const projects = (await getCollection("work"))
 // https://docs.astro.build/core-concepts/astro-components/
 
 const fetchHashnodePosts = async (username: string) => {
-  const graphqlUri = "https://api.hashnode.com/";
+  const graphqlUri = "https://gql.hashnode.com";
 
-  const requestPayload = {
-    query: `
-      query GetUserArticles($page: Int!){
-        user(username: "${username}") {
-          name
-          publication {
-            posts(page: $page) {
+  const client = new GraphQLClient(graphqlUri);
+
+  const query: TypedDocumentNode<{
+    publication: {
+      posts: {
+        edges: {
+          node: {
+            title: string;
+            brief: string;
+            coverImage: {
+              url: string;
+            };
+            slug: string;
+            publishedAt: string;
+          };
+        }[];
+      };
+    };
+  }> = parse(gql`
+    query GetUserArticles {
+      publication(host: "blog.nemanjamanojlovic.com") {
+        posts(first: 20) {
+          edges {
+            node {
               title
               brief
-              coverImage
-              dateAdded
+              coverImage {
+                url
+              }
               slug
+              publishedAt
             }
           }
         }
       }
-   `,
-    variables: {
-      page: 0,
-    },
-  };
+    }
+  `);
+  try {
+    const allPosts = await client.request(query);
 
-  const httpsRequest = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ ...requestPayload }),
-  };
-  const resPayload = await fetch(graphqlUri, httpsRequest);
-  if (resPayload.status == 200) {
-    const resData = await resPayload.json();
-    return resData;
-  } else {
-    console.error(
-      `Requesting posts from Hashnode has resulted in '${resPayload.statusText}' status code.`,
-    );
+    return allPosts.publication.posts.edges;
+  } catch (error) {
+    console.error(error);
   }
 };
 
-const { data } = await fetchHashnodePosts("manojlovic1998");
-
-const blogPosts: blogPost[] = data.user.publication.posts;
+const blogPosts = await fetchHashnodePosts("manojlovic1998");
 ---
 
 <BaseLayout image={`${import.meta.env.BASE_URL}assets/open-graph/index.webp`}>
@@ -172,13 +179,14 @@ const blogPosts: blogPost[] = data.user.publication.posts;
         <div class="md:block md:col-span-2 md:row-start-2 mt-16">
           <Grid className="grid-cols-3 place-items-center gap-20 md:gap-5">
             {
-              blogPosts.map((post) => (
-                <>
-                  <li class="col-span-3 md:col-span-1 max-w-[343px]">
-                    <BlogCard {...post} />
-                  </li>
-                </>
-              ))
+              blogPosts &&
+                blogPosts.map((post) => (
+                  <>
+                    <li class="col-span-3 md:col-span-1 max-w-[343px]">
+                      <BlogCard {...post.node} />
+                    </li>
+                  </>
+                ))
             }
           </Grid>
         </div>
