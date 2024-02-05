@@ -134,5 +134,46 @@ const { title, description, image } = Astro.props;
         }
       }
     </style>
+    <script>
+      const animateUi = () => {
+        const options = {
+          root: null,
+          threshold: 0,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            // Get current scroll position
+            const scrollY = window.scrollY;
+
+            console.log(
+              entry.target,
+              entry.target.getBoundingClientRect().y +
+                entry.target.getBoundingClientRect().height,
+              scrollY,
+            );
+            if (
+              entry.isIntersecting &&
+              entry.target.getBoundingClientRect().top > scrollY
+            ) {
+              entry.target.classList.add("pop");
+              observer.unobserve(entry.target);
+            } else if (
+              entry.isIntersecting &&
+              entry.target.getBoundingClientRect().top < scrollY
+            ) {
+              entry.target.classList.add("opacity");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, options);
+
+        document.querySelectorAll(".animate").forEach((el) => {
+          observer.observe(el);
+        });
+      };
+
+      animateUi();
+    </script>
   </body>
 </html>

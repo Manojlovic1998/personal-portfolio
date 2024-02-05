@@ -4,21 +4,24 @@ import Icon from "./Icon.astro";
 ---
 
 <aside>
-	<div
-		class="flex flex-col items-center md:items-start gap-6 text-center md:text-left"
-	>
-		<h2
-			class="text-5xl font-semibold max-w-[433px] text-skin-base dark:text-skin-base-dark"
-		>
-			Interested in working together?
-		</h2>
-		<CallToAction href="mailto:contact@nemanjamanojlovic.com">
-			<Icon
-				icon="paper-plane-tilt"
-				size="1.2em"
-				color="stroke-nav-icon-inverted"
-			/>
-			Get in touch
-		</CallToAction>
-	</div>
+  <div
+    class="flex flex-col items-center md:items-start gap-6 text-center md:text-left"
+  >
+    <h2
+      class="text-5xl font-semibold max-w-[433px] text-skin-base dark:text-skin-base-dark animate"
+    >
+      Interested in working together?
+    </h2>
+    <CallToAction
+      href="mailto:contact@nemanjamanojlovic.com"
+      className="animate"
+    >
+      <Icon
+        icon="paper-plane-tilt"
+        size="1.2em"
+        color="stroke-nav-icon-inverted"
+      />
+       Get in touch
+    </CallToAction>
+  </div>
 </aside>

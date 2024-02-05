@@ -3,7 +3,11 @@
 ---
 
 <!--Component Template -->
-<div id="avatar-canvas-container" class="w-full min-h-[inherit] md:w-1/2"></div>
+<div
+  id="avatar-canvas-container"
+  class="w-full min-h-[inherit] md:w-1/2 animate delay-3"
+>
+</div>
 <script>
   import World from "../utils/threejs/World";
   import loadGLTFObject from "../utils/threejs/loadGLTFObject";
@@ -183,7 +187,6 @@
     canvas: HTMLElement,
   ) => {
     let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit, canvas);
-    console.log(degrees, joint.name);
     joint.rotation.y = MathUtils.degToRad(
       degrees.x > degreeLimit || degrees.x < -degreeLimit
         ? degreeLimit

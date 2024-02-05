@@ -15,17 +15,17 @@ const textLinks: { label: string; href: string }[] = [
   <div
     class="pt-11 md:py-10 max-w-[1290px] flex flex-col md:flex-row md:justify-between mx-auto border-t border-footer-primary/70 dark:border-footer-primary-dark/[16%] gap-11"
   >
-    <ContactCTA />
+    <ContactCTA className="" />
     <div>
       <h2
-        class="text-skin-base dark:text-skin-base-dark font-semibold text-2xl text-center md:text-start"
+        class="text-skin-base dark:text-skin-base-dark font-semibold text-2xl text-center md:text-start animate"
       >
         General
       </h2>
       <ul class="text-center md:text-start mt-8 md:mt-0">
         {
           textLinks.map(({ label, href }) => (
-            <li class="mt-4">
+            <li class="mt-4 animate">
               <a
                 href={href}
                 class="text-skin-muted dark:text-skin-muted-dark font-semibold hover:text-link-primary-hover dark:hover:text-link-primary-hover transition-colors duration-200 ease-in-out"
@@ -42,21 +42,21 @@ const textLinks: { label: string; href: string }[] = [
   <div
     class="flex flex-col md:flex-row md:justify-between px-6 text-center font-semibold text-skin-muted dark:text-skin-muted-dark gap-4 py-11 border-t border-footer-primary/70 dark:border-footer-primary-dark/[16%] max-w-[1290px] mx-auto"
   >
-    <p>
+    <p class="animate">
       Designed & Developed in Sweden &copy; {currentYear} Nemanja Manojlovic
     </p>
     <p class="flex justify-center gap-4">
       <a
         href="https://github.com/Manojlovic1998"
         target="_blank"
-        class="hover:text-link-primary-hover transition-colors duration-200 ease-in-out"
+        class="hover:text-link-primary-hover transition-colors duration-200 ease-in-out animate"
       >
         GitHub</a
       >
       <a
         href="https://codepen.io/nemanja-manojlovic"
         target="_blank"
-        class="hover:text-link-primary-hover transition-colors duration-200 ease-in-out"
+        class="hover:text-link-primary-hover transition-colors duration-200 ease-in-out animate"
       >
         CodePen</a
       >

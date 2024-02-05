@@ -37,12 +37,12 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
       href={`${import.meta.env.BASE_URL}`}
       class="flex gap-2 justify-center items-center text-2xl text-skin-base dark:text-skin-base-dark z-20"
     >
-      <Icon icon="nlogo" size="41px" className="rounded-lg" />
-      <span class="hidden lg:inline font-medium text-xl"
+      <Icon icon="nlogo" size="41px" className="rounded-lg animate" />
+      <span class="hidden lg:inline font-medium text-xl animate delay-1"
         >Nemanja Manojlovic</span
       >
     </a>
-    <menu-button class="ml-auto relative flex">
+    <menu-button class="ml-auto relative flex animate delay-1 z-10">
       <template>
         <button
           class="menu-button z-20 text-burger-light dark:text-burger-dark px-3 py-3 rounded-2xl border dark:border-navigation-primary-dark/[16%] dark:bg-navigation-primary-dark/[8%]"
@@ -63,15 +63,17 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
     class="absolute right-0 w-full md:contents backdrop-blur-sm md:backdrop-blur-none rounded-bl-2xl rounded-br-2xl md:rounded-none overflow-hidden border md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:border-none top-0 transition-transform duration-200 ease-in-out -translate-y-full"
   >
     <ul
-      class="flex flex-col justify-center gap-6 md:flex-row bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark md:border md:rounded-2xl border-navigation-primary dark:border-navigation-primary-dark/[16%] flex-grow md:max-w-[392px] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-5 md:px-0 pb-6 pt-[6.5rem] md:py-2.5"
+      class="flex flex-col justify-center gap-6 md:flex-row bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark md:border md:rounded-2xl border-navigation-primary dark:border-navigation-primary-dark/[16%] flex-grow md:max-w-[392px] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-5 md:px-0 pb-6 pt-[6.5rem] md:py-2.5 animate delay-2"
     >
       {
-        textLinks.map(({ label, href }) => (
+        textLinks.map(({ label, href }, index) => (
           <li>
             <a
               aria-current={Astro.url.pathname === href}
               class:list={[
-                "md:flex px-2 md:px-2.5 py-1.5 text-2xl md:text-xl rounded-lg text-skin-base dark:text-skin-base-dark font-bold text-skin-base",
+                `md:flex px-2 md:px-2.5 py-1.5 text-2xl md:text-xl rounded-lg text-skin-base dark:text-skin-base-dark font-bold text-skin-base animate delay-${
+                  index + 3
+                }`,
                 {
                   "bg-nav-link-active text-skin-inverted hover:hover:bg-nav-link-active":
                     Astro.url.pathname === href ||
@@ -93,15 +95,17 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
       }
     </ul>
     <div
-      class="flex flex-row items-center gap-x-5 w-full md:max-w-fit lg:max-w-[225px] bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark border-t md:border md:rounded-full md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-7 pt-6 pb-7 md:px-3 md:py-1 h-fit"
+      class="flex flex-row items-center gap-x-5 w-full md:max-w-fit lg:max-w-[225px] bg-navigation-primary md:bg-navigation-primary/50 dark:bg-navigation-primary-dark border-t md:border md:rounded-full md:border-navigation-primary dark:border-navigation-primary-dark/[16%] md:backdrop-blur-sm md:shadow-navigation dark:shadow-none px-7 pt-6 pb-7 md:px-3 md:py-1 h-fit animate delay-6"
     >
       <div class="flex flex-row gap-x-5 md:hidden lg:flex">
         {
-          iconLinks.map(({ href, icon, label }) => (
+          iconLinks.map(({ href, icon, label }, index) => (
             <a
               href={href}
               target="_blank"
-              class="border border-navigation-muted dark:border-navigation-primary-dark/[16%] text-skin-base dark:text-skin-base-dark rounded-full h-fit"
+              class={`border border-navigation-muted dark:border-navigation-primary-dark/[16%] text-skin-base dark:text-skin-base-dark rounded-full h-fit animate delay-${
+                index + 7
+              }`}
             >
               <span class="sr-only">{label}</span>
               <Icon
@@ -176,3 +180,17 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
   }
   customElements.define("menu-button", MenuButton);
 </script>
+
+<style>
+  @media (max-width: 768px) {
+    .animate:not(menu-button) {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+
+    .animate.pop:not(menu-button) {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+</style>

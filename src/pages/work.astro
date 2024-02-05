@@ -27,7 +27,7 @@ const projects = (await getCollection("work")).sort(
         <Grid className="flex flex-col gap-20 md:gap-6 md:grid">
           {
             projects.map((project) => (
-              <li class="col-span-2 odd:place-self-end  bg-card-primary/[50%] dark:bg-card-primary-dark/[16%] border border-card-primary dark:border-card-primary-dark/[8%] rounded-lg w-full md:w-1/2 min-h-[300px] md:max-w-[600px] backdrop-blur-sm flex">
+              <li class="col-span-2 odd:place-self-end  bg-card-primary/[50%] dark:bg-card-primary-dark/[16%] border border-card-primary dark:border-card-primary-dark/[8%] rounded-lg w-full md:w-1/2 min-h-[300px] md:max-w-[600px] backdrop-blur-sm flex animate">
                 <PortfolioPreview project={project} />
               </li>
             ))

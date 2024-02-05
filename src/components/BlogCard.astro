@@ -17,19 +17,21 @@ const { coverImage, title, brief, publishedAt, slug } = Astro.props;
     <a
       href={`https://blog.nemanjamanojlovic.com/${slug}`}
       target="_blank"
-      class="image-anchor"
+      class="image-anchor animate"
     >
       <img src={coverImage.url} alt={title} class="bg-cover rounded-3xl" />
     </a>
   </div>
   <div class="flex flex-col items-start gap-2.5 mt-6">
-    <Chip type="tertiary">{slug}</Chip>
+    <Chip type="tertiary" className="animate">{slug}</Chip>
     <h3
-      class="text-2xl leading-8 font-bold text-skin-base dark:text-skin-base-dark"
+      class="text-2xl leading-8 font-bold text-skin-base dark:text-skin-base-dark animate"
     >
       {title}
     </h3>
-    <p class="text-base leading-6 text-skin-muted dark:text-skin-muted-dark">
+    <p
+      class="text-base leading-6 text-skin-muted dark:text-skin-muted-dark animate"
+    >
       {brief}
     </p>
   </div>

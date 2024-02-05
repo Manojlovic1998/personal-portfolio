@@ -101,11 +101,11 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
         className="md:w-1/2"
       >
         <div class="flex gap-2 justify-center md:justify-start">
-          <Chip type="primary">
+          <Chip type="primary" className="animate">
             <Icon icon="code" size="1.33em" color="stroke-icon-inverted" />
              Software Engineer
           </Chip>
-          <Chip type="primary">
+          <Chip type="primary" className="animate delay-1">
             <Icon
               icon="pencil-line"
               size="1.33em"
@@ -123,12 +123,12 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
       <section class="md:grid grid-flow-row auto-rows-auto grid-cols-2">
         <header class="text-center md:text-start col-span-1">
           <h3
-            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark"
+            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark animate"
           >
             Selected Work
           </h3>
           <p
-            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mt-4"
+            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mt-4 animate"
           >
             Take a look below at some of my featured work for clients from the
             past few years.
@@ -139,7 +139,7 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
           <Grid className="flex flex-col gap-20 md:gap-6 md:grid">
             {
               projects.map((project) => (
-                <li class="col-span-2 odd:place-self-end  bg-card-primary/[50%] dark:bg-card-primary-dark/[16%] border border-card-primary dark:border-card-primary-dark/[8%] rounded-lg w-full md:w-1/2 min-h-[300px] md:max-w-[600px] backdrop-blur-sm flex">
+                <li class="col-span-2 odd:place-self-end  bg-card-primary/[50%] dark:bg-card-primary-dark/[16%] border border-card-primary dark:border-card-primary-dark/[8%] rounded-lg w-full md:w-1/2 min-h-[300px] md:max-w-[600px] backdrop-blur-sm flex animate">
                   <PortfolioPreview project={project} />
                 </li>
               ))
@@ -150,7 +150,7 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
         <div class="flex md:block md:col-span-2 md:col-start-2 md:row-start-1">
           <CallToAction
             href={`${import.meta.env.BASE_URL}work/`}
-            className="mx-auto md:ml-auto md:mr-0 mt-11"
+            className="mx-auto md:ml-auto md:mr-0 mt-11 animate"
           >
             <Icon
               icon="arrow-right"
@@ -165,12 +165,12 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
       <section class="md:grid grid-flow-row auto-rows-auto grid-cols-2">
         <header class="text-center md:text-start col-span-1">
           <h3
-            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark"
+            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark animate"
           >
             Blog Posts
           </h3>
           <p
-            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mt-4"
+            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mt-4 animate"
           >
             Occasionally I write tech blog posts, feel free to check them out.
           </p>
@@ -182,7 +182,7 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
               blogPosts &&
                 blogPosts.map((post) => (
                   <>
-                    <li class="col-span-3 md:col-span-1 max-w-[343px]">
+                    <li class="col-span-3 md:col-span-1 max-w-[343px] animate">
                       <BlogCard {...post.node} />
                     </li>
                   </>
@@ -195,7 +195,7 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
           <CallToAction
             href={"https://blog.nemanjamanojlovic.com/"}
             target={"_blank"}
-            className="mx-auto md:ml-auto md:mr-0 mt-11"
+            className="mx-auto md:ml-auto md:mr-0 mt-11 animate"
           >
             <Icon
               icon="arrow-right"
@@ -210,12 +210,12 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
       <section class="flex flex-col gap-16">
         <header class="text-center">
           <h3
-            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark"
+            class="text-5xl font-bold text-skin-base dark:text-skin-base-dark animate"
           >
             My Hobbies
           </h3>
           <p
-            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mx-auto mt-4"
+            class="text-skin-muted dark:text-skin-muted-dark text-2xl font-medium max-w-[660px] mx-auto mt-4 animate"
           >
             My hobbies are designing logos, illustrations, and user interfaces,
             hobbyist photography, thinkering with electronics and spending time
@@ -230,13 +230,13 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
           >
             <img
               src={`${import.meta.env.BASE_URL}assets/dog-photo3.webp`}
-              class="md:align-middle md:mt-2"
+              class="md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
             <img
               src={`${import.meta.env.BASE_URL}assets/dog-photo2.webp`}
-              class="md:align-middle md:mt-2"
+              class="md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
@@ -246,12 +246,12 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
           >
             <img
               src={`${import.meta.env.BASE_URL}assets/photography1.webp`}
-              class="md:align-middle md:mt-2"
+              class="md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
             <img
-              class="photo-end-row row-start-5 md:align-middle md:mt-2"
+              class="photo-end-row row-start-5 md:align-middle md:mt-2 animate"
               src={`${import.meta.env.BASE_URL}assets/photography2.webp`}
               loading="lazy"
               alt=""
@@ -262,19 +262,19 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
           >
             <img
               src={`${import.meta.env.BASE_URL}assets/photography4.webp`}
-              class="md:align-middle md:mt-2"
+              class="md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
             <img
               src={`${import.meta.env.BASE_URL}assets/photography3.webp`}
-              class="col-start-1 col-end-3 md:basis-1/4 md:align-middle md:mt-2"
+              class="col-start-1 col-end-3 md:basis-1/4 md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
             <img
               src={`${import.meta.env.BASE_URL}assets/photography5.webp`}
-              class="md:align-middle md:mt-2"
+              class="md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
@@ -284,13 +284,13 @@ const blogPosts = await fetchHashnodePosts("manojlovic1998");
           >
             <img
               src={`${import.meta.env.BASE_URL}assets/photography6.webp`}
-              class="md:align-middle md:mt-2"
+              class="md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
             <img
               src={`${import.meta.env.BASE_URL}assets/dog-photo4.webp`}
-              class="md:align-middle md:mt-2"
+              class="md:align-middle md:mt-2 animate"
               loading="lazy"
               alt=""
             />
