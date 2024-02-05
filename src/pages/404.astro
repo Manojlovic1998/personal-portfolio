@@ -1,8 +1,29 @@
 ---
-import Hero from '../components/Hero.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from "../components/CallToAction.astro";
+import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Not Found" description="404 Error — this page was not found">
-	<Hero title="Page Not Found" tagline="Not found" />
+  <Hero
+    title="Page Not Found"
+    tagline=" Sorry, the page you are looking for does not exist."
+    className="min-h-[80vh] text-center pt-16"
+    text="center"
+  >
+    <CallToAction
+      href="/"
+      href={`${import.meta.env.BASE_URL}`}
+      className="mx-auto animate"
+    >
+      <Icon
+        icon="arrow-right"
+        size="1.2em"
+        color="stroke-icon-inverted"
+        className="hidden md:flex"
+      />
+       Go back to the home page
+    </CallToAction>
+  </Hero>
 </BaseLayout>
