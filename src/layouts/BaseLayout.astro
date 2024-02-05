@@ -146,12 +146,6 @@ const { title, description, image } = Astro.props;
             // Get current scroll position
             const scrollY = window.scrollY;
 
-            console.log(
-              entry.target,
-              entry.target.getBoundingClientRect().y +
-                entry.target.getBoundingClientRect().height,
-              scrollY,
-            );
             if (
               entry.isIntersecting &&
               entry.target.getBoundingClientRect().top > scrollY
